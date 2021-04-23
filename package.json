@@ -24,6 +24,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.2",
     "@fortawesome/free-solid-svg-icons": "^5.15.2",
     "bootstrap": "^4.6.0",
+    "firebase": "^8.4.1",
     "font-awesome": "^4.7.0",
     "mdb-ui-kit": "^3.5.0",
     "rxjs": "~6.6.0",
