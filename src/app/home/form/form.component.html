@@ -34,10 +34,9 @@
           <div class="bar"></div>
         </div>
         <div class="input-container">
-          <input type="password" required="required" />
+          <input #signUpPassword type="password" required="required" />
+          <button type="button" mat-icon-button class="eyeIcon signup-visiblity-toggle"><mat-icon  (click)="toggleVisiblity(signUpPassword)">remove_red_eye</mat-icon></button>
           <label for="password">Password</label>
-          <!-- <fa-icon [icon]="['fas', 'eye']"></fa-icon> -->
-          <!-- Unable to add upper tag -->
           <div class="bar"></div>
         </div>
         <div class="input-container">

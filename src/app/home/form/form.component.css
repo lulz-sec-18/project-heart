@@ -338,8 +338,11 @@ body {
   float: right;
   position: absolute;
   bottom:10px;
-  right:10px;
+  right:0px;
   color:#ed2553;
   cursor: pointer;
   z-index: 999;
+}
+.signup-visiblity-toggle{
+ color:white !important; 
 }
