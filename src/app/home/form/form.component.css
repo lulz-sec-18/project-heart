@@ -508,3 +508,11 @@ body {
     opacity: 0;
   }
 }
+.eyeIcon {
+  float: right;
+  position: absolute;
+  bottom:10px;
+  right:10px;
+  color:#fccdd8;
+
+}

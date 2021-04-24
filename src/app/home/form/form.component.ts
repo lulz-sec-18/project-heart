@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+// import { FormService } from './form.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-form',
@@ -6,10 +7,14 @@ import { Component} from '@angular/core';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
+  // private formService: FormService;
+  formClass: string = 'container';
+  
 
-//toggling container class
+ 
+  //toggling container class
 
-  formClass: string= 'container';
+  
   addActiveClass(): void {
     this.formClass = this.formClass + ' active';
   }

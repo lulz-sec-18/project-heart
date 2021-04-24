@@ -1,58 +1,56 @@
-
 <div>
-  <div class={{formClass}}  >
-  <div class="card"></div>
-  <div class="card">
-    <h1 class="title">Login</h1>
-    <form>
-      <div class="input-container">
-        <input type="text" id="#{label}" required="required"/>
-        <label for="#{label}">Username</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="password" id="#{label}" required="required"/>
-        <label for="#{label}">Password</label>
-        <div class="bar"></div>
-      </div>
-      <div class="button-container">
-        <button><span>Go</span></button>
-      </div>
-      <div class="footer"><a href="#">Forgot your password?</a></div>
-    </form>
-  </div>
-  <div class="card alt">
-    <div class="toggle" (click)="addActiveClass()"></div>
-    <h1 class="title">Register
-      <div class="close" (click)="removeActiveClass()"></div>
-    </h1>
-    <form>
-      <div class="input-container">
-        <input type="text" id="#{label}" required="required"/>
-        <label for="#{label}">Username</label>
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="password" id="#{label}" required="required"/>
-        <label for="#{label}">Password</label>
-        <!-- <fa-icon [icon]="['fas', 'eye']"></fa-icon> -->
-        <!-- Unable to add upper tag -->
-        <div class="bar"></div>
-      </div>
-      <div class="input-container">
-        <input type="password" id="#{label}" required="required"/>
-        <label for="#{label}">Repeat Password</label>
-        <div class="bar"></div>
-      </div>
-      <div class="button-container">
-        <button><span>Next</span></button>
-      </div>
-    </form>
+  <div class="{{ formClass }}">
+    <div class="card"></div>
+    <div class="card">
+      <h1 class="title">Login</h1>
+      <form>
+        <div class="input-container">
+          <input type="text" id="#{label}" required="required" />
+          <label for="#{label}">Username</label>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input type="password" id="#{label}" required="required" />
+          <mat-icon class="eyeIcon" (click)="(toggleVisiblity)"
+            >remove_red_eye</mat-icon
+          >
+          <label for="#{label}">Password</label>
+          <div class="bar"></div>
+        </div>
+        <div class="button-container">
+          <button><span>Go</span></button>
+        </div>
+        <div class="footer"><a href="#">Forgot your password?</a></div>
+      </form>
+    </div>
+    <div class="card alt">
+      <div class="toggle" (click)="addActiveClass()"></div>
+      <h1 class="title">
+        Register
+        <div class="close" (click)="removeActiveClass()"></div>
+      </h1>
+      <form>
+        <div class="input-container">
+          <input type="text" id="#{label}" required="required" />
+          <label for="#{label}">Username</label>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input type="password" id="#{label}" required="required" />
+          <label for="#{label}">Password</label>
+          <!-- <fa-icon [icon]="['fas', 'eye']"></fa-icon> -->
+          <!-- Unable to add upper tag -->
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input type="password" id="#{label}" required="required" />
+          <label for="#{label}">Repeat Password</label>
+          <div class="bar"></div>
+        </div>
+        <div class="button-container">
+          <button><span>Next</span></button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-</div>
-
-
-
-
-

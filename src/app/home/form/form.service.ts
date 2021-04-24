@@ -3,9 +3,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth'
 import {environment} from '../../../environments/environment'
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FormService {
 
   constructor(private firebaseConfig: object) {
@@ -20,6 +18,18 @@ export class FormService {
     };
     firebase.initializeApp(this.firebaseConfig);
   }
+  
+  googleSignIn() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({
+      login_hint: 'user@example.com',
+    });
+    firebase.auth().signInWithPopup(provider).then((result => {
+      let user = result.user
+      console.log(user);
+    })).catch((error: any)=>console.log(error))
+  }
+
 
   
   
