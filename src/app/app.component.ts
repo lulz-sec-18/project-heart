@@ -9,9 +9,6 @@ import { Component, ElementRef,ViewChild } from '@angular/core';
 export class AppComponent {
   title = 'project-heart';
 
-  ngAfterViewInit() {
-     
-  }
   navbarToggler(el): void {
      el.classList.toggle('active')
   }

@@ -1,4 +1,3 @@
-// import { FormService } from './form.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,14 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./form.component.css'],
 })
 export class FormComponent {
-  // private formService: FormService;
   formClass: string = 'container';
-  
-
- 
-  //toggling container class
-
-  
+  //toggling password visiblity
+  toggleVisiblity(el): void {
+    if (el.type === "password") el.type = "text";
+    else el.type = "password";
+  }
   addActiveClass(): void {
     this.formClass = this.formClass + ' active';
   }

@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import firebase from 'firebase/app';
-import 'firebase/auth'
-import {environment} from '../../../environments/environment'
+import { environment } from '../environments/environment';
 
-@Injectable()
-export class FormService {
-
+@Injectable({ providedIn: 'root' })
+export class ServiceNameService {
   constructor(private firebaseConfig: object) {
     firebaseConfig = {
       apiKey: environment.firebase.apiKey,
@@ -18,19 +16,18 @@ export class FormService {
     };
     firebase.initializeApp(this.firebaseConfig);
   }
-  
   googleSignIn() {
     var provider = new firebase.auth.GoogleAuthProvider();
     provider.setCustomParameters({
       login_hint: 'user@example.com',
     });
-    firebase.auth().signInWithPopup(provider).then((result => {
-      let user = result.user
-      console.log(user);
-    })).catch((error: any)=>console.log(error))
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        let user = result.user;
+        console.log(user);
+      })
+      .catch((error: any) => console.log(error));
   }
-
-
-  
-  
 }
