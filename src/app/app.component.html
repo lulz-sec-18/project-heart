@@ -1,22 +1,37 @@
-<nav>
-  <ul>
+<div>
+  <div class="navbar">
+  <span #navbarToggle class="navbar-toggle" id="js-navbar-toggle" (click)="navbarToggler(menu)">
+    <mat-icon>menu</mat-icon>
+  </span>
+  <a href="#" class="logo"><img src="../assets/images/logo.png"></a>
+  <ul #menu class="main-nav" id="js-menu" >
     <li routerLinkActive="selected">
-      <a routerLink="home">
-        Home
-      </a>
+      <a routerLink="home" class="nav-links">Home</a>
     </li>
     <li routerLinkActive="selected">
-      <a routerLink="prediction">
-        Prediction
-      </a>
+      <a routerLink="prediction" class="nav-links">Prediction</a>
     </li>
     <li routerLinkActive="selected">
-      <a routerLink="about">
-        About
-      </a>
+      <a routerLink="about" class="nav-links">About Us</a>
     </li>
   </ul>
-</nav>
+</div>
+</div>
+
+
+<!-- <nav>
+  <ul>
+    <li routerLinkActive="selected">
+      <a routerLink="home"> Home </a>
+    </li>
+    <li routerLinkActive="selected">
+      <a routerLink="prediction"> Prediction </a>
+    </li>
+    <li routerLinkActive="selected">
+      <a routerLink="about"> About </a>
+    </li>
+  </ul>
+</nav> -->
 <section>
   <router-outlet></router-outlet>
 </section>
