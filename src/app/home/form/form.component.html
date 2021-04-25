@@ -1,5 +1,5 @@
 <div>
-  <div class="{{ formClass }}">
+  <div class="container" [ngClass]="isActive ? 'active' : ''">
     <div class="card"></div>
     <div class="card">
       <h1 class="title">Login</h1>
@@ -11,21 +11,25 @@
         </div>
         <div class="input-container">
           <input #signInPassword type="password" required="required" />
-          <button type="button" mat-icon-button class="eyeIcon"><mat-icon  (click)="toggleVisiblity(signInPassword)">remove_red_eye</mat-icon></button>
+          <button type="button" mat-icon-button class="eyeIcon">
+            <mat-icon (click)="toggleVisiblity(signInPassword, $event)"
+              >visibility</mat-icon
+            >
+          </button>
           <label for="password">Password</label>
           <div class="bar"></div>
         </div>
         <div class="button-container">
-          <button type=submit><span>Go</span></button>
+          <button type="submit"><span>Go</span></button>
         </div>
         <div class="footer"><a href="#">Forgot your password?</a></div>
       </form>
     </div>
     <div class="card alt">
-      <div class="toggle" (click)="addActiveClass()"></div>
+      <div class="toggle" (click)="toggleActiveClass()"></div>
       <h1 class="title">
         Register
-        <div class="close" (click)="removeActiveClass()"></div>
+        <div class="close" (click)="toggleActiveClass()"></div>
       </h1>
       <form>
         <div class="input-container">
@@ -35,7 +39,15 @@
         </div>
         <div class="input-container">
           <input #signUpPassword type="password" required="required" />
-          <button type="button" mat-icon-button class="eyeIcon signup-visiblity-toggle"><mat-icon  (click)="toggleVisiblity(signUpPassword)">remove_red_eye</mat-icon></button>
+          <button
+            type="button"
+            mat-icon-button
+            class="eyeIcon signup-visiblity-toggle"
+          >
+            <mat-icon (click)="toggleVisiblity(signUpPassword, $event)"
+              >visibility</mat-icon
+            >
+          </button>
           <label for="password">Password</label>
           <div class="bar"></div>
         </div>

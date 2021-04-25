@@ -1,5 +1,3 @@
-
-
 /* @charset "UTF-8";
 body {
   background: #e9e9e9;
@@ -9,8 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 } */
-
-
 
 /* Container */
 .container {
@@ -120,7 +116,8 @@ body {
   color: #9d9d9d;
   transform: translate(-12%, -50%) scale(0.75);
 }
-.card .input-container input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
+.card .input-container input:focus ~ .bar:before,
+.card .input-container input:focus ~ .bar:after {
   width: 50%;
 }
 .card .input-container input:valid ~ label {
@@ -145,7 +142,8 @@ body {
   width: 100%;
   height: 1px;
 }
-.card .input-container .bar:before, .card .input-container .bar:after {
+.card .input-container .bar:before,
+.card .input-container .bar:after {
   content: "";
   position: absolute;
   background: #ed2553;
@@ -199,16 +197,22 @@ body {
   opacity: 0;
   transition: 0.3s ease;
 }
-.card .button-container button:hover, .card .button-container button:active, .card .button-container button:focus {
+.card .button-container button:hover,
+.card .button-container button:active,
+.card .button-container button:focus {
   border-color: #ed2553;
 }
-.card .button-container button:hover span, .card .button-container button:active span, .card .button-container button:focus span {
+.card .button-container button:hover span,
+.card .button-container button:active span,
+.card .button-container button:focus span {
   color: #ed2553;
 }
-.card .button-container button:active span, .card .button-container button:focus span {
+.card .button-container button:active span,
+.card .button-container button:focus span {
   color: #ffffff;
 }
-.card .button-container button:active:before, .card .button-container button:focus:before {
+.card .button-container button:active:before,
+.card .button-container button:focus:before {
   opacity: 1;
   transform: scale(10);
 }
@@ -294,7 +298,8 @@ body {
 .card.alt .input-container input:focus ~ label {
   color: #ffffff;
 }
-.card.alt .input-container input:focus ~ .bar:before, .card.alt .input-container input:focus ~ .bar:after {
+.card.alt .input-container input:focus ~ .bar:before,
+.card.alt .input-container input:focus ~ .bar:after {
   background: #ffffff;
 }
 .card.alt .input-container input:valid ~ label {
@@ -317,7 +322,8 @@ body {
 .card.alt .button-container button:hover {
   background: rgba(255, 255, 255, 0.9);
 }
-.card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+.card.alt .button-container button:active:before,
+.card.alt .button-container button:focus:before {
   display: none;
 }
 
@@ -337,12 +343,12 @@ body {
 .eyeIcon {
   float: right;
   position: absolute;
-  bottom:10px;
-  right:0px;
-  color:#ed2553;
+  bottom: 10px;
+  right: 0px;
+  color: #ed2553;
   cursor: pointer;
   z-index: 999;
 }
-.signup-visiblity-toggle{
- color:white !important; 
+.signup-visiblity-toggle {
+  color: white !important;
 }
