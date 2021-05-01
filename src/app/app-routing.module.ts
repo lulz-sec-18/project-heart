@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'prediction',
     loadChildren: () => import('./prediction/prediction.module').then(m => m.PredictionModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
   { path: '**', redirectTo: 'home' }
 ];
 

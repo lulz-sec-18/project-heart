@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "well-heart-ce9a5": {
+      "hosting": {
+        "project-heart": [
+          "well-heart-ce9a5"
+        ]
+      }
+    }
+  }
+}

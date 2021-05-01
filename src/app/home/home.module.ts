@@ -3,12 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { FormComponent } from './form/form.component';
 import {AngularMaterialModule} from '../angular-material.module'
 
 
 @NgModule({
-  declarations: [HomeComponent, FormComponent],
+  declarations: [HomeComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
