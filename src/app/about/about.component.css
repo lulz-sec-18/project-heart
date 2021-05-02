@@ -14,8 +14,8 @@ body{
 }
 
 .about-section{
-    background: url(../../assets/images/About-heart.jpg) no-repeat left;
-    background-size: 55%;
+    background: url(../../assets/images/heart.svg) no-repeat left;
+    background-size: 40%;
     background-color: #fdfdfd;
     overflow: hidden;
     padding: 10px 0;

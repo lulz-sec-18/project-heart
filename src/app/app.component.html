@@ -19,7 +19,7 @@
     </li>
 
     <li class="item button" (click)="open(content)"><a>Log In</a></li>
-    <li class="toggle">
+    <li class="toggle-menu">
       <!-- <i #menuIcon class="fas fa-bars"></i> -->
       <button type="button" mat-icon-button>
         <mat-icon (click)="toggleMenu($event)" class="toggle-icon" #menuIcon
@@ -54,13 +54,18 @@
         </div>
         <div class="input-container">
           <input #signInPassword type="password" required="required" />
-          <button type="button" mat-icon-button class="eyeIcon">
+          <button type="button" mat-icon-button class="eyeIcon signin-visiblity-toggle">
             <mat-icon (click)="toggleVisiblity(signInPassword, $event)"
               >visibility</mat-icon
             >
           </button>
           <label for="password">Password</label>
           <div class="bar"></div>
+        </div>
+        <p class="google-text">Or Login using</p>
+        <div class="google-icon">
+          
+          <button type="button" mat-icon-button><ion-icon name="logo-google"></ion-icon></button>
         </div>
         <div class="button-container">
           <button type="submit"><span>Go</span></button>
@@ -112,8 +117,44 @@
 <section>
   <router-outlet> </router-outlet>
 </section>
+<!-- Footer -->
+<footer >
+  <mat-grid-list cols="2" rowHeight="80px">
+  <mat-grid-tile
+  [colspan]=1
+  [rowspan]=1
+  >
+  <div class="footer-text">
+    <p>Made with 💗 by Ajay & Mridul</p>
+  </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+  [colspan]=1
+  [rowspan]=1
+  >
+  <div class="social-icons">
+    <a href="#">
+      <ion-icon name="logo-github"></ion-icon>
+    </a>
+    <a href="#">
+      <ion-icon name="logo-instagram"></ion-icon>
+    </a>
+    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+  </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+  [colspan]=2
+  [rowspan]=1
+  >
+  <div class="copyright">
+        <p class="py-2 mb-0">© Wellheart All rights reserved.</p>
+  </div>
+  </mat-grid-tile>
+</mat-grid-list>  
+</footer>
 
-<footer>footer</footer>
+<!-- Footer End -->
+
 <style>
   ul {
     display: inline-flex;

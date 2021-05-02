@@ -28,7 +28,7 @@ a {
 }
 .item:not(.button) a:hover,
 .item a:hover::after {
-  color: #ccc;
+  color: #f55c44;
 }
 /* Mobile menu */
 .menu {
@@ -42,7 +42,7 @@ a {
   padding: 15px 5px;
 }
 
-.toggle {
+.toggle-menu {
   order: 1;
   font-size: 20px;
 }
@@ -76,7 +76,7 @@ a {
     order: 1;
     display: block;
   }
-  .toggle {
+  .toggle-menu {
     flex: 1;
     text-align: right;
     order: 2;
@@ -91,7 +91,7 @@ a {
     cursor: pointer;
   }
   .button a {
-    background: #ed2553;
+    background: #f55c44;
     border: 1px #ec426a solid;
     border-radius: 5px;
   }
@@ -116,7 +116,7 @@ a {
     order: 2;
   }
 
-  .toggle {
+  .toggle-menu {
     display: none;
   }
 }
@@ -189,6 +189,9 @@ img {
 .container.active .card.alt .button-container {
   transition-delay: 0.7s;
 }
+.container.active .signin-visiblity-toggle {
+  display:none;
+}
 
 /* Card */
 .card {
@@ -197,7 +200,7 @@ img {
   border-radius: 5px;
   padding: 60px 0 40px 0;
   box-sizing: border-box;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   transition: 0.3s ease;
 }
 .card:first-child {
@@ -210,10 +213,10 @@ img {
 .card .title {
   position: relative;
   z-index: 1;
-  border-left: 5px solid #ed2553;
+  border-left: 5px solid #f55c44;
   margin: 0 0 35px;
   padding: 10px 0 10px 50px;
-  color: #ed2553;
+  color: #f55c44;
   font-size: 32px;
   font-weight: 600;
   text-transform: uppercase;
@@ -268,7 +271,7 @@ img {
 .card .input-container .bar:after {
   content: "";
   position: absolute;
-  background: #ed2553;
+  background: #f55c44;
   width: 0;
   height: 2px;
   transition: 0.2s ease;
@@ -289,7 +292,7 @@ img {
   position: relative;
   display: inline-block;
   background: 0;
-  width: 240px;
+  width: 140px;
   border: 2px solid #e3e3e3;
   padding: 20px 0;
   font-size: 24px;
@@ -298,6 +301,7 @@ img {
   text-transform: uppercase;
   overflow: hidden;
   transition: 0.3s ease;
+  margin-top:20%;
 }
 .card .button-container button span {
   position: relative;
@@ -311,7 +315,7 @@ img {
   top: 50%;
   left: 50%;
   display: block;
-  background: #ed2553;
+  background: #f55c44;
   width: 30px;
   height: 30px;
   border-radius: 100%;
@@ -322,12 +326,12 @@ img {
 .card .button-container button:hover,
 .card .button-container button:active,
 .card .button-container button:focus {
-  border-color: #ed2553;
+  border-color: #f55c44;
 }
 .card .button-container button:hover span,
 .card .button-container button:active span,
 .card .button-container button:focus span {
-  color: #ed2553;
+  color: #f55c44;
 }
 .card .button-container button:active span,
 .card .button-container button:focus span {
@@ -368,7 +372,7 @@ img {
 }
 .card.alt .toggle {
   position: relative;
-  background: #ed2553;
+  background: #f55c44;
   width: 140px;
   height: 140px;
   border-radius: 100%;
@@ -434,12 +438,12 @@ img {
   background: rgba(255, 255, 255, 0.8);
 }
 .card.alt .button-container button {
-  width: 100%;
+  width: 70%;
   background: #ffffff;
   border-color: #ffffff;
 }
 .card.alt .button-container button span {
-  color: #ed2553;
+  color: #f55c44;
 }
 .card.alt .button-container button:hover {
   background: rgba(255, 255, 255, 0.9);
@@ -453,7 +457,7 @@ img {
   position: absolute;
   bottom: 10px;
   right: 0px;
-  color: #ed2553;
+  color: #f55c44;
   cursor: pointer;
   z-index: 999;
 }
@@ -464,8 +468,38 @@ img {
   position: absolute;
   top: 10px;
   left: 10px;
-  color: #ed2553;
+  color: #f55c44;
 }
+.google-icon{
+  position: absolute;
+  left:45%;
+  right: 45%;
+  top: 60%;
+
+}
+.google-icon button ion-icon{
+  font-size:30px;
+  color: #f55c44;
+  padding:2px;
+  border:3px #f55c44 solid;
+  border-radius: 50%;
+  
+}
+.google-icon button ion-icon:hover{
+  animation:pulse;
+  animation-duration: 0.6s;
+}
+.google-text{
+  position:absolute;
+  left:40%;
+  right:30%;
+  top:55%
+}
+.modal-dialog{
+  padding:0px;
+}
+
+
 
 /* Keyframes */
 @-webkit-keyframes buttonFadeInUp {
@@ -481,3 +515,33 @@ img {
   }
 }
 
+/* footer */
+footer{ 
+  background-color: #4e4e4e;
+}
+.social-icons{
+  position: absolute;
+  display:flex;
+  right:5%;
+}
+.social-icons a ion-icon{
+  font-size:40px;
+  color:#f55c44;
+  padding:20px;
+}
+.social-icons a ion-icon:hover{
+  animation:pulse;
+  animation-duration: 0.8s;
+  color: #f7a38e;
+}
+.copyright p{
+  color:rgb(187, 185, 185);
+  font-size:18px;
+}
+.footer-text p{
+  font-size:20px;
+  color:rgb(187, 185, 185);
+  position:absolute;
+  left:5%;
+
+}
