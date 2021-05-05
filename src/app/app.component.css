@@ -8,6 +8,12 @@ nav {
   background: rgb(78, 78, 78);
   padding: 0 20px;
 }
+.item.button a{
+  color:white;
+}
+.item.button a:hover{
+  color:#f55c44 ;
+}
 a {
   color: white;
   text-decoration: none;
@@ -79,10 +85,17 @@ a {
   .logo {
     flex: 1;
   }
+  .item.button a:hover {
+    color:white;
+  }
   .item.button {
     width: auto;
     order: 1;
     display: block;
+  }
+  .item.button:hover {
+   animation:pulse;
+   animation-duration:0.8s;
   }
   .toggle-menu {
     flex: 1;
