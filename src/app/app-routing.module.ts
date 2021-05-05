@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'prediction',
     loadChildren: () => import('./prediction/prediction.module').then(m => m.PredictionModule)
   },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+  },
+  {
+    path: 'verify-email',
+    loadChildren: () => import ('./auth/verify-email/verify-email.module').then( m => m.VerifyEmailModule )
+  },
   { path: '**', redirectTo: 'home' }
 ];
 

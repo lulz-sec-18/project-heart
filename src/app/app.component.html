@@ -1,26 +1,231 @@
+<!-- Navbar -->
 <nav>
-  <ul>
-    <li routerLinkActive="selected">
-      <a routerLink="home">
-        Home
-      </a>
+  <ul class="menu" [ngClass]="isMenuActive ? 'active' : ''">
+    <li class="logo">
+      <a href="#"><img src="../assets/images/logo.png" alt="logo" /></a>
     </li>
-    <li routerLinkActive="selected">
-      <a routerLink="prediction">
-        Prediction
-      </a>
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="home">Home</a>
     </li>
-    <li routerLinkActive="selected">
-      <a routerLink="about">
-        About
-      </a>
+
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="prediction">Prediction</a>
+    </li>
+
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="about">About</a>
+    </li>
+
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="dashboard">Dashboard</a>
+    </li>
+
+    <li
+      class="item button"
+      [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"
+      (click)="open(content)"
+    >
+      <a>Log In</a>
+    </li>
+    <li
+      class="item button"
+      [ngClass]="!authService.isLoggedIn() ? 'hidden' : ''"
+      (click)="openProfile(profileContent)"
+    >
+      <a>Account</a>
+    </li>
+    <li class="toggle-menu">
+      <!-- <i #menuIcon class="fas fa-bars"></i> -->
+      <button type="button" mat-icon-button>
+        <mat-icon (click)="toggleMenu($event)" class="toggle-icon" #menuIcon
+          >menu</mat-icon
+        >
+      </button>
     </li>
   </ul>
 </nav>
+
+<!-- Form -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="container" [ngClass]="isActive ? 'active' : ''">
+    <div class="card"></div>
+    <div class="card">
+      <button
+        type="button"
+        mat-icon-button
+        class="close-icon"
+        (click)="d('Cross click')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <h1 class="title">Login</h1>
+      <form>
+        <div class="input-container">
+          <input
+            type="text"
+            id="userInput"
+            required="required"
+            #signInUserName
+          />
+          <label for="user-name">Email Address</label>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input #signInPassword type="password" required="required" />
+          <button
+            type="button"
+            mat-icon-button
+            class="eyeIcon signin-visiblity-toggle"
+          >
+            <mat-icon (click)="toggleVisiblity(signInPassword, $event)"
+              >visibility</mat-icon
+            >
+          </button>
+          <label for="password">Password</label>
+          <div class="bar"></div>
+        </div>
+        <p class="google-text">Or Login using</p>
+        <div class="google-icon">
+          <button
+            type="button"
+            (click)="GoogleAuth()"
+            mat-icon-button
+          >
+            <ion-icon name="logo-google"></ion-icon>
+          </button>
+        </div>
+        <div class="button-container">
+          <button
+            type="button"
+            (click)="SignIn(signInUserName.value, signInPassword.value)"
+          >
+            <span>Go</span>
+          </button>
+        </div>
+        <div class="footer">
+          <a (click)="ForgotPassword(signInUserName.value)"
+            >Forgot your password?</a
+          >
+        </div>
+      </form>
+    </div>
+    <div class="card alt">
+      <div class="toggle" (click)="toggleActiveClass()"></div>
+      <h1 class="title">
+        Register
+        <div class="close" (click)="toggleActiveClass()"></div>
+      </h1>
+      <form>
+        <div class="input-container">
+          <input type="text" required="required" #signUpUserName />
+          <label for="user-name">Username</label>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input
+            #signUpPassword
+            type="password"
+            required="required"
+            #signUpPassword
+          />
+          <button
+            type="button"
+            mat-icon-button
+            class="eyeIcon signup-visiblity-toggle"
+          >
+            <mat-icon (click)="toggleVisiblity(signUpPassword, $event)"
+              >visibility</mat-icon
+            >
+          </button>
+          <label for="password">Password</label>
+          <div class="bar"></div>
+        </div>
+        <div class="input-container">
+          <input type="password" required="required" #signUpRepeatPassword />
+          <label for="repeat-password">Repeat Password</label>
+          <div class="bar"></div>
+        </div>
+        <div class="button-container">
+          <button
+            type="button"
+            (click)="
+              SignUp(
+                signUpPassword.value,
+                signUpRepeatPassword.value,
+                signUpUserName.value
+              )
+            "
+          >
+            <span>Next</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</ng-template>
+
+<!-- Profile Card -->
+<ng-template #profileContent let-c="close" let-d="dismiss">
+<div class="card profile-card">
+  <div class="ds-top">
+    <button type="button" mat-icon-button (click)="profileModal.close()"><mat-icon>close</mat-icon></button>
+    
+  </div>
+  <div class="avatar-holder">
+    <img src="" alt="user">
+  </div>
+  <div class="name">
+    <p #profileUserName></p>
+    <h6 title="patients"><ion-icon class="heart-icon" name="heart"></ion-icon><span class="followers"><i class="fas fa-user-injured"></i></span></h6>
+  </div>
+  <div class="ds-info">
+    <div class="button" (click)="authService.SignOut()">
+    <a href="#" class="btn">Log Out<ion-icon class="log-out-icon" name="log-out"></ion-icon></a>
+  </div>
+  </div>
+  </div>
+</ng-template>
+
+
+<!-- Profile card end -->
+
+<!-- Form End -->
+
 <section>
-  <router-outlet></router-outlet>
+  <router-outlet> </router-outlet>
 </section>
-<footer>footer</footer>
+<!-- Footer -->
+<footer>
+  <mat-grid-list cols="2" rowHeight="80px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="footer-text">
+        <p>Made with 💗 by Ajay & Mridul</p>
+        <p></p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="social-icons">
+        <a href="#">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <div class="copyright">
+        <p class="py-2 mb-0">© Wellheart All rights reserved.</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</footer>
+
+<!-- Footer End -->
+
 <style>
   ul {
     display: inline-flex;
