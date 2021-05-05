@@ -1,4 +1,4 @@
-import {patient} from './patient'
+// import {patient} from './patient'
 
 export interface User {
   uid: string;
@@ -6,5 +6,5 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
-  patient: patient[];
+  // patient: patient[];
 }

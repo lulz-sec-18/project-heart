@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { AppFirebaseModule } from './app-firebase.module';
+import { AuthService } from './auth/auth.service';
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,9 +17,9 @@ import { AppFirebaseModule } from './app-firebase.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModule,
-    AppFirebaseModule
+    AppFirebaseModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
