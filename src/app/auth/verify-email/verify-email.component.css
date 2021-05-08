@@ -1,0 +1,31 @@
+.auth-block{
+   display:flex;
+   align-items:center;
+   flex-direction:column;
+   height:70vh;
+}
+.form-group{
+  padding:10vh;
+}
+.auth-block h3{
+  font-size:30px;
+  margin-top:2vh;
+}
+.form-group p{
+  font-size:20px;
+  padding:2vh;
+}
+.btnPrimary:hover{
+  background-color: #f55c44;
+}
+.redirectToLogin span{
+  font-size: 15px;
+  cursor: pointer;
+  padding-right: 5vh;
+}
+
+.redirectToLogin span.redirect{
+  padding: 6px;
+  background-color:#f55c44;
+  border-radius:5px;
+}

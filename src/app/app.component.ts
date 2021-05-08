@@ -1,18 +1,19 @@
 import { Component, ViewEncapsulation,OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth/auth.service';
+import { v4 as uuidv4 } from 'uuid'
+import {patient} from './auth/models/patient'
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   modal: any;
   profileModal: any;
   isMenuActive: boolean = false;
   isActive: boolean = false;
-  user;
 
   constructor(
     public authService: AuthService,
@@ -43,9 +44,7 @@ export class AppComponent implements OnInit {
     this.isActive = !this.isActive;
     return this.isActive;
   }
-  ngOnInit(): void{
-    this.user = this.authService.UserData
-  }
+  
 
   toggleMenu(event: any): void {
     this.isMenuActive = !this.isMenuActive;
@@ -69,6 +68,5 @@ export class AppComponent implements OnInit {
   ForgotPassword(userName) {
     this.authService.ForgotPassword(userName);
     this.modal.close();
-    window.console.log(this.user.displayName)
   }
 }

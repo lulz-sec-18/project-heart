@@ -128,7 +128,6 @@
             #signUpPassword
             type="password"
             required="required"
-            #signUpPassword
           />
           <button
             type="button"
@@ -174,11 +173,11 @@
     
   </div>
   <div class="avatar-holder">
-    <img src="" alt="user">
+    <img src="{{(authService.userData.photoURL) ? authService.userData.photoURL : '../assets/images/dummy-user.png'}}" alt="user">
   </div>
   <div class="name">
-    <p #profileUserName></p>
-    <h6 title="patients"><ion-icon class="heart-icon" name="heart"></ion-icon><span class="followers"><i class="fas fa-user-injured"></i></span></h6>
+    <p  [innerText]="authService.userData.displayName"></p>
+    <h6 title="patients"><ion-icon class="heart-icon" name="heart"></ion-icon><span></span></h6>
   </div>
   <div class="ds-info">
     <div class="button" (click)="authService.SignOut()">

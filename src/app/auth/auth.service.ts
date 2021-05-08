@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from './models/user';
-// import  auth  from 'firebase/app';
+import {patient} from './models/patient'
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -8,7 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase';
-// import 'firebase/auth';
+
 
 @Injectable({
   providedIn: 'root',
@@ -125,9 +125,32 @@ export class AuthService {
       this.router.navigate(['home']);
     });
   }
+
+  CreatePatient(patient:patient) {
+     const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+       `patients/${patient.id}`
+    );
+    // patient = {doctor_uid:user.uid, ...patient}
+    return userRef.set(patient, {
+      merge: true,
+    });
+    
+  }
+  UpdatePatient(patient:patient) {
+    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(`patients/${patient.id}`);
+    // patient = { doctor_uid: user.uid, ...patient };
+    return userRef.update(patient);
+  }
+  DeletePatient(patient:patient) {
+    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+      `patients/${patient.id}`
+    );
+    return userRef.delete();
+  }
  
 
   GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
   }
+  
 }
