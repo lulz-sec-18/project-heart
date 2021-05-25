@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
-    path: `about`,
+    path: 'about',
     loadChildren: () => import('./about/about.module').then(m => m.AboutModule)
   },
   {
@@ -21,7 +21,11 @@ const routes: Routes = [
   },
   {
     path: 'verify-email',
-    loadChildren: () => import ('./auth/verify-email/verify-email.module').then( m => m.VerifyEmailModule )
+    loadChildren: () => import ('./auth/verify-email/verify-email.module').then(m => m.VerifyEmailModule)
+  },
+  {
+    path: 'train_online',
+    loadChildren: () => import ('./House-data/house-data.module').then(m => m.HouseDataModule)
   },
   { path: '**', redirectTo: 'home' }
 ];

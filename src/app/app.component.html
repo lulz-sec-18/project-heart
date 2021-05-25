@@ -20,6 +20,10 @@
       <a routerLink="dashboard">Dashboard</a>
     </li>
 
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="train_online">Train_Online</a>
+    </li>
+
     <li
       class="item button"
       [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"
@@ -171,7 +175,6 @@
 <div class="card profile-card">
   <div class="ds-top">
     <button type="button" mat-icon-button (click)="profileModal.close()"><mat-icon>close</mat-icon></button>
-    
   </div>
   <div class="avatar-holder">
     <img src="" alt="user">

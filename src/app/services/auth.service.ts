@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from './models/user';
+import { User } from '../auth/models/user';
 // import  auth  from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -22,7 +22,7 @@ export class AuthService {
     public ngZone: NgZone,
     public router: Router
   ) {
-    /* Saving user data in localstorage when 
+    /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -125,7 +125,7 @@ export class AuthService {
       this.router.navigate(['home']);
     });
   }
- 
+
 
   GoogleAuth() {
     return this.AuthLogin(new firebase.auth.GoogleAuthProvider());

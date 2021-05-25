@@ -1,6 +1,6 @@
 import { Component, ViewEncapsulation,OnInit } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
