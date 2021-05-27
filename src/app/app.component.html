@@ -16,7 +16,7 @@
       <a routerLink="about">About</a>
     </li>
 
-    <li class="item" routerLinkActive="selected">
+    <li *ngIf = "authService.isLoggedIn()" class="item" routerLinkActive="selected">
       <a routerLink="dashboard">Dashboard</a>
     </li>
 
@@ -88,11 +88,7 @@
         </div>
         <p class="google-text">Or Login using</p>
         <div class="google-icon">
-          <button
-            type="button"
-            (click)="GoogleAuth()"
-            mat-icon-button
-          >
+          <button type="button" (click)="GoogleAuth()" mat-icon-button>
             <ion-icon name="logo-google"></ion-icon>
           </button>
         </div>
@@ -124,11 +120,7 @@
           <div class="bar"></div>
         </div>
         <div class="input-container">
-          <input
-            #signUpPassword
-            type="password"
-            required="required"
-          />
+          <input #signUpPassword type="password" required="required" />
           <button
             type="button"
             mat-icon-button
@@ -167,26 +159,37 @@
 
 <!-- Profile Card -->
 <ng-template #profileContent let-c="close" let-d="dismiss">
-<div class="card profile-card">
-  <div class="ds-top">
-    <button type="button" mat-icon-button (click)="profileModal.close()"><mat-icon>close</mat-icon></button>
-    
-  </div>
-  <div class="avatar-holder">
-    <img src="{{(authService.userData.photoURL) ? authService.userData.photoURL : '../assets/images/dummy-user.png'}}" alt="user">
-  </div>
-  <div class="name">
-    <p  [innerText]="authService.userData.displayName"></p>
-    <h6 title="patients"><ion-icon class="heart-icon" name="heart"></ion-icon><span></span></h6>
-  </div>
-  <div class="ds-info">
-    <div class="button" (click)="authService.SignOut()">
-    <a href="#" class="btn">Log Out<ion-icon class="log-out-icon" name="log-out"></ion-icon></a>
-  </div>
-  </div>
+  <div class="card profile-card">
+    <div class="ds-top">
+      <button type="button" mat-icon-button (click)="profileModal.close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="avatar-holder">
+      <img
+        src="{{
+          authService.userData.photoURL
+            ? authService.userData.photoURL
+            : '../assets/images/dummy-user.png'
+        }}"
+        alt="user"
+      />
+    </div>
+    <div class="name">
+      <p [innerText]="authService.userData.displayName"></p>
+      <h6 title="patients">
+        <ion-icon class="heart-icon" name="heart"></ion-icon><span></span>
+      </h6>
+    </div>
+    <div class="ds-info">
+      <div class="button" (click)="authService.SignOut()">
+        <a href="#" class="btn"
+          >Log Out<ion-icon class="log-out-icon" name="log-out"></ion-icon
+        ></a>
+      </div>
+    </div>
   </div>
 </ng-template>
-
 
 <!-- Profile card end -->
 
@@ -196,7 +199,7 @@
   <router-outlet> </router-outlet>
 </section>
 <!-- Footer -->
-<footer>
+<footer [ngClass]="router.url !== '/dashboard' ? '' : 'footer-hidden'">
   <mat-grid-list cols="2" rowHeight="80px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="footer-text">
@@ -228,5 +231,8 @@
 <style>
   ul {
     display: inline-flex;
+  }
+  .footer-hidden {
+    display: none;
   }
 </style>

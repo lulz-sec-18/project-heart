@@ -1,0 +1,195 @@
+a {
+  color: #71748d;
+}
+
+a:active,
+a:hover {
+  outline: 0;
+  text-decoration: none;
+}
+
+button:focus {
+  outline: 0;
+}
+.nav-divider {
+  padding: 10px 14px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.nav-left-sidebar {
+  position: fixed;
+  width: 264px;
+  height: 100%;
+  top: 60px;
+  overflow: auto;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.13);
+  box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.13);
+  -webkit-transition: all 0.3s ease;
+}
+.nav-left-sidebar .nav-link[data-toggle="collapse"] {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nav-left-sidebar .nav-link[data-toggle="collapse"]::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  right: 20px;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+.nav-left-sidebar
+  .nav-link[data-toggle="collapse"][aria-expanded="false"]:after {
+  transform: rotate(-90deg);
+}
+.nav-left-sidebar .nav-link[data-toggle="collapse"]:after {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+  opacity: 0.5;
+}
+.nav-left-sidebar .navbar-nav {
+  width: 100%;
+}
+.nav-left-sidebar .navbar {
+  position: relative;
+  padding: 14px;
+}
+.nav-left-sidebar .navbar-nav .nav-link {
+  font-size: 14px;
+  padding: 12px;
+  color: #71789e;
+  transition: 0.3s;
+}
+.nav-left-sidebar .nav-link i {
+  font-size: 14px;
+  margin-right: 9px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 16px;
+}
+.nav-divider {
+  padding: 10px 14px;
+  line-height: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.nav-left-sidebar .submenu {
+  padding-left: 12px;
+  padding-right: 12px;
+  background: #353434;
+}
+.nav-left-sidebar .submenu .nav .nav-item .nav-link {
+  font-size: 14px;
+  padding: 6px 12px;
+  transition: 0.3s;
+}
+.nav-left-sidebar .navbar-nav .nav-link.active,
+.nav-left-sidebar .navbar-nav .nav-link:focus {
+  background-color: #e2e2eb;
+  color: #3d405c;
+  border-radius: 2px;
+}
+.nav-left-sidebar .navbar-nav .nav-link:focus,
+.nav-left-sidebar .navbar-nav .nav-link:hover {
+  background-color: #e2e2eb;
+  color: #3d405c;
+  border-radius: 2px;
+}
+.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
+  color: #3d405c;
+  border-radius: 2px;
+  background-color: transparent;
+}
+.nav-left-sidebar .navbar-toggler {
+  background-color: #fff;
+}
+.navbar-toggler {
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+.sidebar-dark {
+  background-color: #4e4e4e;
+  -webkit-box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.13);
+  box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.13);
+  -webkit-transition: all 0.3s ease;
+}
+.sidebar-dark .nav-divider {
+  color: #a4aadb;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.sidebar-dark.nav-left-sidebar .nav-link i {
+  color: #fff;
+}
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link {
+  color: #fff;
+}
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:hover {
+  color: #fff;
+  background-color: #f55c44;
+  border-radius: 2px;
+}
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link.active,
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus {
+  background-color: #f55c44;
+  color: #fff;
+  border-radius: 2px;
+}
+.sidebar-dark.nav-left-sidebar .submenu .nav .nav-item .nav-link:hover {
+  color: #fff;
+  border-radius: 2px;
+  background-color: #f55c44;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-left-sidebar .navbar a {
+    color: #fff;
+    font-size: 18px;
+  }
+  .nav-left-sidebar .navbar {
+    padding: 14px;
+  }
+  .nav-left-sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+  .nav-left-sidebar .navbar-toggler {
+    background-color: #fff;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .nav-left-sidebar .navbar a {
+    color: #fff;
+  }
+  .nav-left-sidebar .navbar-toggler {
+    background-color: #fff;
+  }
+  .nav-left-sidebar .navbar {
+    padding: 14px;
+  }
+  .nav-left-sidebar {
+    width: 100%;
+    position: relative;
+    top: 0;
+    right: 0;
+  }
+}
+.assessment {
+  font-size: 20px;
+}

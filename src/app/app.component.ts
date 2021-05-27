@@ -1,8 +1,8 @@
-import { Component, ViewEncapsulation,OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth/auth.service';
-import { v4 as uuidv4 } from 'uuid'
-import {patient} from './auth/models/patient'
+
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
@@ -12,39 +12,38 @@ import {patient} from './auth/models/patient'
 export class AppComponent {
   modal: any;
   profileModal: any;
-  isMenuActive: boolean = false;
-  isActive: boolean = false;
-
+  isMenuActive = false;
+  isActive = false;
   constructor(
     public authService: AuthService,
     config: NgbModalConfig,
     private modalService: NgbModal,
     private profileModalService: NgbModal,
+    public router: Router
   ) {
     config.backdrop = 'static';
   }
-  open(content) {
+  open(content: any): void {
     this.modal = this.modalService.open(content, {
       animation: true,
       windowClass: 'form-modal',
     });
   }
-  openProfile(content) {
+
+  openProfile(content: any): void {
     this.profileModal = this.profileModalService.open(content, {
       animation: true,
       windowClass: 'profile-modal',
     });
   }
   toggleVisiblity(el, event: any): void {
-    if (el.type === 'password')
-      (el.type = 'text') && (event.target.innerText = 'visibility_off');
-    else (el.type = 'password') && (event.target.innerText = 'visibility');
+    if (el.type === 'password') (el.type = 'text') && (event.target.innerText = 'visibility_off');
+    else { (el.type = 'password') && (event.target.innerText = 'visibility'); }
   }
   toggleActiveClass(): boolean {
     this.isActive = !this.isActive;
     return this.isActive;
   }
-  
 
   toggleMenu(event: any): void {
     this.isMenuActive = !this.isMenuActive;
