@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from './models/user';
-import {patient} from './models/patient'
+import { User } from './models/user.modal';
+import {patient} from './models/patient.model'
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -8,6 +8,7 @@ import {
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import firebase from 'firebase';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -15,13 +16,14 @@ import firebase from 'firebase';
 })
 export class AuthService {
   userData: any;
+  patients: Observable<any[]>;
 
   constructor(
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public ngZone: NgZone,
     public router: Router
-  ) {
+  ){
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -34,6 +36,7 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user'));
       }
     });
+    this.patients = this.afs.collection('patients').valueChanges()
   }
   get UserData(){
     return this.userData;

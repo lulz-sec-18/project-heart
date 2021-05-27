@@ -1,4 +1,4 @@
-import { medicines } from "./medicines";
+import { medicines } from "./medicines.model";
 
 export interface patient {
   doctor_uid: string;
