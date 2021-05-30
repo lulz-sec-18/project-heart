@@ -1,6 +1,8 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from './models/user.modal';
+
 import { patient } from './models/patient.model';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
