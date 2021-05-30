@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from './models/user.modal';
-import {patient} from './models/patient.model'
+import { patient } from './models/patient.model';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
@@ -9,7 +9,6 @@ import {
 import { Router } from '@angular/router';
 import firebase from 'firebase';
 import { Observable } from 'rxjs';
-
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +22,7 @@ export class AuthService {
     public afAuth: AngularFireAuth,
     public ngZone: NgZone,
     public router: Router
-  ){
+  ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
@@ -36,33 +35,40 @@ export class AuthService {
         JSON.parse(localStorage.getItem('user'));
       }
     });
-    this.patients = this.afs.collection('patients').valueChanges()
+    if (this.userData) {
+       this.patients = this.afs
+      .collection('patients', (ref) =>
+        ref.where('doctor_uid', '==', this.userData.uid)
+      )
+        .valueChanges();
+      window.alert(this.userData.displayName)
+    }
   }
-  get UserData(){
+  get getUserData() {
     return this.userData;
   }
-  SignIn(email, password) {
+  signIn(email, password) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-        this.SetUserData(result.user);
+        this.setUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
 
-  AuthLogin(provider) {
+  authLogin(provider) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-        this.SetUserData(result.user);
+        this.setUserData(result.user);
         window.console.log(result.user);
       })
       .catch((error) => {
@@ -70,7 +76,7 @@ export class AuthService {
       });
   }
 
-  SetUserData(user) {
+  setUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
@@ -86,7 +92,7 @@ export class AuthService {
     });
   }
 
-  SendVerificationMail() {
+  sendVerificationMail() {
     return this.afAuth.currentUser
       .then((u) => u.sendEmailVerification())
       .then(() => {
@@ -94,19 +100,19 @@ export class AuthService {
       });
   }
 
-  SignUp(email, password) {
+  signUp(email, password) {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
+        this.sendVerificationMail();
+        this.setUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
 
-  ForgotPassword(passwordResetEmail) {
+  forgotPassword(passwordResetEmail) {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
@@ -119,41 +125,42 @@ export class AuthService {
 
   isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerified
   }
 
-  SignOut() {
+  
+
+  signOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['home']);
     });
   }
 
-  CreatePatient(patient:patient) {
-     const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
-       `patients/${patient.id}`
+  createPatient(patient: patient) {
+    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+      `patients/${patient.id}`
     );
     // patient = {doctor_uid:user.uid, ...patient}
     return userRef.set(patient, {
       merge: true,
     });
-    
   }
-  UpdatePatient(patient:patient) {
-    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(`patients/${patient.id}`);
+  updatePatient(patient: patient) {
+    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+      `patients/${patient.id}`
+    );
     // patient = { doctor_uid: user.uid, ...patient };
     return userRef.update(patient);
   }
-  DeletePatient(patient:patient) {
+  deletePatient(patient: patient) {
     const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
       `patients/${patient.id}`
     );
     return userRef.delete();
   }
- 
 
-  GoogleAuth() {
-    return this.AuthLogin(new firebase.auth.GoogleAuthProvider());
+  googleAuth() {
+    return this.authLogin(new firebase.auth.GoogleAuthProvider());
   }
-  
 }

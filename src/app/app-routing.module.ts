@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import {AuthGuard} from './auth/auth.guard';
+import { AuthGuard } from './auth/auth.guard';
+import { VerifyEmailGuard } from './auth/verify-email/verify-email.guard'
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,7 +24,8 @@ const routes: Routes = [
   },
   {
     path: 'verify-email',
-    loadChildren: () => import ('./auth/verify-email/verify-email.module').then( m => m.VerifyEmailModule )
+    loadChildren: () => import('./auth/verify-email/verify-email.module').then(m => m.VerifyEmailModule),
+    canActivate:[VerifyEmailGuard]
   },
   { path: '**', redirectTo: 'home' }
 ];

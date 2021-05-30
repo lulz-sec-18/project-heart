@@ -23,7 +23,7 @@
     <li
       class="item button"
       [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"
-      (click)="open(content)"
+      (click)="openForm(content)"
     >
       <a>Log In</a>
     </li>
@@ -88,20 +88,20 @@
         </div>
         <p class="google-text">Or Login using</p>
         <div class="google-icon">
-          <button type="button" (click)="GoogleAuth()" mat-icon-button>
+          <button type="button" (click)="googleAuth()" mat-icon-button>
             <ion-icon name="logo-google"></ion-icon>
           </button>
         </div>
         <div class="button-container">
           <button
             type="button"
-            (click)="SignIn(signInUserName.value, signInPassword.value)"
+            (click)="signIn(signInUserName.value, signInPassword.value)"
           >
             <span>Go</span>
           </button>
         </div>
         <div class="footer">
-          <a (click)="ForgotPassword(signInUserName.value)"
+          <a (click)="forgotPassword(signInUserName.value)"
             >Forgot your password?</a
           >
         </div>
@@ -142,7 +142,7 @@
           <button
             type="button"
             (click)="
-              SignUp(
+              signUp(
                 signUpPassword.value,
                 signUpRepeatPassword.value,
                 signUpUserName.value
@@ -182,7 +182,7 @@
       </h6>
     </div>
     <div class="ds-info">
-      <div class="button" (click)="authService.SignOut()">
+      <div class="button" (click)="authService.signOut()">
         <a href="#" class="btn"
           >Log Out<ion-icon class="log-out-icon" name="log-out"></ion-icon
         ></a>

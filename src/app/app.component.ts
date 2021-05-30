@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth/auth.service';
@@ -16,17 +16,16 @@ export class AppComponent {
   isActive = false;
   constructor(
     public authService: AuthService,
-    config: NgbModalConfig,
     private modalService: NgbModal,
     private profileModalService: NgbModal,
     public router: Router
-  ) {
-    config.backdrop = 'static';
-  }
-  open(content: any): void {
+  ) { }
+  
+  openForm(content: ElementRef): void {
     this.modal = this.modalService.open(content, {
       animation: true,
       windowClass: 'form-modal',
+      backdrop:'static',
     });
   }
 
@@ -34,6 +33,7 @@ export class AppComponent {
     this.profileModal = this.profileModalService.open(content, {
       animation: true,
       windowClass: 'profile-modal',
+      backdrop: 'static',
     });
   }
   toggleVisiblity(el, event: any): void {
@@ -50,22 +50,22 @@ export class AppComponent {
     if (this.isMenuActive) event.target.innerText = 'close';
     else event.target.innerText = 'menu';
   }
-  async SignUp(password, repeatPassword, userName) {
+  async signUp(password, repeatPassword, userName) {
     if (password === repeatPassword) {
-      await this.authService.SignUp(userName, password);
+      await this.authService.signUp(userName, password);
       this.modal.close();
     } else window.alert("Both password doesn't match");
   }
-  async SignIn(userName, password) {
-    await this.authService.SignIn(userName, password);
+  async signIn(userName, password) {
+    await this.authService.signIn(userName, password);
     this.modal.close();
   }
-  async GoogleAuth() {
-    await this.authService.GoogleAuth();
+  async googleAuth() {
+    await this.authService.googleAuth();
     this.modal.close();
   }
-  ForgotPassword(userName) {
-    this.authService.ForgotPassword(userName);
+  forgotPassword(userName) {
+    this.authService.forgotPassword(userName);
     this.modal.close();
   }
 }
