@@ -10,7 +10,6 @@ import { AuthService } from './auth/auth.service';
 import {PredictionService} from './prediction.service';
 
 
-
 @NgModule({
   declarations: [AppComponent],
   imports: [

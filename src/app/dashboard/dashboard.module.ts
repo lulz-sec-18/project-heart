@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AboutRoutingModule } from '../about/about-routing.module';
 import { AngularMaterialModule } from '../angular-material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';

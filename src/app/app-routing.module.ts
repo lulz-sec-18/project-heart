@@ -19,7 +19,12 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule), children: [
+      { path: '/add', loadChildren:()=> import('./dashboard/add-patient/add-patient.module').then(m=>m.AddPatientModule)  },
+      { path: '/edit/:id', loadChildren:()=> import('./dashboard/edit-patient/edit-patient.module').then(m=>m.EditPatientModule)},
+      { path : '/list', loadChildren:()=> import('./dashboard/patient-list/patient-list.module').then(m=>m.PatientListModule)},
+      { path: '/details/:id',loadChildren:()=> import('./dashboard/patient-details/patient-details.module').then(m=>m.PatientDetailsModule) }
+    ],
     canActivate:[AuthGuard]
   },
   {
