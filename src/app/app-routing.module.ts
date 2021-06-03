@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: DashboardComponent, 
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
     // loadChildren: () =>
     //   import('./dashboard/dashboard.module').then((m) => m.DashboardModule), //children: [
     //   { path: '/add', loadChildren:()=> import('./dashboard/add-patient/add-patient.module').then(m=>m.AddPatientModule)  },

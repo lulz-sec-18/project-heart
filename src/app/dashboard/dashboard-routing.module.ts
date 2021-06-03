@@ -8,6 +8,7 @@ import {PatientListComponent} from './patient-list/patient-list.component';
 import {PatientDetailsComponent} from './patient-details/patient-details.component';
 
 const routes: Routes = [
+  {path:'',component: DashboardComponent},
   {
     path: '',
     component: DashboardComponent,
