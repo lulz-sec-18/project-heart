@@ -8,11 +8,11 @@ nav {
   background: rgb(78, 78, 78);
   padding: 0 20px;
 }
-.item.button a{
-  color:white;
+.item.button a {
+  color: white;
 }
-.item.button a:hover{
-  color:#f55c44 ;
+.item.button a:hover {
+  color: #f55c44;
 }
 a {
   color: white;
@@ -86,7 +86,7 @@ a {
     flex: 1;
   }
   .item.button a:hover {
-    color:white;
+    color: white;
   }
   .item.button {
     width: auto;
@@ -94,8 +94,8 @@ a {
     display: block;
   }
   .item.button:hover {
-   animation:pulse;
-   animation-duration:0.8s;
+    animation: pulse;
+    animation-duration: 0.8s;
   }
   .toggle-menu {
     flex: 1;
@@ -579,12 +579,12 @@ footer {
 
 /* *{margin:0;padding:0;box-sizing:border-box}body,html{width:100%;height:100%}body{background:#202020;font-family:Krub,sans-serif} */
 
-.profile-modal .modal-content{
-  background:transparent;
-   -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0);
-    -moz-box-shadow: 0 5px 15px rgba(0,0,0,0);
-    -o-box-shadow: 0 5px 15px rgba(0,0,0,0);
-    box-shadow: 0 5px 15px rgba(0,0,0,0);
+.profile-modal .modal-content {
+  background: transparent;
+  -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
 }
 .card.profile-card {
   z-index: 999;
@@ -598,7 +598,7 @@ footer {
   height: 400px;
   border-radius: 10px;
   box-shadow: 0 10px 25px 5px rgba(0, 0, 0, 0.2);
-  background: rgb(78,78,78);
+  background: rgb(78, 78, 78);
   overflow: hidden;
 }
 .card.profile-card .ds-top {
@@ -612,10 +612,10 @@ footer {
   background: #f55c44;
   animation: dsTop 1.5s;
 }
-.card.profile-card .ds-top button{
+.card.profile-card .ds-top button {
   position: absolute;
-  left:10px;
-  top:10px;
+  left: 10px;
+  top: 10px;
 }
 .card.profile-card .avatar-holder {
   position: absolute;
@@ -712,14 +712,14 @@ footer {
 .card.profile-card .ds-info .ds:nth-of-type(1) {
   animation-delay: 1s;
 }
-.heart-icon{
-  font-size:15px;
-  position:absolute;
+.heart-icon {
+  font-size: 15px;
+  position: absolute;
 }
-.log-out-icon{
-   font-size:12px;
-   top:37%;
-   position:absolute;
+.log-out-icon {
+  font-size: 12px;
+  top: 37%;
+  position: absolute;
 }
 
 @keyframes fadeIn {
@@ -730,7 +730,6 @@ footer {
     opacity: 1;
   }
 }
-
 
 @keyframes mvTop {
   0% {

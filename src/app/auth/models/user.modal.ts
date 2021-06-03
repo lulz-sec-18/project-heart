@@ -6,5 +6,7 @@ export interface User {
   displayName: string;
   photoURL: string;
   emailVerified: boolean;
-  // patient: patient[];
+  hospital_name?: string;
+  hospital_address?:string;
+  Specialization?:string;
 }

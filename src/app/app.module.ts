@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { AppFirebaseModule } from './app-firebase.module';
 import { AuthService } from './auth/auth.service';
-
+import {PredictionService} from './prediction.service';
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import { AuthService } from './auth/auth.service';
     AngularMaterialModule,
     AppFirebaseModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, PredictionService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
