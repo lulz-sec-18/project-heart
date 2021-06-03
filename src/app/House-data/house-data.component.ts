@@ -20,11 +20,72 @@ export class HouseDataComponent implements OnInit {
   storageID: string = 'kc-house-price-regression';
   outputValueRounded;
   houseSalesDataset: tfjs.data.CSVDataset;
+  csvUrl = 'https://storage.googleapis.com/tfjs-examples/multivariate-linear-regression/data/boston-housing-train.csv';
 
   constructor() {}
 
   ngOnInit() {
-  //  this.run();
+
+  this.run().then(() => console.log('Done'));
+
+  }
+
+
+async run() {
+  // We want to predict the column "medv", which represents a median value of a
+  // home (in $1000s), so we mark it as a label.
+  const csvDataset = tfjs.data.csv(
+    this.csvUrl, {
+      columnConfigs: {
+        medv: {
+          isLabel: true
+        }
+      }
+    });
+  // Number of features is the number of column names minus one for the label
+  // column.
+  const numOfFeatures = (await csvDataset.columnNames()).length - 1;
+    console.log(numOfFeatures);
+  // Prepare the Dataset for training.
+  const flattenedDataset =
+    csvDataset
+    .map((val: any) => {
+      const {xs, ys} = val // can cast xs and ys to appropriate type
+      // for instance it can be const {xs, ys} = val as {xs: Object, ys: Object}
+      console.log(val);
+       return {xs:Object.keys(xs), ys:Object.keys(ys)};
+    })
+    .batch(10);
+  console.log(flattenedDataset);
+  // Define the model.
+  const model = tfjs.sequential();
+  model.add(tfjs.layers.dense({
+    inputShape: [4,4],
+    units: 1
+  }));
+  model.compile({
+    optimizer: tfjs.train.sgd(0.000001),
+    loss: 'meanSquaredError'
+  });
+  console.log('dfhj');
+  // Fit the model using the prepared Dataset
+  return model.fitDataset(flattenedDataset, {
+    epochs: 10,
+    callbacks: {
+      onEpochEnd: async (epoch, logs) => {
+        console.log(epoch, logs.loss);
+      }
+    }
+  });
+}
+
+
+  async someFunction() {
+    const houseSalesDataset = tfjs.data.csv('http://127.0.0.1:8080/kc_house_data.csv');
+    const sampleDataSet = houseSalesDataset.take(10);
+    console.log('hdbfhjgd');
+    const dataArray = await sampleDataSet.toArray();
+    console.log(dataArray);
   }
 
   async plot(pointsArray, featureName, predictedPointsArray?: string[] | null) {
