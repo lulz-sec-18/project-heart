@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../auth/auth.service';
+import {Patient} from '../../auth/models/patient.model';
 
 @Component({
   selector: 'app-patient-list',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./patient-list.component.css']
 })
 export class PatientListComponent implements OnInit {
-
-  constructor() { }
+  patients:Patient[]
+  displayedColumns: string[] = ['position', 'name', 'disease', 'condition'];
+  constructor( public authService:AuthService) { }
 
   ngOnInit(): void {
+    this.authService.patients.subscribe(
+      (patients)=>{
+        this.patients = patients
+      }
+    )
   }
 
 }

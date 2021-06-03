@@ -1,12 +1,12 @@
-import { medicines } from "./medicines.model";
+import { Medicine } from "./medicines.model";
 
-export interface patient {
+export interface Patient {
   doctor_uid: string;
   admission_time: Date;
   name: string;
   id: number;
   disease?: string;
   condition?: boolean;
-  prescribedDose?: medicines[];
+  prescribedDose?: Medicine[];
   attributes?:number[];
 }

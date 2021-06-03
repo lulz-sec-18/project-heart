@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from './models/user.modal';
 
-import { patient } from './models/patient.model';
+import { Patient } from './models/patient.model';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -25,7 +25,7 @@ export class AuthService {
     public ngZone: NgZone,
     public router: Router
   ) {
-    /* Saving user data in localstorage when 
+    /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -130,7 +130,7 @@ export class AuthService {
     return user !== null && user.emailVerified
   }
 
-  
+
 
   signOut() {
     return this.afAuth.signOut().then(() => {
@@ -139,8 +139,8 @@ export class AuthService {
     });
   }
 
-  createPatient(patient: patient) {
-    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+  createPatient(patient: Patient) {
+    const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
       `patients/${patient.id}`
     );
     // patient = {doctor_uid:user.uid, ...patient}
@@ -148,15 +148,15 @@ export class AuthService {
       merge: true,
     });
   }
-  updatePatient(patient: patient) {
-    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+  updatePatient(patient: Patient) {
+    const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
       `patients/${patient.id}`
     );
     // patient = { doctor_uid: user.uid, ...patient };
     return userRef.update(patient);
   }
-  deletePatient(patient: patient) {
-    const userRef: AngularFirestoreDocument<patient> = this.afs.doc(
+  deletePatient(patient: Patient) {
+    const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
       `patients/${patient.id}`
     );
     return userRef.delete();
