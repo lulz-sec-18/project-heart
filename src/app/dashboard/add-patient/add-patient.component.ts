@@ -14,16 +14,17 @@ export class AddPatientComponent implements OnInit {
   patient: Patient;
   user:User
   ngOnInit(): void {
-    this.user =  JSON.parse(localStorage.getItem('user'));
-    this.patient = {
-      doctor_uid:this.user.uid,
-      admission_time:new Date(),
-      name:this.user.displayName,
-      id:null,
-      disease:'heropanti',
-      condition:true
-    }
-    this.authService.createPatient(this.patient)
+    // this.user =  JSON.parse(localStorage.getItem('user'));
+    // this.patient = {
+    //   doctor_uid:this.user.uid,
+    //   admission_time:new Date(),
+    //   name:this.user.displayName,
+    //   id:null,
+    //   disease:'heropanti',
+    //   condition:true
+    // }
+
+    // this.authService.createPatient(this.patient)
   }
 
 }

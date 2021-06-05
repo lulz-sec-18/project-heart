@@ -1,3 +1,46 @@
-<section>
-  <p>add-patient works!</p>
-</section>
+      <div class="form-content">
+        <div class="form-items">
+          <h3>Add Patient</h3>
+          <p>Fill in the data below.</p>
+          <form class="requires-validation" novalidate>
+
+            <div class="col-md-12">
+              <label>Full Name</label>
+              <input class="form-control" type="text" name="name" placeholder="Full Name" required>
+              <div class="valid-feedback">Username field is valid!</div>
+              <div class="invalid-feedback">Username field cannot be blank!</div>
+            </div>
+
+            <div class="col-md-12 mt-3">
+              <label>Gender</label>
+               <select class="form-select mt-3" required >
+                <option selected disabled value="">Male</option>
+                <option value="jweb">Female</option>
+              </select>
+              <div class="valid-feedback mv-up">You selected a gender!</div>
+              <div class="invalid-feedback mv-up">Please select a gender!</div>
+            </div>
+            <div class="col-md-12 mt-3">
+              <label>Symptoms</label>
+              <input class="form-control" type="text" name="name" placeholder="Symptoms" required>
+              <div class="valid-feedback">Username field is valid!</div>
+              <div class="invalid-feedback">Username field cannot be blank!</div>
+            </div>
+
+
+
+
+            <div class="form-check my-5">
+              <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+              <label class="form-check-label">I confirm that all data are correct</label>
+              <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
+            </div>
+
+
+            <div class="form-button mt-3">
+              <button id="submit" type="submit" class="btn btn-primary">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
+

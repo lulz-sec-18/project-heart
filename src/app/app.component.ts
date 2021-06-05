@@ -1,6 +1,6 @@
-import { Component, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class AppComponent {
     private profileModalService: NgbModal,
     public router: Router
   ) { }
-  
+
   openForm(content: ElementRef): void {
     this.modal = this.modalService.open(content, {
       animation: true,
