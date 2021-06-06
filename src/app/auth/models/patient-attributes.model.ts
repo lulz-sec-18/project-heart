@@ -41,7 +41,7 @@ export class PatientAttributes{
     this.thalassemia = thalassemia;
   }
   get PatientDataArray(){
-    return[
+    return new Array([
       this.age,
       this.gender,
       this.chestPain,
@@ -55,6 +55,6 @@ export class PatientAttributes{
       this.slopeOfStSegment,
       this.majorVessels,
       this.thalassemia
-    ]
+    ])
   }
 }
