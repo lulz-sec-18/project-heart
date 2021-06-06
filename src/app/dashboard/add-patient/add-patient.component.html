@@ -6,24 +6,28 @@
 
             <div class="col-md-12">
               <label>Full Name</label>
-              <input class="form-control" type="text" name="name" placeholder="Full Name" required formControlName="name"  >
+              <input class="form-control" type="text" name="name" placeholder="Full Name" required formControlName="patientName"  >
               <div class="valid-feedback">Username field is valid!</div>
               <div class="invalid-feedback">Username field cannot be blank!</div>
             </div>
 
             <div class="col-md-12 mt-3">
               <label>Gender</label>
-               <select class="form-control mt-3" required formControlName="gender" >
+               <select class="form-control mt-3" name="gender" required formControlName="gender" >
                 <option value="1">Male</option>
                 <option value="0">Female</option>
               </select>
-              <div class="valid-feedback mv-up">You selected a gender!</div>
-              <div class="invalid-feedback mv-up">Please select a gender!</div>
+            </div>
+
+            <div class="col-md-12 mt-3">
+              <label>Disease</label>
+              <input class="form-control" type="text" name="disease" placeholder="If any other disease"  formControlName="disease" >
+              <small class="form-text text-muted">Optional</small>
             </div>
 
             <div class="col-md-12 mt-3">
               <label>Symptoms</label>
-              <input class="form-control" type="text" name="name" placeholder="Symptoms"  formControlName="symptoms" >
+              <input class="form-control" type="text" name="symptoms" placeholder="Symptoms"  formControlName="symptoms" >
               <small class="form-text text-muted">Optional</small>
             </div>
 
@@ -32,14 +36,14 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-3">
                   <label>Age</label>
-                  <input class="form-control my-2" type="number" name="name" placeholder="Age" required formControlName="age" >
+                  <input class="form-control my-2" type="number" name="age" placeholder="Age" required formControlName="age" >
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <div class="form-group">
                     <label>Chest Pain Type</label>
-                    <select class="form-control" id="exampleFormControlSelect1" formControlName="chestPainType">
+                    <select class="form-control"  formControlName="chestPainType">
                       <option value="1">Typical Angina</option>
                       <option value="2">Atypical Angina</option>
                       <option value="3">Non-Anginal Pain</option>
@@ -52,21 +56,21 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Resting Blood Pressure</label>
-                  <input class="form-control" type="text" name="name" placeholder="Resting blood pressure in mmhg"  formControlName="restingBp" >
+                  <input class="form-control" type="number" name="resting-bp" placeholder="Resting blood pressure in mmhg"  formControlName="restingBp" >
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Cholestrol</label>
-                  <input class="form-control" type="text" name="name" placeholder="Cholestrol in mg/dl "   formControlName="cholestrol">
+                  <input class="form-control" type="number" name="cholesterol" placeholder="Cholesterol in mg/dl "   formControlName="cholesterol">
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Fasting Blood Suger</label>
-                  <input class="form-control" type="text"  placeholder="Fasting blood Suger in mg/dl"  formControlName="fastingBp" >
+                  <input class="form-control" type="number"  placeholder="Fasting blood Suger in mg/dl"  formControlName="fastingBp" >
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
@@ -84,7 +88,7 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Maximum Heart Rate</label>
-                  <input class="form-control" type="text" name="name" placeholder="Max heart rate"  formControlName="maxHeartRate" >
+                  <input class="form-control" type="number" name="name" placeholder="Max heart rate"  formControlName="maxHeartRate" >
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
@@ -101,14 +105,14 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>ST Ddepression(Old Peak)</label>
-                  <input class="form-control" type="text" name="name" placeholder="Depression during exercise relative to rest"   formControlName="exerciseInducedDepression">
+                  <input class="form-control" type="text" name="st-depression" placeholder="Depression during exercise relative to rest"   formControlName="exerciseInducedDepression">
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>ST Slope</label>
-                  <select name="" class="form-control" formControlName="slopeOfStSegment">
+                  <select name="st-slope" class="form-control" formControlName="slopeOfStSegment">
                     <option value="1">Up Sloping</option>
                     <option value="2">Flat</option>
                     <option value="3">Down Sloping</option>
@@ -119,25 +123,25 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Major Vessels</label>
-                  <input class="form-control" type="number" name="name" placeholder="Number of major vessels"  formControlName="majorVessels">
+                  <input class="form-control" type="number" name="major-vessels" placeholder="Number of major vessels"  formControlName="majorVessels">
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Thalassemia</label>
-                  <input class="form-control" type="number" name="name" placeholder="Thalassemia number"  formControlName="thalassemia" >
+                  <input class="form-control" type="number" name="thalassemia" placeholder="Thalassemia number"  formControlName="thalassemia" >
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
               <div class="form-check mt-3">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required formControlName="confirm">
+                <input class="form-check-input" type="checkbox"  id="invalidCheck" required formControlName="confirm">
                 <label class="form-check-label">I confirm that all data are correct</label>
                 <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
               </div>
             </div>
             <div class="form-button mt-3">
-              <button id="submit" type="submit" class="btn btn-primary">Add</button>
+              <button [disabled]="!patientForm.valid" id="submit" type="submit" class="btn btn-primary">Add</button>
             </div>
           </form>
         </div>

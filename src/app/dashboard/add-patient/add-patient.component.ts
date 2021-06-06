@@ -13,7 +13,7 @@ export class AddPatientComponent implements OnInit {
 
   patientForm = new FormGroup({
     patientName: new FormControl(null),
-    age : new FormControl(null),
+    age : new FormControl(null,),
     gender : new FormControl(null),
     symptoms : new FormControl(null),
     disease :new FormControl(null),
@@ -70,6 +70,6 @@ export class AddPatientComponent implements OnInit {
     // this.authService.createPatient(this.patient)
   }
   onSubmit(){
-    console.log(this.patientForm.value)
+    console.log(this.patientForm)
   }
 }
