@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
-import {Patient} from "../../auth/models/patient.model";
-import {User} from "../../auth/models/user.modal";
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { AuthService } from "../../auth/auth.service";
+import { Patient } from "../../auth/models/patient.model";
+import { User } from "../../auth/models/user.modal";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { PatientAttributes } from '../../auth/models/patient-attributes.model';
 
 @Component({
   selector: 'app-add-patient',
@@ -11,6 +12,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
 })
 export class AddPatientComponent implements OnInit {
   patientForm: FormGroup;
+  patientAttributes:PatientAttributes;
   newPatient: Patient;
   currentUser: User;
 
@@ -19,6 +21,9 @@ export class AddPatientComponent implements OnInit {
 
   get medicine() {
     return this.patientForm.get('medicine') as FormArray
+  }
+  get patientName() {
+    return this.patientForm.get('patientName');
   }
 
   addMedicine() {
@@ -71,11 +76,25 @@ export class AddPatientComponent implements OnInit {
 
   }
 
-  get patientName() {
-    return this.patientForm.get('patientName');
-  }
+
 
   onSubmit() {
+    this.patientAttributes={
+      age: this.patientFormValueToInt('age'),
+      gender: this.patientFormValueToInt('gender'),
+      chestPainType: this.patientFormValueToInt('chestPainType'),
+      restingBp: this.patientFormValueToInt('restingBp'),
+      cholesterol: this.patientFormValueToInt('cholesterol'),
+      fastingBp: this.patientFormValueToInt('fastingBp'),
+      restingEcg: this.patientFormValueToInt('restingEcg'),
+      maxHeartRate: this.patientFormValueToInt('maxHeartRate'),
+      exerciseInducedAngina: this.patientFormValueToInt('exerciseInducedAngina'),
+      exerciseInducedDepression: this.patientFormValueToInt('exerciseInducedDepression'),
+      slopeOfStSegment: this.patientFormValueToInt('slopeOfStSegment'),
+      majorVessels: this.patientFormValueToInt('majorVessels'),
+      thalassemia: this.patientFormValueToInt('thalassemia')
+    }
+
     console.log(this.medicine.value)
     this.newPatient = this.currentUser == null ? null : {
       doctor_uid: this.currentUser.uid,
@@ -86,25 +105,10 @@ export class AddPatientComponent implements OnInit {
       disease: this.patientFormValueToString('disease'),
       symptoms: this.patientFormValueToString('symptoms')?.split(",", 2),
       prescribedDose: this.medicine.value,
-      attributes:
-    {
-        age: this.patientFormValueToInt('age'),
-        gender: this.patientFormValueToInt('gender'),
-        chestPainType: this.patientFormValueToInt('chestPainType'),
-        restingBp: this.patientFormValueToInt('restingBp'),
-        cholesterol: this.patientFormValueToInt('cholesterol'),
-        fastingBp: this.patientFormValueToInt('fastingBp'),
-        restingEcg: this.patientFormValueToInt('restingEcg'),
-        maxHeartRate: this.patientFormValueToInt('maxHeartRate'),
-        exerciseInducedAngina: this.patientFormValueToInt('exerciseInducedAngina'),
-        exerciseInducedDepression: this.patientFormValueToInt('exerciseInducedDepression'),
-        slopeOfStSegment: this.patientFormValueToInt('slopeOfStSegment'),
-        majorVessels: this.patientFormValueToInt('majorVessels'),
-        thalassemia: this.patientFormValueToInt('thalassemia')
-    }
-
+      attributes: this.patientAttributes,
+      attributesArray:Object.values(this.patientAttributes),
     }
     console.log(this.newPatient)
-    this.authService.createPatient(this.newPatient)
+    this.authService.createPatient(this.newPatient).then((err)=>console.log(err))
   }
 }

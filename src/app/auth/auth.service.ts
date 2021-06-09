@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable, NgZone} from '@angular/core';
+import { Injectable, NgZone} from '@angular/core';
 import { User } from './models/user.modal';
 
 import { Patient } from './models/patient.model';
@@ -60,7 +60,7 @@ export class AuthService {
       this.patientsCollection = this.afs.collection<Patient>('patients', (ref) =>
         ref.where('doctor_uid', '==', user.uid) //|| 'H9HgbzVQ7gSdme71Bc2KQ1MPaXD2')
       )
-      this.patients = this.patientsCollection.valueChanges()
+      this.patients = this.patientsCollection.valueChanges();
     }
   }
 
@@ -175,7 +175,7 @@ export class AuthService {
     // // patient = { doctor_uid: user.uid, ...patient };
     // return userRef.update(patient);
     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
-    patientDoc.update(patient);
+    await patientDoc.update(patient);
   }
   async deletePatient(patient: Patient) {
     // const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
@@ -183,7 +183,7 @@ export class AuthService {
     // );
     // return userRef.delete();
     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
-    patientDoc.delete()
+    await patientDoc.delete()
   }
 
   googleAuth() {

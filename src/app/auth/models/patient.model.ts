@@ -4,7 +4,7 @@ import {PatientAttributes} from "./patient-attributes.model";
 
 export interface Patient {
   doctor_uid: string;
-  admission_time: number;
+  admission_time: number|string;
   name: string;
   gender:string;
   id: string;
@@ -13,4 +13,5 @@ export interface Patient {
   symptoms?:string[];
   prescribedDose?: Medicine[];
   attributes?:PatientAttributes;
+  attributesArray?:number[];
 }
