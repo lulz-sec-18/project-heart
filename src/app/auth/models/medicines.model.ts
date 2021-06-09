@@ -1,5 +1,5 @@
 export interface Medicine{
-  name: string;
+  medicineName: string;
   dose: number;
   remarks?: string;
 }

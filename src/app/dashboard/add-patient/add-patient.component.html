@@ -2,18 +2,19 @@
         <div class="form-items">
           <h3>Add Patient</h3>
           <p>Fill in the data below.</p>
-          <form class="requires-validation" novalidate [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+          <form class="g-3 needs-validation" novalidate [formGroup]="patientForm" (ngSubmit)="onSubmit()">
 
             <div class="col-md-12">
-              <label>Full Name</label>
-              <input class="form-control" type="text" name="name" placeholder="Full Name" required formControlName="patientName"  >
-              <div class="valid-feedback">Username field is valid!</div>
-              <div class="invalid-feedback">Username field cannot be blank!</div>
+              <label for="name" class="form-label">Full Name</label>
+              <input class="form-control" id="name" type="text" name="patientName" placeholder="Full Name" required formControlName="patientName" >
+              <div class="invalid my-1 mx-2" *ngIf="patientName.invalid && patientName.touched">
+                Please enter valid name
+              </div>
             </div>
 
             <div class="col-md-12 mt-3">
               <label>Gender</label>
-               <select class="form-control mt-3" name="gender" required formControlName="gender" >
+               <select class="form-control" name="gender" required formControlName="gender" >
                 <option value="1">Male</option>
                 <option value="0">Female</option>
               </select>
@@ -27,7 +28,7 @@
 
             <div class="col-md-12 mt-3">
               <label>Symptoms</label>
-              <input class="form-control" type="text" name="symptoms" placeholder="Symptoms"  formControlName="symptoms" >
+              <input class="form-control" type="text" name="symptoms" placeholder="symptoms"  formControlName="symptoms" >
               <small class="form-text text-muted">Optional</small>
             </div>
 
@@ -36,11 +37,11 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-3">
                   <label>Age</label>
-                  <input class="form-control my-2" type="number" name="age" placeholder="Age" required formControlName="age" >
+                  <input  class="form-control my-2" type="number" name="age" min="1" max="120" placeholder="Age" required formControlName="age" >
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="col-md-12 mt-2">
+                <div class="col-md-12 mt-4">
                   <div class="form-group">
                     <label>Chest Pain Type</label>
                     <select class="form-control"  formControlName="chestPainType">
@@ -54,7 +55,7 @@
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="col-md-12 mt-2">
+                <div class="col-md-12 mt-4">
                   <label>Resting Blood Pressure</label>
                   <input class="form-control" type="number" name="resting-bp" placeholder="Resting blood pressure in mmhg"  formControlName="restingBp" >
                   <small class="form-text text-muted">Optional</small>
@@ -130,10 +131,36 @@
               <div class="col-md-4">
                 <div class="col-md-12 mt-2">
                   <label>Thalassemia</label>
-                  <input class="form-control" type="number" name="thalassemia" placeholder="Thalassemia number"  formControlName="thalassemia" >
+                  <input class="form-control" type="number" name="thalassemia" min="1" max="7" placeholder="Thalassemia number"  formControlName="thalassemia" >
                   <small class="form-text text-muted">Optional</small>
                 </div>
               </div>
+              <div class="row">
+                <div class="col-md-3 offset-md-5  my-2">
+                <button class="btn btn-primary" (click)="addMedicine()">Add Medicine</button>
+                </div>
+              </div>
+
+                <div class="col-md-12" *ngFor="let med of medicine.controls; let i=index">
+                  <div [formGroup]="med" class="medicine-form" >
+                  <div class="col-md-4 mx-1 mt-3">
+                    <label>{{"Medicine "+(i+1)+" Name"}}</label>
+                    <input type="text" name="" formControlName="medicineName">
+                    <small class="form-text text-muted">Optional</small>
+                  </div>
+                  <div class="col-md-4 mx-1 mt-3">
+                    <label>Dose</label>
+                    <input type="number" name="" formControlName="dose">
+                    <small class="form-text text-muted">Optional</small>
+                  </div>
+                  <div class="col-md-4 mx-3 mt-3">
+                    <label>Remarks(if any)</label>
+                    <input type="text" name="" formControlName="remarks">
+                    <small class="form-text text-muted">Optional</small>
+                  </div>
+                </div>
+              </div>
+
               <div class="form-check mt-3">
                 <input class="form-check-input" type="checkbox"  id="invalidCheck" required formControlName="confirm">
                 <label class="form-check-label">I confirm that all data are correct</label>
