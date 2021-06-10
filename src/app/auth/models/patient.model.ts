@@ -10,7 +10,7 @@ export interface Patient {
   id: string;
   disease?: string;
   condition?: boolean;
-  symptoms?:string[];
+  symptoms?:string;
   prescribedDose?: Medicine[];
   attributes?:PatientAttributes;
   attributesArray?:number[];

@@ -19,34 +19,32 @@ export class AddPatientComponent implements OnInit {
   constructor(public authService: AuthService, private fb: FormBuilder) {
   }
 
-  get medicine() {
-    return this.patientForm.get('medicine') as FormArray
+  getMedicine(form:FormGroup) {
+    return form.get('medicine') as FormArray
   }
-  get patientName() {
-    return this.patientForm.get('patientName');
+  // get patientName() {
+  //   return this.patientForm.get('patientName');
+  // }
+
+  // addMedicine() {
+  //   this.medicine.push(
+  //     this.fb.group({
+  //       medicineName: ['',],
+  //       dose: ['', [Validators.min(1), Validators.max(10)]],
+  //       remarks: ['']
+  //     }))
+  // }
+
+  patientFormValueToString(controlName: string | (string | number)[],form:FormGroup) {
+    return form.get(controlName).value !== null ? this.patientForm.get(controlName).value.toString():null;
   }
 
-  addMedicine() {
-    this.medicine.push(
-      this.fb.group({
-        medicineName: ['',],
-        dose: ['', [Validators.min(1), Validators.max(10)]],
-        remarks: ['']
-      }))
+  patientFormValueToInt(controlName: string | (string | number)[],form:FormGroup) {
+    return form.get(controlName).value !== null ? parseInt(this.patientForm.get(controlName).value) : null;
   }
-
-  patientFormValueToString(controlName: string | (string | number)[]) {
-    return this.patientForm.get(controlName).value !== null ? this.patientForm.get(controlName).value.toString():null;
-  }
-
-  patientFormValueToInt(controlName: string | (string | number)[]) {
-    return this.patientForm.get(controlName).value !== null ? parseInt(this.patientForm.get(controlName).value) : null;
-  }
-
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'))
-
     this.patientForm = new FormGroup({
       patientName: new FormControl(null, Validators.pattern(/^[a-z,',-]+(\s)[a-z,',-]+$/i)),
       age: new FormControl(null,),
@@ -76,35 +74,33 @@ export class AddPatientComponent implements OnInit {
 
   }
 
-
-
-  onSubmit() {
+  onSubmit(form:FormGroup) {
     this.patientAttributes={
-      age: this.patientFormValueToInt('age'),
-      gender: this.patientFormValueToInt('gender'),
-      chestPainType: this.patientFormValueToInt('chestPainType'),
-      restingBp: this.patientFormValueToInt('restingBp'),
-      cholesterol: this.patientFormValueToInt('cholesterol'),
-      fastingBp: this.patientFormValueToInt('fastingBp'),
-      restingEcg: this.patientFormValueToInt('restingEcg'),
-      maxHeartRate: this.patientFormValueToInt('maxHeartRate'),
-      exerciseInducedAngina: this.patientFormValueToInt('exerciseInducedAngina'),
-      exerciseInducedDepression: this.patientFormValueToInt('exerciseInducedDepression'),
-      slopeOfStSegment: this.patientFormValueToInt('slopeOfStSegment'),
-      majorVessels: this.patientFormValueToInt('majorVessels'),
-      thalassemia: this.patientFormValueToInt('thalassemia')
+      age: this.patientFormValueToInt('age',form),
+      gender: this.patientFormValueToInt('gender',form),
+      chestPainType: this.patientFormValueToInt('chestPainType',form),
+      restingBp: this.patientFormValueToInt('restingBp',form),
+      cholesterol: this.patientFormValueToInt('cholesterol',form),
+      fastingBp: this.patientFormValueToInt('fastingBp',form),
+      restingEcg: this.patientFormValueToInt('restingEcg',form),
+      maxHeartRate: this.patientFormValueToInt('maxHeartRate',form),
+      exerciseInducedAngina: this.patientFormValueToInt('exerciseInducedAngina',form),
+      exerciseInducedDepression: this.patientFormValueToInt('exerciseInducedDepression',form),
+      slopeOfStSegment: this.patientFormValueToInt('slopeOfStSegment',form),
+      majorVessels: this.patientFormValueToInt('majorVessels',form),
+      thalassemia: this.patientFormValueToInt('thalassemia',form)
     }
 
-    console.log(this.medicine.value)
+    console.log(this.getMedicine(form).value)
     this.newPatient = this.currentUser == null ? null : {
       doctor_uid: this.currentUser.uid,
       admission_time: Date.now(),
-      name: this.patientFormValueToString('patientName'),
-      gender: this.patientFormValueToInt('gender') == 1 ? "male" : "female",
+      name: this.patientFormValueToString('patientName',form),
+      gender: this.patientFormValueToInt('gender',form) == 1 ? "male" : "female",
       id: null,
-      disease: this.patientFormValueToString('disease'),
-      symptoms: this.patientFormValueToString('symptoms')?.split(",", 2),
-      prescribedDose: this.medicine.value,
+      disease: this.patientFormValueToString('disease',form),
+      symptoms: this.patientFormValueToString('symptoms',form),//?.split(",", 2),
+      prescribedDose: this.getMedicine(form).value,
       attributes: this.patientAttributes,
       attributesArray:Object.values(this.patientAttributes),
     }

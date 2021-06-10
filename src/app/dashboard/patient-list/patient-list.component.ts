@@ -17,7 +17,7 @@ export class PatientListComponent implements OnInit {
     this.authService.patients.subscribe((patients) => {
       this.patients = patients.map((patient: Patient) => {
         let date = new Date(patient.admission_time).toDateString();
-        return { ...patient, admission_time: date.toString() };
+        return { ...patient, admission_time: date };
       });
       // this.patients = patients
       this.dataSource = this.patients;

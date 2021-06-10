@@ -8,9 +8,10 @@ import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   imports: [AngularMaterialModule, CommonModule, DashboardRoutingModule,ReactiveFormsModule],
-  declarations: [DashboardComponent,AddPatientComponent,EditPatientComponent,PatientListComponent,PatientDetailsComponent],
+  declarations: [DashboardComponent,AddPatientComponent,EditPatientComponent,PatientListComponent,PatientDetailsComponent, FormComponent],
 })
 export class DashboardModule {}
