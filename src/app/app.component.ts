@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation,OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
 @Component({
@@ -7,44 +8,40 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   modal: any;
   profileModal: any;
-  isMenuActive: boolean = false;
-  isActive: boolean = false;
-  user;
-
+  isMenuActive = false;
+  isActive = false;
   constructor(
     public authService: AuthService,
-    config: NgbModalConfig,
     private modalService: NgbModal,
     private profileModalService: NgbModal,
-  ) {
-    config.backdrop = 'static';
-  }
-  open(content) {
+    public router: Router
+  ) { }
+
+  openForm(content: ElementRef): void {
     this.modal = this.modalService.open(content, {
       animation: true,
       windowClass: 'form-modal',
+      backdrop:'static',
     });
   }
-  openProfile(content) {
+
+  openProfile(content: any): void {
     this.profileModal = this.profileModalService.open(content, {
       animation: true,
       windowClass: 'profile-modal',
+      backdrop: 'static',
     });
   }
   toggleVisiblity(el, event: any): void {
-    if (el.type === 'password')
-      (el.type = 'text') && (event.target.innerText = 'visibility_off');
-    else (el.type = 'password') && (event.target.innerText = 'visibility');
+    if (el.type === 'password') (el.type = 'text') && (event.target.innerText = 'visibility_off');
+    else { (el.type = 'password') && (event.target.innerText = 'visibility'); }
   }
   toggleActiveClass(): boolean {
     this.isActive = !this.isActive;
     return this.isActive;
-  }
-  ngOnInit(): void{
-    this.user = this.authService.UserData
   }
 
   toggleMenu(event: any): void {
@@ -52,23 +49,22 @@ export class AppComponent implements OnInit {
     if (this.isMenuActive) event.target.innerText = 'close';
     else event.target.innerText = 'menu';
   }
-  async SignUp(password, repeatPassword, userName) {
+  async signUp(password, repeatPassword, userName) {
     if (password === repeatPassword) {
-      await this.authService.SignUp(userName, password);
+      await this.authService.signUp(userName, password);
       this.modal.close();
     } else window.alert("Both password doesn't match");
   }
-  async SignIn(userName, password) {
-    await this.authService.SignIn(userName, password);
+  async signIn(userName, password) {
+    await this.authService.signIn(userName, password);
     this.modal.close();
   }
-  async GoogleAuth() {
-    await this.authService.GoogleAuth();
+  async googleAuth() {
+    await this.authService.googleAuth();
     this.modal.close();
   }
-  ForgotPassword(userName) {
-    this.authService.ForgotPassword(userName);
+  forgotPassword(userName) {
+    this.authService.forgotPassword(userName);
     this.modal.close();
-    window.console.log(this.user.displayName)
   }
 }

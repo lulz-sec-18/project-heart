@@ -1,0 +1,23 @@
+<section>
+  <p>patient-list works!</p>
+  <table mat-table [dataSource]="patients" class="mat-elevation-z8">
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{ patients.indexOf(element) }} </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="disease">
+      <th mat-header-cell *matHeaderCellDef> Disease </th>
+      <td mat-cell *matCellDef="let element"> {{element.disease}} </td>
+    </ng-container>
+    <ng-container matColumnDef="condition">
+      <th mat-header-cell *matHeaderCellDef> Condition </th>
+      <td mat-cell *matCellDef="let element"> {{element.condition}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</section>
