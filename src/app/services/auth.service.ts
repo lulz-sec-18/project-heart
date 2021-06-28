@@ -1,7 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User } from './models/user.modal';
-
-import { Patient } from './models/patient.model';
+import { User } from '../auth/models/user.modal';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -11,6 +9,7 @@ import {
 import { Router } from '@angular/router';
 import firebase from 'firebase';
 import { Observable } from 'rxjs';
+import { Patient } from '../auth/models/patient.model';
 
 @Injectable({
   providedIn: 'root',

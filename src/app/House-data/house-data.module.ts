@@ -1,18 +1,18 @@
 import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
+import { HouseDataComponent } from './house-data.component';
 import { AngularMaterialModule } from '../angular-material.module'
+import { HouseDataRoutingModule } from './house-data-routing.module';
 
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HouseDataComponent],
   imports: [
     CommonModule,
-    HomeRoutingModule,
+    HouseDataRoutingModule,
     AngularMaterialModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class HomeModule { }
+export class HouseDataModule { }
