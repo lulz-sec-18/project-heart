@@ -20,6 +20,10 @@
       <a routerLink="dashboard">Dashboard</a>
     </li>
 
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="train_online">Train_Online</a>
+    </li>
+
     <li
       class="item button"
       [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"

@@ -1,8 +1,7 @@
 import { Component, ViewEncapsulation, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from './auth/auth.service';
-
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
