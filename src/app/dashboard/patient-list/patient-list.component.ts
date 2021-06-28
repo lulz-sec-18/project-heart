@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../auth/auth.service';
-import {Patient} from '../../auth/models/patient.model';
+import { AuthService } from 'src/app/services/auth.service';
+import { Patient } from '../../auth/models/patient.model';
 
 @Component({
   selector: 'app-patient-list',
@@ -19,5 +19,4 @@ export class PatientListComponent implements OnInit {
       }
     )
   }
-
 }

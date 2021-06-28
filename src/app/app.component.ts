@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ElementRef, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
+
 @Component({
   selector: 'app-root',
   encapsulation: ViewEncapsulation.None,
@@ -20,7 +21,7 @@ export class AppComponent {
     public router: Router
   ) { }
 
-  openForm(content: ElementRef): void {
+  openForm(content: TemplateRef<any>): void {
     this.modal = this.modalService.open(content, {
       animation: true,
       windowClass: 'form-modal',
@@ -35,10 +36,12 @@ export class AppComponent {
       backdrop: 'static',
     });
   }
+
   toggleVisiblity(el, event: any): void {
     if (el.type === 'password') (el.type = 'text') && (event.target.innerText = 'visibility_off');
     else { (el.type = 'password') && (event.target.innerText = 'visibility'); }
   }
+
   toggleActiveClass(): boolean {
     this.isActive = !this.isActive;
     return this.isActive;
@@ -49,20 +52,24 @@ export class AppComponent {
     if (this.isMenuActive) event.target.innerText = 'close';
     else event.target.innerText = 'menu';
   }
+
   async signUp(password, repeatPassword, userName) {
     if (password === repeatPassword) {
       await this.authService.signUp(userName, password);
       this.modal.close();
     } else window.alert("Both password doesn't match");
   }
+
   async signIn(userName, password) {
     await this.authService.signIn(userName, password);
     this.modal.close();
   }
+
   async googleAuth() {
     await this.authService.googleAuth();
     this.modal.close();
   }
+
   forgotPassword(userName) {
     this.authService.forgotPassword(userName);
     this.modal.close();

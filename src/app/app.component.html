@@ -7,43 +7,34 @@
     <li class="item" routerLinkActive="selected">
       <a routerLink="home">Home</a>
     </li>
-
     <li class="item" routerLinkActive="selected">
       <a routerLink="prediction">Prediction</a>
     </li>
-
     <li class="item" routerLinkActive="selected">
       <a routerLink="about">About</a>
     </li>
-
     <li *ngIf = "authService.isLoggedIn()" class="item" routerLinkActive="selected">
       <a routerLink="dashboard">Dashboard</a>
     </li>
-
     <li class="item" routerLinkActive="selected">
-      <a routerLink="train_online">Train_Online</a>
+      <a routerLink="train-online">Train_Online</a>
     </li>
-
-    <li
-      class="item button"
-      [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"
-      (click)="openForm(content)"
-    >
+    <li class="item button"
+        [ngClass]="authService.isLoggedIn() ? 'hidden' : ''"
+        (click)="openForm(content)">
       <a>Log In</a>
     </li>
-    <li
-      class="item button"
-      [ngClass]="!authService.isLoggedIn() ? 'hidden' : ''"
-      (click)="openProfile(profileContent)"
-    >
+    <li class="item button"
+        [ngClass]="!authService.isLoggedIn() ? 'hidden' : ''"
+        (click)="openProfile(profileContent)">
       <a>Account</a>
     </li>
     <li class="toggle-menu">
-      <!-- <i #menuIcon class="fas fa-bars"></i> -->
+      <i #menuIcon class="fas fa-bars"></i>
       <button type="button" mat-icon-button>
-        <mat-icon (click)="toggleMenu($event)" class="toggle-icon" #menuIcon
-          >menu</mat-icon
-        >
+        <mat-icon (click)="toggleMenu($event)" class="toggle-icon" #menuIcon>
+          menu
+        </mat-icon>
       </button>
     </li>
   </ul>
@@ -55,15 +46,12 @@
   <div class="container" [ngClass]="isActive ? 'active' : ''">
     <div class="card"></div>
     <div class="card">
-      <button
-        type="button"
-        mat-icon-button
-        class="close-icon"
-        (click)="d('Cross click')"
-      >
+      <button type="button"
+              mat-icon-button
+              class="close-icon"
+              (click)="d('Cross click')">
         <mat-icon>close</mat-icon>
       </button>
-
       <h1 class="title">Login</h1>
       <form>
         <div class="input-container">
@@ -71,21 +59,18 @@
             type="text"
             id="userInput"
             required="required"
-            #signInUserName
-          />
+            #signInUserName/>
           <label for="user-name">Email Address</label>
           <div class="bar"></div>
         </div>
         <div class="input-container">
           <input #signInPassword type="password" required="required" />
-          <button
-            type="button"
-            mat-icon-button
-            class="eyeIcon signin-visiblity-toggle"
-          >
-            <mat-icon (click)="toggleVisiblity(signInPassword, $event)"
-              >visibility</mat-icon
-            >
+          <button type="button"
+                  mat-icon-button
+                  class="eyeIcon signin-visiblity-toggle">
+            <mat-icon (click)="toggleVisiblity(signInPassword, $event)">
+              visibility
+            </mat-icon>
           </button>
           <label for="password">Password</label>
           <div class="bar"></div>
@@ -97,17 +82,15 @@
           </button>
         </div>
         <div class="button-container">
-          <button
-            type="button"
-            (click)="signIn(signInUserName.value, signInPassword.value)"
-          >
+          <button type="button"
+                  (click)="signIn(signInUserName.value, signInPassword.value)">
             <span>Go</span>
           </button>
         </div>
         <div class="footer">
-          <a (click)="forgotPassword(signInUserName.value)"
-            >Forgot your password?</a
-          >
+          <a (click)="forgotPassword(signInUserName.value)">
+            Forgot your password?
+          </a>
         </div>
       </form>
     </div>
@@ -125,14 +108,12 @@
         </div>
         <div class="input-container">
           <input #signUpPassword type="password" required="required" />
-          <button
-            type="button"
-            mat-icon-button
-            class="eyeIcon signup-visiblity-toggle"
-          >
-            <mat-icon (click)="toggleVisiblity(signUpPassword, $event)"
-              >visibility</mat-icon
-            >
+          <button type="button"
+                  mat-icon-button
+                  class="eyeIcon signup-visiblity-toggle">
+            <mat-icon (click)="toggleVisiblity(signUpPassword, $event)">
+              visibility
+            </mat-icon>
           </button>
           <label for="password">Password</label>
           <div class="bar"></div>
@@ -143,16 +124,8 @@
           <div class="bar"></div>
         </div>
         <div class="button-container">
-          <button
-            type="button"
-            (click)="
-              signUp(
-                signUpPassword.value,
-                signUpRepeatPassword.value,
-                signUpUserName.value
-              )
-            "
-          >
+          <button type="button"
+                  (click)="signUp(signUpPassword.value,signUpRepeatPassword.value,signUpUserName.value)">
             <span>Next</span>
           </button>
         </div>
@@ -170,26 +143,21 @@
       </button>
     </div>
     <div class="avatar-holder">
-      <img
-        src="{{
-          authService.userData.photoURL
-            ? authService.userData.photoURL
-            : '../assets/images/dummy-user.png'
-        }}"
-        alt="user"
-      />
+      <img src="{{ authService.userData.photoURL ? authService.userData.photoURL : '../assets/images/dummy-user.png' }}"
+           alt="user"/>
     </div>
     <div class="name">
       <p [innerText]="authService.userData.displayName"></p>
       <h6 title="patients">
-        <ion-icon class="heart-icon" name="heart"></ion-icon><span></span>
+        <ion-icon class="heart-icon" name="heart"></ion-icon>
       </h6>
     </div>
     <div class="ds-info">
       <div class="button" (click)="authService.signOut()">
-        <a href="#" class="btn"
-          >Log Out<ion-icon class="log-out-icon" name="log-out"></ion-icon
-        ></a>
+        <a href="#" class="btn">
+          Log Out
+          <ion-icon class="log-out-icon" name="log-out"></ion-icon>
+        </a>
       </div>
     </div>
   </div>

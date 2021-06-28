@@ -9,7 +9,16 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PatientListComponent } from './patient-list/patient-list.component';
 
 @NgModule({
-  imports: [AngularMaterialModule, CommonModule, DashboardRoutingModule],
-  declarations: [DashboardComponent,AddPatientComponent,EditPatientComponent,PatientListComponent,PatientDetailsComponent],
+  imports: [
+    AngularMaterialModule,
+    CommonModule,
+    DashboardRoutingModule
+  ],
+  declarations: [
+    DashboardComponent,
+    AddPatientComponent,
+    EditPatientComponent,
+    PatientDetailsComponent
+  ],
 })
 export class DashboardModule {}

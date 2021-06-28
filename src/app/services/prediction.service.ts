@@ -9,12 +9,8 @@ export class PredictionService {
   model;
   dataLength = 13;
 
-  constructor() {
-  }
+  constructor() {}
 
-  // async loadModel() {
-    
-  // }
   async predictResult(data: number[]) {
     this.model = await tf.loadLayersModel('../assets/web/model.json');
     if (data.length === this.dataLength) {

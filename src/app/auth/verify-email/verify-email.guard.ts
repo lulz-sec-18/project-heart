@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
-} from '@angular/router';
-import { AuthService } from '../auth.service';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -24,7 +19,5 @@ export class VerifyEmailGuard implements CanActivate {
     )
       this.router.navigate(['home']);
     return true;
-    
-      
   }
 }

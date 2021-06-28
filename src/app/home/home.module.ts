@@ -5,7 +5,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { AngularMaterialModule } from '../angular-material.module'
 
-
 @NgModule({
   declarations: [HomeComponent],
   imports: [

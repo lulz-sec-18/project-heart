@@ -4,7 +4,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { VerifyEmailGuard } from './auth/verify-email/verify-email.guard';
 
 const routes: Routes = [
-  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: `about`,
     loadChildren: () =>
@@ -24,6 +24,10 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
+    path: `train-online`,
+    loadChildren: () => import('./train-online/house-data.module').then((m) => m.HouseDataModule),
+  },
+  {
     path: 'verify-email',
     loadChildren: () =>
       import('./auth/verify-email/verify-email.module').then(
@@ -31,7 +35,7 @@ const routes: Routes = [
       ),
     canActivate: [VerifyEmailGuard],
   },
-  // { path: '**', redirectTo: 'home' },
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

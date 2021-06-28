@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PredictionService } from '../prediction.service';
+import { PredictionService } from '../services/prediction.service';
 
 @Component({
   selector: 'app-dashboard',
