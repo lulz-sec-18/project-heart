@@ -7,18 +7,21 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';
 import { PatientDetailsComponent } from './patient-details/patient-details.component';
 import { PatientListComponent } from './patient-list/patient-list.component';
+import { ReactiveFormsModule} from '@angular/forms';
+import { FormComponent } from './form/form.component';
 
 @NgModule({
   imports: [
     AngularMaterialModule,
     CommonModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,
+    PatientListComponent,
     AddPatientComponent,
-    EditPatientComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
   ],
 })
 export class DashboardModule {}

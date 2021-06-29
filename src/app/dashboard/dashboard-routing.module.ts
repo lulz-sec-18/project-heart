@@ -10,14 +10,14 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     component: DashboardComponent,
     children: [
-      {path: 'add-patient', component: AddPatientComponent},
-      {path: 'edit-patient', component: EditPatientComponent},
-      {path: 'patient-list', component: PatientListComponent},
-      {path: 'patient-details', component: PatientDetailsComponent}
-    ]
+      { path: 'add-patient', component: AddPatientComponent },
+      { path: 'edit-patient/:id', component: EditPatientComponent },
+      { path: 'patient-list', component: PatientListComponent },
+      { path: 'patient-details/:id', component: PatientDetailsComponent },
+    ],
   },
   // {
   //   path: 'xyz',

@@ -171,7 +171,7 @@
   <router-outlet></router-outlet>
 </section>
 <!-- Footer -->
-<footer [ngClass]="router.url !== '/dashboard' ? '' : 'footer-hidden'">
+<footer [ngClass]="!router.url.includes('dashboard') ? '' : 'footer-hidden'">
   <mat-grid-list cols="2" rowHeight="80px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="footer-text">

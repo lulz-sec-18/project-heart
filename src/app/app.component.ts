@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, OnInit, ElementRef, TemplateRef } from '@angular/core';
+import { Component, ViewEncapsulation, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
