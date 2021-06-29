@@ -1,0 +1,30 @@
+<section>
+  <router-outlet></router-outlet>
+</section>
+<!-- Footer -->
+<footer [ngClass]="!router.url.includes('dashboard') ? '' : 'footer-hidden'">
+  <mat-grid-list cols="2" rowHeight="80px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="footer-text">
+        <p>Made with 💗 by Ajay & Mridul</p>
+        <p></p>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <div class="social-icons">
+        <a href="#">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <div class="copyright">
+        <p class="py-2 mb-0">© Wellheart All rights reserved.</p>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</footer>

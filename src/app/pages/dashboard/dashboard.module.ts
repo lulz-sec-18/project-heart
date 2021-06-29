@@ -10,7 +10,6 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { SharedComponentsModule } from 'src/app/components/shared.component.module';
-import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -19,7 +18,6 @@ import { BrowserModule } from '@angular/platform-browser';
     DashboardRoutingModule,
     ReactiveFormsModule,
     SharedComponentsModule,
-    BrowserModule
   ],
   declarations: [
     DashboardComponent,
