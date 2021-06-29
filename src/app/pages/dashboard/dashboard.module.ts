@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { AngularMaterialModule } from '../angular-material.module';
+import { AngularMaterialModule } from 'src/app/angular-material.module';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
@@ -9,6 +9,8 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { SharedComponentsModule } from 'src/app/components/shared.component.module';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -16,12 +18,24 @@ import { FormComponent } from './form/form.component';
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
+    SharedComponentsModule,
+    BrowserModule
   ],
   declarations: [
     DashboardComponent,
     PatientListComponent,
     AddPatientComponent,
     PatientDetailsComponent,
+    EditPatientComponent,
+    FormComponent
   ],
+  entryComponents: [
+    DashboardComponent,
+    PatientListComponent,
+    AddPatientComponent,
+    PatientDetailsComponent,
+    EditPatientComponent,
+    FormComponent
+  ]
 })
 export class DashboardModule {}

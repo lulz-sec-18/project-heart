@@ -13,7 +13,7 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      // { path: 'add-patient', component: AddPatientComponent },
+      { path: 'add-patient', component: AddPatientComponent },
       { path: 'edit-patient/', component: EditPatientComponent },
       { path: 'patient-list', component: PatientListComponent },
       { path: 'patient-details/', component: PatientDetailsComponent },

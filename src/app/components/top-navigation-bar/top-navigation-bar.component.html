@@ -1,0 +1,38 @@
+<nav>
+  <ul class="menu" [ngClass]="isMenuActive ? 'active' : ''">
+    <li class="logo">
+      <a href="#"><img src="../assets/images/logo.png" alt="logo" /></a>
+    </li>
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="home">Home</a>
+    </li>
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="prediction">Prediction</a>
+    </li>
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="about">About</a>
+    </li>
+    <li *ngIf = "authService.isLoggedIn()" class="item" routerLinkActive="selected">
+      <a routerLink="dashboard">Dashboard</a>
+    </li>
+    <li class="item" routerLinkActive="selected">
+      <a routerLink="train-online">Train_Online</a>
+    </li>
+    <li class="item button"
+        [ngClass]="authService.isLoggedIn() ? 'hidden' : ''">
+      <a>Log In</a>
+    </li>
+    <li class="item button"
+        [ngClass]="!authService.isLoggedIn() ? 'hidden' : ''">
+      <a>Account</a>
+    </li>
+    <li class="toggle-menu">
+      <i #menuIcon class="fas fa-bars"></i>
+      <button type="button" mat-icon-button>
+        <mat-icon (click)="toggleMenu($event)" class="toggle-icon" #menuIcon>
+          menu
+        </mat-icon>
+      </button>
+    </li>
+  </ul>
+</nav>

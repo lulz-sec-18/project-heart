@@ -8,24 +8,24 @@ const routes: Routes = [
   {
     path: `about`,
     loadChildren: () =>
-      import('./about/about.module').then((m) => m.AboutModule),
+      import('./pages/about/about.module').then((m) => m.AboutModule),
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+    loadChildren: () => import('./pages/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'prediction',
-    loadChildren: () => import('./prediction/prediction.module').then((m) => m.PredictionModule),
+    loadChildren: () => import('./pages/prediction/prediction.module').then((m) => m.PredictionModule),
   },
   {
     path: `dashboard`,
-    loadChildren: () => import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then((m) => m.DashboardModule),
     canActivate: [AuthGuard],
   },
   {
     path: `train-online`,
-    loadChildren: () => import('./train-online/house-data.module').then((m) => m.HouseDataModule),
+    loadChildren: () => import('./pages/train-online/house-data.module').then((m) => m.HouseDataModule),
   },
   {
     path: 'verify-email',

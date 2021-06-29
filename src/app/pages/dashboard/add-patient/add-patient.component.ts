@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "src/app/services/auth.service";
-import { Patient } from "../../auth/models/patient.model";
-import { User } from "../../auth/models/user.modal";
+import { Patient } from "../../../models/patient.model";
+import { User } from "../../../models/user.model";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PatientAttributes } from '../../auth/models/patient-attributes.model';
+import { PatientAttributes } from '../../../models/patient-attributes.model';
 
 @Component({
   selector: 'app-add-patient',
-  templateUrl: '',
+  templateUrl: 'add-patient.component.html',
   styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {

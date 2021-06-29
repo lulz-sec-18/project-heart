@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Patient } from '../../auth/models/patient.model';
+import { Patient } from '../../../models/patient.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { PatientAttributes } from '../../auth/models/patient-attributes.model';
-import { User } from '../../auth/models/user.modal';
+import { PatientAttributes } from '../../../models/patient-attributes.model';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-edit-patient',
