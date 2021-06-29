@@ -1,17 +1,84 @@
 <div class="about-section">
+  <img src="../../assets/images/home-button-for-interface.png"/>
   <div class="inner-container">
     <h1>Home</h1>
     <p class="text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Doloribus velit ducimus, enim inventore earum, eligendi
-        nostrum pariatur necessitatibus eius dicta a voluptates
-        sit deleniti autem error eos totam nisi neque voluptates
-        sit deleniti autem error eos totam nisi neque.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Doloribus velit ducimus, enim inventore earum, eligendi
-        nostrum pariatur necessitatibus eius dicta a voluptates
-        sit deleniti autem error eos totam nisi neque voluptates
-        sit deleniti autem error eos totam nisi neque.
+      Cardiovascular diseases (CVDs) are the number 1 cause of
+      death globally, taking an estimated 17.9 million lives each year.
+      CVDs are a group of disorders of the heart and blood vessels
+      and include coronary heart disease, cerebrovascular disease,
+      rheumatic heart disease and other conditions. Four out of 5CVD
+      deaths are due to heart attacks and strokes, and one third of
+      these deaths occur prematurely in people under 70 years of
+      age.So our heart is one of your body's most important organs.
+      The problem motivates us to build something related to this
+      cause which can help people get aware of themselves up to
+      some level.
     </p>
   </div>
- </div>
+</div>
+
+<style>
+  .about-section{
+    background-size: 40%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 10px 0;
+  }
+
+  .inner-container{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 150px;
+    font-family: nunito;
+    font-size: 150%;
+
+  }
+
+  .inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+  }
+
+  .text{
+    font-size: 13px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+  }
+
+  .field{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  @media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+  }
+
+  @media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+  }
+
+  @media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+  }
+</style>

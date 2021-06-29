@@ -13,24 +13,12 @@ const routes: Routes = [
     path: '',
     component: DashboardComponent,
     children: [
-      { path: 'add-patient', component: AddPatientComponent },
-      { path: 'edit-patient/:id', component: EditPatientComponent },
+      // { path: 'add-patient', component: AddPatientComponent },
+      { path: 'edit-patient/', component: EditPatientComponent },
       { path: 'patient-list', component: PatientListComponent },
-      { path: 'patient-details/:id', component: PatientDetailsComponent },
+      { path: 'patient-details/', component: PatientDetailsComponent },
     ],
   },
-  // {
-  //   path: 'xyz',
-  //   component: DashboardComponent,
-  //   children: [
-  //     {path:'', redirectTo: 'add', pathMatch: 'full'},
-  //     {path: 'add', component:AddPatientComponent},
-  //     {path: `edit/:${TASK_ID_PARAM}`, component:EditPatientComponent},
-  //     {path: 'list', component:PatientListComponent},
-  //     {path: `details/:${DETAIL_ID_PARAM}`,component:PatientDetailsComponent},
-  //     // {path: '**', redirectTo: 'add'}
-  //   ],
-  // },
 ];
 
 @NgModule({
