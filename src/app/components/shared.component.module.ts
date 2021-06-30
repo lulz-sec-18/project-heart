@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { TopNavigationBarComponent } from './top-navigation-bar/top-navigation-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { AngularMaterialModule } from '../angular-material.module';
+import { PreloaderComponent } from './preloader/preloader.component';
 
  @NgModule({
    imports: [
@@ -22,6 +23,7 @@ import { AngularMaterialModule } from '../angular-material.module';
 
    declarations: [
      TopNavigationBarComponent,
+     PreloaderComponent,
    ],
 
    entryComponents: [

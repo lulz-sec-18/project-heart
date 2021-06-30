@@ -102,10 +102,13 @@
   .text__wrapper{
     width:20rem;
     margin:170px auto;
+    animation: fade 0.8s;
   }
 
   .img__wrapper img{
-    height:400px
+    height:400px;
+    animation: grow 0.8s;
+    margin:auto;
   }
   .img__wrapper{
     margin: 100px auto;
@@ -119,5 +122,16 @@
     font-size:30px;
     font-weight:900;
   }
-
+  @keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+  }
+  @keyframes grow {
+    from{height:300px;}
+    to{height:400px;}
+  }
 </style>
