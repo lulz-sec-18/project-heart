@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class LoginModalComponent {
   isActive = false;
   constructor(
     public authService: AuthService,
-    private modalService: NgbModal,
+    private ngbActiveModal: NgbActiveModal,
     private profileModalService: NgbModal,
     public router: Router
   ) { }
@@ -42,6 +42,10 @@ export class LoginModalComponent {
   toggleActiveClass(): boolean {
     this.isActive = !this.isActive;
     return this.isActive;
+  }
+
+  cancel(): void {
+    this.ngbActiveModal.close();
   }
 
   toggleMenu(event: any): void {

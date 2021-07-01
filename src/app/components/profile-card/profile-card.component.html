@@ -1,7 +1,7 @@
 <div class="card profile-card">
     <div class="ds-top">
       <button type="button" mat-icon-button (click)="cancel()">
-        <!-- <mat-icon>close</mat-icon> -->
+        <mat-icon>close</mat-icon>
       </button>
     </div>
     <div class="avatar-holder">
@@ -11,14 +11,14 @@
     <div class="name">
       <p [innerText]="authService.userData.displayName"></p>
       <h6 title="patients">
-        <!-- <ion-icon class="heart-icon" name="heart"></ion-icon> -->
+        <ion-icon class="heart-icon" name="heart"></ion-icon>
       </h6>
     </div>
     <div class="ds-info">
       <div class="button" (click)="authService.signOut()">
         <a href="#" class="btn">
           Log Out
-          <!-- <ion-icon class="log-out-icon" name="log-out"></ion-icon> -->
+          <ion-icon class="log-out-icon" name="log-out"></ion-icon>
         </a>
       </div>
     </div>

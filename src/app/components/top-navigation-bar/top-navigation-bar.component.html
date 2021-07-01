@@ -4,19 +4,19 @@
       <a href="#"><img src="../../../assets/images/logo.png" alt="logo" /></a>
     </li>
     <li class="item" routerLinkActive="selected">
-      <a routerLink="home">Home</a>
+      <button mat-button color="warn" routerLink="home">Home</button>
     </li>
     <li class="item" routerLinkActive="selected">
-      <a routerLink="prediction">Prediction</a>
+      <button mat-button color="warn" routerLink="prediction">Prediction</button>
     </li>
     <li class="item" routerLinkActive="selected">
-      <a routerLink="about">About</a>
+      <button mat-button color="warn" routerLink="about">About</button>
     </li>
     <li *ngIf = "isLoggedIn()" class="item" routerLinkActive="selected">
-      <a routerLink="dashboard">Dashboard</a>
+      <button mat-button color="warn" routerLink="dashboard">Dashboard</button>
     </li>
     <li class="item" routerLinkActive="selected">
-      <a routerLink="train-online">Train_Online</a>
+      <button mat-button color="warn" routerLink="train-online">Train_Online</button>
     </li>
     <li class="item button"
         [ngClass]="isLoggedIn() ? 'hidden' : ''">
@@ -45,17 +45,17 @@
     margin: 0;
   }
   nav {
-    background: rgb(78, 78, 78);
+    background: black;
     padding: 0 20px;
   }
   .item.button button {
-    color: white;
+    color: #f55c44;
   }
   .item.button button:hover {
     color: #f55c44;
   }
   a {
-    color: white;
+    color: #f55c44;
     text-decoration: none;
   }
   .menu {
@@ -115,7 +115,7 @@
   }
 
   .mat-icon-button {
-    color: white;
+    color: #f55c44;
   }
   /* Tablet menu */
   @media all and (min-width: 700px) {
@@ -126,7 +126,7 @@
       flex: 1;
     }
     .item.button a:hover {
-      color: white;
+      color: #f55c44;
     }
     .item.button {
       width: auto;

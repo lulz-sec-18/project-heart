@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import * as tf from '@tensorflow/tfjs';
 
 @Injectable({
@@ -11,7 +10,7 @@ export class PredictionService {
 
   constructor() {}
 
-  async predictResult(data: number[]) {
+  async predictResult(data: number[]): Promise<number | number[]> {
     this.model = await tf.loadLayersModel('../assets/web/model.json');
     if (data.length === this.dataLength) {
       const prediction = this.model.predict(tf.tensor2d(data, [1, this.dataLength]))

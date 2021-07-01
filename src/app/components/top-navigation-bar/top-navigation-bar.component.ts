@@ -1,5 +1,4 @@
 import { Component, TemplateRef } from '@angular/core';
-import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
@@ -20,7 +19,6 @@ export class TopNavigationBarComponent {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     private ngbModal: NgbModal
   ) {}
 
