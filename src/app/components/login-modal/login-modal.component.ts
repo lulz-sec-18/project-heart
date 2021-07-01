@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -8,33 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login-modal.component.html',
 })
 export class LoginModalComponent {
-  modal: any;
   profileModal: any;
   isMenuActive = false;
   isActive = false;
+
   constructor(
     public authService: AuthService,
     private ngbActiveModal: NgbActiveModal,
-    private profileModalService: NgbModal,
     public router: Router
   ) { }
-  // openForm(content: TemplateRef<any>): void {
-  //   this.modal = this.modalService.open(content, {
-  //     animation: true,
-  //     windowClass: 'form-modal',
-  //     backdrop:'static',
-  //   });
-  // }
 
-  openProfile(content: any): void {
-    this.profileModal = this.profileModalService.open(content, {
-      animation: true,
-      windowClass: 'profile-modal',
-      backdrop: 'static',
-    });
-  }
-
-  toggleVisiblity(el, event: any): void {
+  toggleVisiblity(el: { type: string; }, event: any): void {
     if (el.type === 'password') (el.type = 'text') && (event.target.innerText = 'visibility_off');
     else { (el.type = 'password') && (event.target.innerText = 'visibility'); }
   }
@@ -48,31 +32,25 @@ export class LoginModalComponent {
     this.ngbActiveModal.close();
   }
 
-  toggleMenu(event: any): void {
-    this.isMenuActive = !this.isMenuActive;
-    if (this.isMenuActive) event.target.innerText = 'close';
-    else event.target.innerText = 'menu';
-  }
-
-  async signUp(password, repeatPassword, userName) {
+  async signUp(password: string, repeatPassword: string, userName: string) {
     if (password === repeatPassword) {
       await this.authService.signUp(userName, password);
-      this.modal.close();
+      this.ngbActiveModal.close();
     } else window.alert("Both password doesn't match");
   }
 
-  async signIn(userName, password) {
+  async signIn(userName: string, password: string) {
     await this.authService.signIn(userName, password);
-    this.modal.close();
+    this.ngbActiveModal.close();
   }
 
   async googleAuth() {
     await this.authService.googleAuth();
-    this.modal.close();
+    this.ngbActiveModal.close();
   }
 
-  forgotPassword(userName) {
+  forgotPassword(userName: string) {
     this.authService.forgotPassword(userName);
-    this.modal.close();
+    this.ngbActiveModal.close();
   }
 }
