@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as tfjs from '@tensorflow/tfjs';
 import * as tfvis from '@tensorflow/tfjs-vis';
 
+
 @Component({
   selector: 'train-online',
   templateUrl: 'train-online.component.html'

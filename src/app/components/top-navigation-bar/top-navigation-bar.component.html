@@ -1,7 +1,7 @@
-<!-- <nav>
+<nav>
   <ul class="menu" [ngClass]="isMenuActive ? 'active' : ''">
     <li class="logo">
-      <a href="#"><img src="../assets/images/logo.png" alt="logo" /></a>
+      <a href="#"><img src="../../../assets/images/logo.png" alt="logo" /></a>
     </li>
     <li class="item" routerLinkActive="selected">
       <a routerLink="home">Home</a>
@@ -12,19 +12,19 @@
     <li class="item" routerLinkActive="selected">
       <a routerLink="about">About</a>
     </li>
-    <li *ngIf = "authService.isLoggedIn()" class="item" routerLinkActive="selected">
+    <li *ngIf = "isLoggedIn()" class="item" routerLinkActive="selected">
       <a routerLink="dashboard">Dashboard</a>
     </li>
     <li class="item" routerLinkActive="selected">
       <a routerLink="train-online">Train_Online</a>
     </li>
     <li class="item button"
-        [ngClass]="authService.isLoggedIn() ? 'hidden' : ''">
-      <a>Log In</a>
+        [ngClass]="isLoggedIn() ? 'hidden' : ''">
+        <button mat-raised-button (click)="openLoginModal()">Log In</button>
     </li>
     <li class="item button"
-        [ngClass]="!authService.isLoggedIn() ? 'hidden' : ''">
-      <a>Account</a>
+        [ngClass]="!isLoggedIn() ? 'hidden' : ''">
+      <button mat-raised-button (click)="openAccountModal()">Account</button>
     </li>
     <li class="toggle-menu">
       <i #menuIcon class="fas fa-bars"></i>
@@ -35,21 +35,165 @@
       </button>
     </li>
   </ul>
-</nav> -->
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
-<h1>Hello ji</h1>
+</nav>
+<router-outlet></router-outlet>
 
+<style>
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  nav {
+    background: rgb(78, 78, 78);
+    padding: 0 20px;
+  }
+  .item.button button {
+    color: white;
+  }
+  .item.button button:hover {
+    color: #f55c44;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  .menu {
+    list-style-type: none;
+  }
+  .item {
+    padding: 10px;
+  }
+  .item.button {
+    padding: 9px 5px;
+    cursor: pointer;
+  }
+  .item:not(.button) a:hover,
+  .item button:hover::after {
+    color: #f55c44;
+  }
+  /* Mobile menu */
+  .hidden {
+    display: none !important;
+  }
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .menu li a {
+    display: block;
+    padding: 15px 5px;
+  }
+
+  .toggle-menu {
+    order: 1;
+    font-size: 20px;
+  }
+  .item.button {
+    order: 2;
+  }
+  .item {
+    order: 3;
+    width: 100%;
+    text-align: center;
+    display: none;
+  }
+  .active .item {
+    display: block;
+  }
+  .toggle-icon:hover {
+    animation: swing;
+    animation-duration: 0.8s;
+  }
+  .logo a img {
+    height: 60px;
+    position: absolute;
+    top: -10px;
+    left: 5px;
+  }
+
+  .mat-icon-button {
+    color: white;
+  }
+  /* Tablet menu */
+  @media all and (min-width: 700px) {
+    .menu {
+      justify-content: center;
+    }
+    .logo {
+      flex: 1;
+    }
+    .item.button a:hover {
+      color: white;
+    }
+    .item.button {
+      width: auto;
+      order: 1;
+      display: block;
+    }
+    .item.button:hover {
+      animation: pulse;
+      animation-duration: 0.8s;
+    }
+    .toggle-menu {
+      flex: 1;
+      text-align: right;
+      order: 2;
+    }
+    /* Button up from tablet screen */
+    .menu li.button a {
+      padding: 10px 15px;
+      margin: 5px 0;
+    }
+    .toggle-icon {
+      color: white;
+      cursor: pointer;
+    }
+    .button a {
+      background: #f55c44;
+      border: 1px #ec426a solid;
+      border-radius: 5px;
+    }
+    .logo a img {
+      height: 90px;
+      position: absolute;
+      top: -10px;
+      left: 5px;
+    }
+  }
+  /* Desktop menu */
+  @media all and (min-width: 960px) {
+    .menu {
+      align-items: flex-start;
+      flex-wrap: nowrap;
+      background: none;
+    }
+    .logo {
+      order: 0;
+    }
+    .toggle-menu {
+      display: none;
+    }
+    .item {
+      order: 1;
+      position: relative;
+      display: block;
+      width: auto;
+    }
+    .button {
+      order: 2;
+    }
+
+    .toggle-menu {
+      display: relative;
+    }
+    .logo a img {
+      height: 90px;
+      position: absolute;
+      top: -10px;
+      left: 5px;
+    }
+  }
+</style>

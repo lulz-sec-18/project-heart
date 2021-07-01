@@ -6,6 +6,8 @@ import { AngularMaterialModule } from './angular-material.module';
 import { AppFirebaseModule } from './app-firebase.module';
 import { AuthService } from './services/auth.service';
 import { PredictionService } from 'src/app/services/prediction.service';
+import { SharedComponentsModule } from './components/shared.component.module';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +16,8 @@ import { PredictionService } from 'src/app/services/prediction.service';
     BrowserAnimationsModule,
     AngularMaterialModule,
     AppFirebaseModule,
+    SharedComponentsModule,
+    IonicModule.forRoot()
   ],
   providers: [AuthService, PredictionService],
   bootstrap: [AppComponent],

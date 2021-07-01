@@ -1,40 +1,35 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { NgbModalModule, NgbPopoverModule, NgbNavModule, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserModule } from '@angular/platform-browser';
 import { TopNavigationBarComponent } from './top-navigation-bar/top-navigation-bar.component';
 import { MatIconModule } from '@angular/material/icon';
+import { FooterComponent } from './footer/footer.component'
 import { AngularMaterialModule } from '../angular-material.module';
+import { AppRoutingModule } from '../app-routing.module';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatButtonModule } from '@angular/material/button';
+import { IonicModule } from '@ionic/angular';
 
  @NgModule({
    imports: [
-     BrowserModule,
      CommonModule,
-     NgbTooltipModule,
-     NgbNavModule,
-     NgbModalModule,
-     NgbPopoverModule,
      MatIconModule,
-     AngularMaterialModule
+     AngularMaterialModule,
+     AppRoutingModule,
+     MatGridListModule,
+     MatButtonModule,
+     IonicModule
    ],
 
    providers: [],
 
    declarations: [
-     TopNavigationBarComponent,
-   ],
-
-   entryComponents: [
+     FooterComponent,
      TopNavigationBarComponent,
    ],
 
    exports: [
-     NgbTooltipModule,
-     NgbNavModule,
-     NgbModalModule,
+     FooterComponent,
      TopNavigationBarComponent,
-     MatIconModule,
-     AngularMaterialModule
    ],
  })
 

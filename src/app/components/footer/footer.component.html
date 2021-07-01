@@ -1,8 +1,4 @@
-<section>
-  <router-outlet></router-outlet>
-</section>
-<!-- Footer -->
-<footer [ngClass]="!router.url.includes('dashboard') ? '' : 'footer-hidden'">
+<footer>
   <mat-grid-list cols="2" rowHeight="80px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="footer-text">
@@ -13,12 +9,14 @@
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="social-icons">
         <a href="#">
-          <ion-icon name="logo-github"></ion-icon>
+          <!-- <ion-icon name="logo-github"></ion-icon> -->
         </a>
         <a href="#">
-          <ion-icon name="logo-instagram"></ion-icon>
+          <!-- <ion-icon name="logo-instagram"></ion-icon> -->
         </a>
-        <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+        <a href="#">
+          <!-- <ion-icon name="logo-linkedin"></ion-icon> -->
+        </a>
       </div>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="2" [rowspan]="1">
@@ -28,3 +26,35 @@
     </mat-grid-tile>
   </mat-grid-list>
 </footer>
+
+<style>
+  footer {
+  background-color: #4e4e4e;
+}
+.social-icons {
+  position: absolute;
+  display: flex;
+  right: 5%;
+}
+.social-icons a ion-icon {
+  font-size: 40px;
+  color: #f55c44;
+  padding: 20px;
+}
+.social-icons a ion-icon:hover {
+  animation: pulse;
+  animation-duration: 0.8s;
+  color: #f7a38e;
+}
+.copyright p {
+  color: rgb(187, 185, 185);
+  font-size: 18px;
+}
+.footer-text p {
+  font-size: 20px;
+  color: rgb(187, 185, 185);
+  position: absolute;
+  left: 5%;
+}
+
+</style>
