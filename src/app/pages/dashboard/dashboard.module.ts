@@ -9,7 +9,6 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
-import { SharedComponentsModule } from 'src/app/components/shared.component.module';
 
 @NgModule({
   imports: [
@@ -17,7 +16,6 @@ import { SharedComponentsModule } from 'src/app/components/shared.component.modu
     CommonModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    SharedComponentsModule,
   ],
   declarations: [
     DashboardComponent,
