@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { IonicModule } from '@ionic/angular';
+import { PreloaderComponent } from './preloader/preloader.component';
 
  @NgModule({
    imports: [
@@ -25,11 +26,18 @@ import { IonicModule } from '@ionic/angular';
    declarations: [
      FooterComponent,
      TopNavigationBarComponent,
+     PreloaderComponent,
+   ],
+
+   entryComponents: [
+     TopNavigationBarComponent,
+     PreloaderComponent
    ],
 
    exports: [
      FooterComponent,
      TopNavigationBarComponent,
+     PreloaderComponent
    ],
  })
 

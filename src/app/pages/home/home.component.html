@@ -1,84 +1,102 @@
-<div class="about-section">
-  <img src="../../assets/images/home-button-for-interface.png"/>
-  <div class="inner-container">
-    <h1>Home</h1>
-    <p class="text">
-      Cardiovascular diseases (CVDs) are the number 1 cause of
-      death globally, taking an estimated 17.9 million lives each year.
-      CVDs are a group of disorders of the heart and blood vessels
-      and include coronary heart disease, cerebrovascular disease,
-      rheumatic heart disease and other conditions. Four out of 5CVD
-      deaths are due to heart attacks and strokes, and one third of
-      these deaths occur prematurely in people under 70 years of
-      age.So our heart is one of your body's most important organs.
-      The problem motivates us to build something related to this
-      cause which can help people get aware of themselves up to
-      some level.
-    </p>
+<div class="row slide__box">
+  <div class="col-md-6">
+    <div class="text__wrapper">
+       <h1 class=main__title>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h1>
+       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus officiis, id maxime asperiores commodi, nisi placeat fugit, totam vero consectetur possimus mollitia quisquam nihil ea. Quisquam voluptas assumenda neque dicta!</p>
+       <button class="btn btn-primary text__btn">Learn More</button>
+    </div>   
+  </div>
+  <div class="col-md-6">
+      <div class="img__wrapper">
+        <img src="../../../assets/images/home.svg" alt="">
+      </div>
   </div>
 </div>
 
 <style>
-  .about-section{
-    background-size: 40%;
-    background-color: #fdfdfd;
-    overflow: hidden;
-    padding: 10px 0;
+  .text__wrapper{
+    width:20rem;
+    margin:170px auto;
+    animation: fade 0.8s;
   }
 
-  .inner-container{
-    width: 55%;
-    float: right;
-    background-color: #fdfdfd;
-    padding: 150px;
-    font-family: nunito;
-    font-size: 150%;
-
+  .img__wrapper img{
+    height:400px;
+    animation: grow 0.8s;
+    margin:auto;
   }
-
-  .inner-container h1{
-    margin-bottom: 30px;
-    font-size: 30px;
-    font-weight: 900;
+  .img__wrapper{
+    margin: 100px auto;
   }
-
-  .text{
-    font-size: 13px;
-    color: #545454;
-    line-height: 30px;
-    text-align: justify;
-    margin-bottom: 40px;
+  .text__btn{
+    padding:20px;
+    background-color: #f55c44;
+    margin-left: 25%;
   }
-
-  .field{
-    display: flex;
-    justify-content: space-between;
-    font-weight: 700;
-    font-size: 13px;
+  .text__wrapper h1{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:30px;
+    font-weight:900;
   }
-
-  @media screen and (max-width:1200px){
-    .inner-container{
-        padding: 80px;
-    }
+  .text__wrapper p{
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size:15px;
+    font-weight:500;
   }
-
-  @media screen and (max-width:1000px){
-    .about-section{
-        background-size: 100%;
-        padding: 100px 40px;
-    }
-    .inner-container{
-        width: 100%;
-    }
+  .slide__box{
+    display: flex !important;
   }
-
+  @keyframes fade {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+  }
+  
+  @keyframes grow {
+    from{height:300px;}
+    to{height:400px;}
+  }
+  @keyframes resposive-grow{
+    from{height:210px;}
+    to{height:300px;}
+  }
+  
   @media screen and (max-width:600px){
-    .about-section{
-        padding: 0;
+   
+    .slide__box{
+      flex-direction: column-reverse !important;
     }
-    .inner-container{
-        padding: 60px;
+    .img__wrapper img{
+      width:120%;
+      padding:0px;
+      overflow:inherit;
+      margin-top: -45%;
+      margin-left: 6%;
+      animation:resposive-grow 0.8s;
+
+    }
+    .text__wrapper{
+      width:90%;
+      align-self: center;
+      margin-top: -40%;
+      margin-left:25%;
+    }
+    .text__wrapper p{
+      font:11px;
+    }
+    .text__wrapper h1{
+      font-size:23px;
+    }
+    .col-md-6{
+      width:320px;
+      padding: 0px 0px;
+    }
+    .row.slide__box{
+      margin:0;
     }
   }
 </style>
+
