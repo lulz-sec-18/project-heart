@@ -24,7 +24,7 @@ const routes: Routes = [
   },
   {
     path: `train-online`,
-    loadChildren: () => import('./pages/train-online/house-data.module').then((m) => m.HouseDataModule),
+    loadChildren: () => import('./pages/train-online/train-online.module').then((m) => m.TrainOnlineModule),
   },
   {
     path: 'verify-email',

@@ -3,11 +3,10 @@ import * as tfjs from '@tensorflow/tfjs';
 import * as tfvis from '@tensorflow/tfjs-vis';
 
 @Component({
-  selector: 'house-data',
-  templateUrl: 'house-data.component.html',
-  styleUrls: ['/house-data.component.css']
+  selector: 'train-online',
+  templateUrl: 'train-online.component.html'
 })
-export class HouseDataComponent implements OnInit {
+export class TrainOnlineComponent implements OnInit {
   normalisedLabel;
   trainingFeatureTensor: any;
   testingFeatureTensor: any;
