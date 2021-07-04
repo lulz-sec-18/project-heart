@@ -1,1 +1,256 @@
-<h1>prediction works!</h1>
+<div class="docs__content">
+  <div  class="text__content container-sm">
+    <h1>Motivation Of the Project</h1>
+  <p>
+    Cardiovascular diseases (CVDs) are the number 1 cause of death globally,
+     taking an estimated 17.9 million lives each year.
+    CVDs are a group of disorders of the heart and blood vessels and include
+    coronary heart disease, cerebrovascular disease, rheumatic heart disease
+     and other conditions. Four out of 5CVD deaths are due to heart attacks
+      and strokes, and one third of these deaths occur prematurely in people
+       under 70 years of age.So our heart is one of your body's most important
+        organs. The problem motivates us to build something related to this
+         cause which can help people get aware of themselves up to some level.
+  </p>
+  </div>
+  <div  class="text__content container-sm">
+    <h1>How we made it?</h1>
+  </div>
+
+  <div  class="text__content container-sm">
+    <h1>Importing Python Libraries</h1>
+    <p>
+      Working with machine learning in python requires some
+      starter libraries such as matplotlib and seaborn are used
+        to plot the complex data or its graphical representation
+    </p>
+  </div>
+
+  <div  class="text__content container-sm">
+     <p>•	<strong>NumPy</strong> is the fundamental package for scientific
+        computing in Python. It is a Python library that provides a
+        multidimensional array object, various derived objects
+        (such as masked arrays and matrices), and an assortment
+        of routines for fast operations on arrays, including
+        mathematical, logical, shape manipulation, sorting,
+        selecting, I/O, discrete Fourier transforms,
+        basic linear algebra, basic statistical operations,
+        random simulation and much more.</p>
+     <p>•	<strong>Pandas</strong> is an open source, BSD-licensed
+       library providing high-performance, easy-to-use data structures
+        and data analysis tools for the Python programming language.</p>
+     <p>• <strong>TensorFlow</strong> is an end-to-end open-source
+       platform for machine learning. It’s a comprehensive and flexible
+       ecosystem of tools, libraries and other resources that provide
+       workflows with high-level APIs. The framework offers various
+       levels of concepts for you to choose the one you need to build
+       and deploy machine learning models.</p>
+     <p>•	<strong>Keras</strong> is a high-level neural networks library
+       that is running on the top of TensorFlow, CNTK, and Theano.
+        Using Keras in deep learning allows for easy and fast prototyping
+         as well as running seamlessly on CPU and GPU. This framework is
+          written in Python code which is easy to debug and allows ease
+           for extensibility.</p>
+     <p>• <strong>TensorFlowjs</strong> is a library for machine learning
+       in JavaScript. Develop ML models in JavaScript, and use ML directly
+        in the browser or in Node.</p>
+  </div>
+
+  <div class="container-sm code__container">
+    <div class="code__area">
+      <div class="python__code">
+        <a class="icon">
+          <ion-icon  (click)="copyCode(copyText1)" name="copy-outline"></ion-icon>
+        </a>
+        <pre>
+        <code #copyText1>
+          <!-- <span class="gr">as</span> -->
+          <span class="bl"><span class="bl gr">import</span> matplotlib  <span class="bl gr">as</span> plt</span>
+          <span class="bl"><span class=" bl gr">import</span> seaborn  <span class="bl gr">as</span> sns</span>
+          <span class="bl"><span class="bl gr">import</span> numpy  <span class="bl gr">as</span> np</span>
+          <span class="bl"><span class="bl gr">import</span> pandas  <span class="bl gr">as</span> pd</span>
+          <span class="bl"><span class="bl gr">from</span> tensorflow.keras <span class="bl gr">import</span> layers</span>
+          <span class="bl"><span class="bl gr">import</span> tensorflowjs  <span class="bl gr">as</span> tfjs</span>
+          <span class="bl"><span class="bl gr">from</span> matplotlib <span class="bl gr">import</span> pyplot  <span class="bl gr">as</span> plt</span>
+          <span class="bl"><span class="bl gr">from</span> keras.models <span class="bl gr">import</span> Sequential</span>
+          <span class="bl"><span class="bl gr">from</span> keras.layers <span class="bl gr">import</span> Dense</span>
+        </code>
+       </pre>
+      </div>
+    </div>
+  </div>
+
+   <div  class="text__content container-sm">
+    <h1>
+   Prepare data for training
+    </h1>
+  </div>
+
+  <div class="container-sm code__container">
+    <div class="code__area">
+      <div class="python__code">
+        <a class="icon">
+          <ion-icon  (click)="copyCode(copyText2)" name="copy-outline"></ion-icon>
+        </a>
+     <pre>
+      <code #copyText2>
+        <!-- <span class="gr">as</span> -->
+            <span class="bl gc">#Storing data from 'heart.csv' file</span>
+            <span class="bl">data = pd.read_csv(<span class="bl rd">'heart.csv'</span>)</span>
+            <span class="bl gc">#Selecting the columns to use for prediction in the neural network</span>
+            <span class="bl">X= data.drop(<span class="rd">'target'</span>,axis=1)</span>
+            <span class="bl">Y=data[<span class="rd">'target'</span>]</span>
+            <span class="bl gc"># split data into train, test</span>
+            <span class="bl">X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3,random_state=39, shuffle=<span class="gr">True</span>)</span>
+      </code>
+     </pre>
+    </div>
+  </div>
+  </div>
+  <div  class="text__content container-sm">
+    <h1>Define & train Model</h1>
+  <p>We create instance of keras model and feed data to train the model</p>
+  </div>
+
+  <div class="container-sm code__container">
+    <div class="code__area">
+      <div class="python__code">
+        <a class="icon">
+          <ion-icon  (click)="copyCode(copyText3)" name="copy-outline"></ion-icon>
+        </a>
+     <pre>
+      <code #copyText3>
+        <!-- <span class="gr">as</span> -->
+              <span class="bl gc">#create model with fully connected layers with dropout regulation</span>
+              <span class="bl">model = Sequential()</span>
+              <span class="bl">model.add(Dense(12, input_dim=13, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'relu'</span>))</span>
+              <span class="bl">model.add(Dropout(0.2))</span>
+              <span class="bl">model.add(Dense(6, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'relu'</span>))</span>
+              <span class="bl">model.add(Dropout(0.1))</span>
+              <span class="bl">model.add(Dense(1, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'sigmoid'</span>))</span>
+              <span class="bl">model.compile(loss=<span class="bl rd">'binary_crossentropy'</span>, optimizer=<span class="bl rd">"Adamax"</span>, metrics=[<span class="bl rd">'accuracy'</span>])</span>
+              <span class="bl">model.fit(X_train, y_train, validation_split=0.33, epochs=100, batch_size=6,verbose=0)</span>
+      </code>
+     </pre>
+    </div>
+   </div>
+  </div>
+
+  <div class="text__content container-sm">
+    <h1>Converting keras model to TensorFlowjs  model</h1>
+  </div>
+  <div class="container-sm code__container">
+    <div class="code__area">
+      <div class="python__code">
+        <a class="icon">
+          <ion-icon  (click)="copyCode(copyText4)" name="copy-outline"></ion-icon>
+        </a>
+        <pre>
+          <code #copyText4>
+              <span class="bl">tfjs.converters.save_keras_model(model,<span class="bl rd">'_dir_path'</span> );</span>
+          </code>
+        </pre>
+      </div>
+    </div>
+  </div>
+
+   <!-- <div class="code__area">
+    <div class="python__code">
+      <a class="icon">
+       <ion-icon (click)="copyCode(copyText2)" name="copy-outline"></ion-icon>
+      </a>
+     <pre>
+    <code #copyText2>
+
+      <span class="bl">#Import libraries for data wrangling, preprocessing and visualization</span>
+      <span class="bl gr">console.log("Hello World!");</span>
+    </code>
+  </pre>
+  </div>
+  </div> -->
+
+
+<!-- </div> -->
+</div>
+
+
+<style>
+   .text__content h1{
+     font-size:20px;
+     color:#000;
+   }
+  .docs__content{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    height:100%;
+    padding:10px;
+    overflow:scroll;
+  }
+  .text__content{
+    display: flex;
+    flex-direction: column;
+    margin:auto;
+    width:70%;
+    margin-top:30px;
+  }
+  .bl{
+    color:rgba(0, 0, 0, 0.7);
+    font-family: 'Roboto Mono', monospace;
+    line-height:1.7;
+    font-weight:400;
+  }
+  .gc{
+    color:rgba(0,0,0,.4) !important;
+    font-style: italic;
+  }
+  .rd{
+    color: red !important;
+  }
+  .gr{
+    color: green !important;
+  }
+
+  .code__container{
+    width:70%;
+  }
+
+  .code__area{
+    display: flex;
+    padding:0px;
+    margin:0.4em;
+    background-color:transparent;
+    line-height:1.2em;
+    border:1px solid rgb(194, 190, 190);
+  }
+  .python__code{
+    background-color: #f7f7f7;
+    width:70%;
+  }
+  .python__code pre code span{
+    font-size: 14px;
+    font-family: 'Roboto Mono', monospace;
+
+  }
+  .python__code pre {
+    margin: 0px 0px 0px;
+    display:inline-flex;
+  }
+  .icon ion-icon[name="copy-outline"]{
+    font-size:20px;
+    padding:10px;
+    color:gray;
+    cursor: pointer;
+  }
+  .icon ion-icon[name="copy-outline"]:hover{
+    color: rgb(48, 48, 48);
+    transition: 0.3s ease-in-out;
+  }
+  .icon{
+   position:relative;
+   padding: 0;
+  }
+  ::selection{
+    background:rgb(141, 141, 231);
+  }
+</style>
