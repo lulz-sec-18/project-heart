@@ -8,10 +8,12 @@ import { PredictionService } from '../../services/prediction.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(public predictor: PredictionService,public authService:AuthService) {}
+  constructor(
+    public predictor: PredictionService,
+    public authService:AuthService) {}
 
   ngOnInit(): void {
-     this.authService.firestoreInit()
+    this.authService.firestoreInit();
 
     //testing purpose
     this.predictor
