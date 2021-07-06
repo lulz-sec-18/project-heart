@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { PATIENT_ID_PARAM, TASK_ID_PARAM, DETAIL_ID_PARAM } from './dashboard.constant';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { DashboardComponent } from './dashboard.component';
 import { EditPatientComponent } from './edit-patient/edit-patient.component';

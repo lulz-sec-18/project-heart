@@ -23,10 +23,6 @@ import { APP_BASE_HREF } from '@angular/common';
   providers: [
     AuthService,
     PredictionService,
-    {
-      provide: APP_BASE_HREF,
-      useValue: '/'
-    }
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
