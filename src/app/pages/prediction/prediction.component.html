@@ -3,20 +3,19 @@
     <h1>Motivation Of the Project</h1>
   <p>
     Cardiovascular diseases (CVDs) are the number 1 cause of death globally,
-     taking an estimated 17.9 million lives each year.
+    taking an estimated 17.9 million lives each year.
     CVDs are a group of disorders of the heart and blood vessels and include
     coronary heart disease, cerebrovascular disease, rheumatic heart disease
-     and other conditions. Four out of 5CVD deaths are due to heart attacks
-      and strokes, and one third of these deaths occur prematurely in people
-       under 70 years of age.So our heart is one of your body's most important
-        organs. The problem motivates us to build something related to this
-         cause which can help people get aware of themselves up to some level.
+    and other conditions. Four out of 5CVD deaths are due to heart attacks
+    and strokes, and one third of these deaths occur prematurely in people
+    under 70 years of age.So our heart is one of your body's most important
+    organs. The problem motivates us to build something related to this
+    cause which can help people get aware of themselves up to some level.
   </p>
   </div>
   <div  class="text__content container-sm">
     <h1>How we made it?</h1>
   </div>
-
   <div  class="text__content container-sm">
     <h1>Importing Python Libraries</h1>
     <p>
@@ -27,7 +26,7 @@
   </div>
 
   <div  class="text__content container-sm">
-     <p>•	<strong>NumPy</strong> is the fundamental package for scientific
+     <p><strong>1.NumPy</strong> is the fundamental package for scientific
         computing in Python. It is a Python library that provides a
         multidimensional array object, various derived objects
         (such as masked arrays and matrices), and an assortment
@@ -36,23 +35,23 @@
         selecting, I/O, discrete Fourier transforms,
         basic linear algebra, basic statistical operations,
         random simulation and much more.</p>
-     <p>•	<strong>Pandas</strong> is an open source, BSD-licensed
-       library providing high-performance, easy-to-use data structures
+     <p><strong>2.Pandas</strong> is an open source, BSD-licensed
+        library providing high-performance, easy-to-use data structures
         and data analysis tools for the Python programming language.</p>
-     <p>• <strong>TensorFlow</strong> is an end-to-end open-source
-       platform for machine learning. It’s a comprehensive and flexible
-       ecosystem of tools, libraries and other resources that provide
-       workflows with high-level APIs. The framework offers various
-       levels of concepts for you to choose the one you need to build
-       and deploy machine learning models.</p>
-     <p>•	<strong>Keras</strong> is a high-level neural networks library
-       that is running on the top of TensorFlow, CNTK, and Theano.
+     <p><strong>3.TensorFlow</strong> is an end-to-end open-source
+        platform for machine learning. It’s a comprehensive and flexible
+        ecosystem of tools, libraries and other resources that provide
+        workflows with high-level APIs. The framework offers various
+        levels of concepts for you to choose the one you need to build
+        and deploy machine learning models.</p>
+     <p><strong>4.Keras</strong> is a high-level neural networks library
+        that is running on the top of TensorFlow, CNTK, and Theano.
         Using Keras in deep learning allows for easy and fast prototyping
-         as well as running seamlessly on CPU and GPU. This framework is
-          written in Python code which is easy to debug and allows ease
-           for extensibility.</p>
-     <p>• <strong>TensorFlowjs</strong> is a library for machine learning
-       in JavaScript. Develop ML models in JavaScript, and use ML directly
+        as well as running seamlessly on CPU and GPU. This framework is
+        written in Python code which is easy to debug and allows ease
+        for extensibility.</p>
+     <p><strong>5.TensorFlowjs</strong> is a library for machine learning
+        in JavaScript. Develop ML models in JavaScript, and use ML directly
         in the browser or in Node.</p>
   </div>
 
@@ -64,7 +63,6 @@
         </a>
         <pre>
         <code #copyText1>
-          <!-- <span class="gr">as</span> -->
           <span class="bl"><span class="bl gr">import</span> matplotlib  <span class="bl gr">as</span> plt</span>
           <span class="bl"><span class=" bl gr">import</span> seaborn  <span class="bl gr">as</span> sns</span>
           <span class="bl"><span class="bl gr">import</span> numpy  <span class="bl gr">as</span> np</span>
@@ -94,7 +92,6 @@
         </a>
      <pre>
       <code #copyText2>
-        <!-- <span class="gr">as</span> -->
             <span class="bl gc">#Storing data from 'heart.csv' file</span>
             <span class="bl">data = pd.read_csv(<span class="bl rd">'heart.csv'</span>)</span>
             <span class="bl gc">#Selecting the columns to use for prediction in the neural network</span>
@@ -120,7 +117,6 @@
         </a>
      <pre>
       <code #copyText3>
-        <!-- <span class="gr">as</span> -->
               <span class="bl gc">#create model with fully connected layers with dropout regulation</span>
               <span class="bl">model = Sequential()</span>
               <span class="bl">model.add(Dense(12, input_dim=13, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'relu'</span>))</span>
@@ -139,6 +135,7 @@
   <div class="text__content container-sm">
     <h1>Converting keras model to TensorFlowjs  model</h1>
   </div>
+
   <div class="container-sm code__container">
     <div class="code__area">
       <div class="python__code">
@@ -150,35 +147,21 @@
               <span class="bl">tfjs.converters.save_keras_model(model,<span class="bl rd">'_dir_path'</span> );</span>
           </code>
         </pre>
-      </div>
     </div>
+   </div>
   </div>
-
-   <!-- <div class="code__area">
-    <div class="python__code">
-      <a class="icon">
-       <ion-icon (click)="copyCode(copyText2)" name="copy-outline"></ion-icon>
-      </a>
-     <pre>
-    <code #copyText2>
-
-      <span class="bl">#Import libraries for data wrangling, preprocessing and visualization</span>
-      <span class="bl gr">console.log("Hello World!");</span>
-    </code>
-  </pre>
-  </div>
-  </div> -->
-
-
-<!-- </div> -->
 </div>
 
-
 <style>
-   .text__content h1{
-     font-size:20px;
-     color:#000;
-   }
+  .text__content h1{
+    font-size:20px;
+    color:#000;
+    padding: 10px;
+    font-family: 'Nunito';
+    font-weight: 900;
+    margin-top: -30px;
+  }
+
   .docs__content{
     display: flex;
     flex-direction: column;
@@ -186,7 +169,10 @@
     height:100%;
     padding:10px;
     overflow:scroll;
+    font-family: 'Nunito';
+    font-size: large;
   }
+
   .text__content{
     display: flex;
     flex-direction: column;
@@ -194,19 +180,23 @@
     width:70%;
     margin-top:30px;
   }
+
   .bl{
     color:rgba(0, 0, 0, 0.7);
     font-family: 'Nunito';
     line-height:1.7;
     font-weight:400;
   }
+
   .gc{
     color:rgba(0,0,0,.4) !important;
     font-style: italic;
   }
+
   .rd{
     color: red !important;
   }
+
   .gr{
     color: green !important;
   }
@@ -223,33 +213,40 @@
     line-height:1.2em;
     border:1px solid rgb(194, 190, 190);
   }
+
   .python__code{
     background-color: #f7f7f7;
     width:70%;
   }
+
   .python__code pre code span{
     font-size: 14px;
     font-family: Nunito;
 
   }
+
   .python__code pre {
     margin: 0px 0px 0px;
     display:inline-flex;
   }
+
   .icon ion-icon[name="copy-outline"]{
     font-size:20px;
     padding:10px;
     color:gray;
     cursor: pointer;
   }
+
   .icon ion-icon[name="copy-outline"]:hover{
     color: rgb(48, 48, 48);
     transition: 0.3s ease-in-out;
   }
+
   .icon{
    position:relative;
    padding: 0;
   }
+
   ::selection{
     background:rgb(141, 141, 231);
   }

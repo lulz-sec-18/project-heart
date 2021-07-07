@@ -1,28 +1,22 @@
 import { PredictionService } from './../../services/prediction.service';
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-prediction',
   templateUrl: './prediction.component.html',
 })
-export class PredictionComponent implements OnInit {
+export class PredictionComponent {
   constructor(
     public predictionService: PredictionService,
     private _snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    this.predictionService
-      .predictResult([44, 0, 2, 118, 242, 0, 1, 149, 0, 0.3, 1, 1, 2])
-      .then((result) => console.log(result));
-  }
-
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action, {duration: 3000});
   }
 
-  fallbackCopyTextToClipboard(text) {
+  fallbackCopyTextToClipboard(text: string) {
     var textArea = document.createElement('textarea');
     textArea.value = text;
     textArea.select();
@@ -37,7 +31,7 @@ export class PredictionComponent implements OnInit {
     document.body.removeChild(textArea);
   }
 
-  copyTextToClipboard(text) {
+  copyTextToClipboard(text: string) {
     if (!navigator.clipboard) {
       this.fallbackCopyTextToClipboard(text);
       return;
@@ -52,7 +46,7 @@ export class PredictionComponent implements OnInit {
     );
   }
 
-  copyCode(el) {
+  copyCode(el: { childNodes: any[]; }) {
     let code = '';
 
     el.childNodes.forEach((node) => {
