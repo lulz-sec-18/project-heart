@@ -27,15 +27,17 @@ export class AddPatientComponent implements OnInit {
   }
 
   patientFormValueToString(controlName: string | (string | number)[],form:FormGroup) {
-    return form.get(controlName).value !== null ? this.patientForm.get(controlName).value.toString():null;
+    return form.get(controlName).value !== null ?
+           this.patientForm.get(controlName).value.toString() : null;
   }
 
   patientFormValueToInt(controlName: string | (string | number)[],form:FormGroup) {
-    return form.get(controlName).value !== null ? parseInt(this.patientForm.get(controlName).value) : null;
+    return form.get(controlName).value !== null ?
+           parseInt(this.patientForm.get(controlName).value) : null;
   }
 
   ngOnInit(): void {
-    this.currentUser = JSON.parse(localStorage.getItem('user'))
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.patientForm = new FormGroup({
       patientName: new FormControl(null, Validators.pattern(/^[a-z,',-]+(\s)[a-z,',-]+$/i)),
       age: new FormControl(null,),
@@ -62,11 +64,10 @@ export class AddPatientComponent implements OnInit {
         })
       ])
     })
-
   }
 
   onSubmit(form:FormGroup) {
-    this.patientAttributes={
+    this.patientAttributes = {
       age: this.patientFormValueToInt('age',form),
       gender: this.patientFormValueToInt('gender',form),
       chestPainType: this.patientFormValueToInt('chestPainType',form),
@@ -82,7 +83,6 @@ export class AddPatientComponent implements OnInit {
       thalassemia: this.patientFormValueToInt('thalassemia',form)
     }
 
-    console.log(this.getMedicine(form).value)
     this.newPatient = this.currentUser == null ? null : {
       doctor_uid: this.currentUser.uid,
       admission_time: Date.now(),
@@ -90,13 +90,12 @@ export class AddPatientComponent implements OnInit {
       gender: this.patientFormValueToInt('gender',form) == 1 ? "male" : "female",
       id: null,
       disease: this.patientFormValueToString('disease',form),
-      symptoms: this.patientFormValueToString('symptoms',form),//?.split(",", 2),
+      symptoms: this.patientFormValueToString('symptoms',form),
       prescribedDose: this.getMedicine(form).value,
       attributes: this.patientAttributes,
       attributesArray:Object.values(this.patientAttributes),
     }
-    console.log(this.newPatient)
     this.authService.createPatient(this.newPatient).then((err)=>console.log(err));
-    this.router.navigate(['/patient-list']);
+    this.router.navigate(['/dashboard/patient-list']);
   }
 }

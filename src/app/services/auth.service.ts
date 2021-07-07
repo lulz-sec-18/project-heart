@@ -22,7 +22,6 @@ export class AuthService {
     public ngZone: NgZone,
     public router: Router
   ) {
-
   /* Saving user data in localstorage when
   logged in and setting up null when logged out */
   this.afAuth.authState.subscribe((user) => {
@@ -46,8 +45,7 @@ export class AuthService {
     if(this.isLoggedIn()){
       const user = JSON.parse(localStorage.getItem('user'));
       this.patientsCollection = this.afs.collection<Patient>('patients', (ref) =>
-        ref.where('doctor_uid', '==', user.uid) //|| 'H9HgbzVQ7gSdme71Bc2KQ1MPaXD2')
-      )
+        ref.where('doctor_uid', '==', user.uid));
       this.patients = this.patientsCollection.valueChanges();
     }
   }
@@ -135,6 +133,7 @@ export class AuthService {
     this.router.navigate(['home']);
   }
 
+  // Creates a new Patient
   async createPatient(patient: Patient) {
     const id = this.afs.createId()
     const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
@@ -144,27 +143,16 @@ export class AuthService {
     return userRef.set(patient, {
       merge: true,
     });
-    // const id = await this.afs.createId();
-    // const modifiedPatient: Patient = await {...patient, id:id}
-    // this.patientsCollection.doc(id).set(modifiedPatient);
-    // console.log(patient)
   }
 
+  // Update Patient in firestore
   async updatePatient(patient: Patient) {
-    // const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
-    //   `patients/${patient.id}`
-    // );
-    // // patient = { doctor_uid: user.uid, ...patient };
-    // return userRef.update(patient);
     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
     await patientDoc.update(patient);
   }
 
+  // Delete patient from firestore
   async deletePatient(patient: Patient) {
-    // const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
-    //   `patients/${patient.id}`
-    // );
-    // return userRef.delete();
     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
     await patientDoc.delete()
   }

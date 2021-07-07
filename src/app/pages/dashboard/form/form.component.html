@@ -9,7 +9,7 @@
             [formGroup]="patientForm"
             (ngSubmit)="onSubmit()">
         <div class="col-md-12">
-          <label for="name" class="form-label">Full Name</label>
+          <label for="name" class="form-label">Full Name*</label>
           <input class="form-control"
                  id="name"
                  type="text"
@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="col-md-12 mt-3">
-          <label class="form-label">Gender</label>
+          <label class="form-label">Gender*</label>
           <select class="form-control"
                   name="gender"
                   required
@@ -38,7 +38,6 @@
                  name="disease"
                  placeholder="If any other disease"
                  formControlName="disease" >
-          <small class="form-text text-muted">Optional</small>
         </div>
         <div class="col-md-12 mt-3">
           <label class="form-label">Symptoms</label>
@@ -47,12 +46,11 @@
                  name="symptoms"
                  placeholder="symptoms"
                  formControlName="symptoms" >
-          <small class="form-text text-muted">Optional</small>
         </div>
         <div class="row">
           <div class="col-md-4">
             <div class="col-md-12 mt-3">
-              <label class="form-label">Age</label>
+              <label class="form-label">Age*</label>
               <input  class="form-control my-2"
                       type="number"
                       name="age"
@@ -74,7 +72,6 @@
                   <option value="3">Non-Anginal Pain</option>
                   <option value="4">Asymptomatic</option>
                 </select>
-                <small class="form-text text-muted">Optional</small>
               </div>
             </div>
           </div>
@@ -86,7 +83,6 @@
                      name="resting-bp"
                      placeholder="Resting blood pressure in mmhg"
                      formControlName="restingBp">
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -97,7 +93,6 @@
                      name="cholesterol"
                      placeholder="Cholesterol in mg/dl"
                      formControlName="cholesterol">
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -107,7 +102,6 @@
                      type="number"
                      placeholder="Fasting blood Suger in mg/dl"
                      formControlName="fastingBp" >
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -118,7 +112,6 @@
                 <option value="1"> Having ST-T Wave Abnormality</option>
                 <option value="2"> Showing  Left Ventricular Hypertrophy</option>
               </select>
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -129,7 +122,6 @@
                      name="name"
                      placeholder="Max heart rate"
                      formControlName="maxHeartRate" >
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -142,7 +134,6 @@
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -153,7 +144,6 @@
                      name="st-depression"
                      placeholder="Depression during exercise relative to rest"
                      formControlName="exerciseInducedDepression">
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -165,7 +155,6 @@
                 <option value="2">Flat</option>
                 <option value="3">Down Sloping</option>
               </select>
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -176,7 +165,6 @@
                      name="major-vessels"
                      placeholder="Number of major vessels"
                      formControlName="majorVessels">
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
@@ -189,7 +177,6 @@
                      max="7"
                      placeholder="Thalassemia number"
                      formControlName="thalassemia" >
-              <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="row">
@@ -199,7 +186,6 @@
               </button>
             </div>
           </div>
-
           <div class="col-md-12"
                *ngFor="let med of medicine.controls; let i=index">
             <div [formGroup]="med"
@@ -210,7 +196,6 @@
                        class="form-control"
                        name=""
                        formControlName="medicineName">
-                <small class="form-text text-muted">Optional</small>
               </div>
               <div class="col-md-4 mx-1 mt-3">
                 <label class="form-label">Dose</label>
@@ -218,7 +203,6 @@
                        type="number"
                        name=""
                        formControlName="dose">
-                <small class="form-text text-muted">Optional</small>
               </div>
               <div class="col-md-4 mx-3 mt-3">
                 <label class="form-label">Remarks(if any)</label>
@@ -226,7 +210,6 @@
                        type="text"
                        name=""
                        formControlName="remarks">
-                <small class="form-text text-muted">Optional</small>
               </div>
             </div>
           </div>
@@ -249,12 +232,12 @@
                   *ngIf="routeAddPatient">
                   Add Patient
           </button>
-          <button [disabled]="!patientForm?.valid"
+          <button [disabled]="!patientForm.valid"
                   id="submit"
                   type="submit"
                   class="btn btn-primary"
                   *ngIf="routeEditPatient">
-                  Update Patient
+                  Edit Patient
           </button>
         </div>
       </form>

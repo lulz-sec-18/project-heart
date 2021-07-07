@@ -38,7 +38,7 @@ export class FormComponent implements OnInit {
       this.routeAddPatient = true;
       this.routeEditPatient = false;
     }
-    else {
+    else if(this.router.url.search('edit-patient') > 0) {
       this.routeAddPatient = false;
       this.routeEditPatient = true;
     }
