@@ -1,7 +1,9 @@
-<div class="container">
+<div class="container" [ngClass]="isActive?'active':''">
   <div class="card"></div>
   <div class="card">
-    <button (click)="cancel()">Button</button>
+    <button class="close-icon"type="button" mat-icon-button (click)="cancel()">
+        <mat-icon>close</mat-icon>
+    </button>
     <h1 class="title">Login</h1>
     <form>
       <div class="input-container">
@@ -18,15 +20,16 @@
         <button type="button"
                 mat-icon-button
                 class="eyeIcon signin-visiblity-toggle">
-          <ion-icon name="eye-off" (click)="toggleVisiblity(signInPassword, $event)">
-          </ion-icon>
+          <mat-icon (click)="toggleVisiblity(signInPassword, $event)">
+            visibility
+          </mat-icon>
         </button>
         <label for="password">Password</label>
         <div class="bar"></div>
       </div>
       <p class="google-text">Or Login using</p>
       <div class="google-icon">
-        <button type="button" (click)="googleAuth()" mat-icon-button>
+        <button  type="button" (click)="googleAuth()" >
           <ion-icon name="logo-google"></ion-icon>
         </button>
       </div>
@@ -60,14 +63,19 @@
         <button type="button"
                 mat-icon-button
                 class="eyeIcon signup-visiblity-toggle">
-          <ion-icon name="ios-eye-outline" (click)="toggleVisiblity(signUpPassword, $event)">
-          </ion-icon>
         </button>
         <label for="password">Password</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
         <input type="password" required="required" #signUpRepeatPassword />
+         <button type="button"
+                mat-icon-button
+                class="eyeIcon signup-visiblity-toggle">
+          <mat-icon (click)="toggleVisiblity(signUpRepeatPassword, $event)">
+            visibility
+          </mat-icon>
+        </button>
         <label for="repeat-password">Repeat Password</label>
         <div class="bar"></div>
       </div>
@@ -309,6 +317,7 @@
     color: inherit;
     text-decoration: none;
     transition: 0.3s ease;
+    cursor: pointer;
   }
   .card .footer a:hover {
     color: #bababa;
@@ -412,7 +421,7 @@
   .eyeIcon {
     float: right;
     position: absolute;
-    bottom: 40px;
+    bottom: 10px;
     right: 0px;
     color: #f55c44;
     cursor: pointer;
