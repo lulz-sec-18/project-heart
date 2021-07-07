@@ -2,8 +2,18 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-html, body { height: 100%; }
+html,
+body {
+  height: 100%;
+}
 html {
   scroll-behavior: smooth;
 }
-body { margin: 0; font-family: 'Nunito' }
+body {
+  margin: 0;
+  font-family: "Nunito";
+}
+.modal-content{
+  background-color: transparent !important;
+  box-shadow: none !important;
+}

@@ -10,9 +10,6 @@
     </div>
     <div class="name">
       <p [innerText]="authService.userData.displayName"></p>
-      <h6 title="patients">
-        <ion-icon class="heart-icon" name="heart"></ion-icon>
-      </h6>
     </div>
     <div class="ds-info">
       <div class="button" (click)="authService.signOut()">
@@ -25,23 +22,13 @@
   </div>
 <style>
 
-  .card.profile-card {
-    background-color: blue;
-  }
+  
 
   a.btn{
     font-size: 200%;
   }
-  div.modal-content {
-    background-color: transparent !important;
-  }
-  .profile-modal .modal-content {
-    background: transparent;
-    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
-    -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
-    -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0);
-  }
+ 
+  
   .card.profile-card {
     z-index: 999;
     position: float;

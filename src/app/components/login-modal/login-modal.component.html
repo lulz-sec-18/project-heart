@@ -1,7 +1,9 @@
 <div class="container">
   <div class="card"></div>
   <div class="card">
-    <button (click)="cancel()">Button</button>
+    <button class="close-icon"type="button" mat-icon-button (click)="cancel()">
+        <mat-icon>close</mat-icon>
+    </button>
     <h1 class="title">Login</h1>
     <form>
       <div class="input-container">
@@ -26,7 +28,7 @@
       </div>
       <p class="google-text">Or Login using</p>
       <div class="google-icon">
-        <button type="button" (click)="googleAuth()" mat-icon-button>
+        <button  type="button" (click)="googleAuth()" >
           <ion-icon name="logo-google"></ion-icon>
         </button>
       </div>
