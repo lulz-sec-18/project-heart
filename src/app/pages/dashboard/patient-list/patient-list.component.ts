@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { Patient } from '../../../models/patient.model';
 
@@ -8,9 +9,19 @@ import { Patient } from '../../../models/patient.model';
 })
 export class PatientListComponent implements OnInit {
   patients: Patient[];
-  displayedColumns: string[] = ['position', 'name', 'admission_date'];
+  displayedColumns: string[] = [
+    'position',
+    'name',
+    'admission-date',
+    'prediction',
+    'edit-patient',
+    'delete-patient'
+  ];
   dataSource: Patient[];
-  constructor(public authService: AuthService) {}
+
+  constructor(
+    public authService: AuthService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.authService.patients.subscribe((patients) => {
@@ -20,7 +31,19 @@ export class PatientListComponent implements OnInit {
       });
       // this.patients = patients
       this.dataSource = this.patients;
-      console.log(patients);
+      console.log(this.patients);
     });
+  }
+
+  deletePatient(patient: Patient): void {
+    this.authService.deletePatient(patient);
+  }
+
+  editPatient(patient: Patient): void {
+    this.router.navigate(['/dashboard/edit-patient']);
+  }
+
+  openDetails(patient: Patient): void {
+    console.log('fuck off');
   }
 }

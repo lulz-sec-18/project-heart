@@ -1,6 +1,7 @@
   <div class="form-content">
     <div class="form-items">
-      <h3>Add Patient</h3>
+      <h3 *ngIf="routeAddPatient">Add Patient</h3>
+      <h3 *ngIf="routeEditPatient">Edit Patient</h3>
       <p>Fill in the data below.</p>
       <form class="needs-validation"
             [ngClass]="patientForm.valid ? 'was-validated' : ''"
@@ -244,8 +245,16 @@
           <button [disabled]="!patientForm.valid"
                   id="submit"
                   type="submit"
-                  class="btn btn-primary">
-                  Add
+                  class="btn btn-primary"
+                  *ngIf="routeAddPatient">
+                  Add Patient
+          </button>
+          <button [disabled]="!patientForm?.valid"
+                  id="submit"
+                  type="submit"
+                  class="btn btn-primary"
+                  *ngIf="routeEditPatient">
+                  Update Patient
           </button>
         </div>
       </form>

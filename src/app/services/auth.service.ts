@@ -22,8 +22,9 @@ export class AuthService {
     public ngZone: NgZone,
     public router: Router
   ) {
-    /* Saving user data in localstorage when
-    logged in and setting up null when logged out */
+
+  /* Saving user data in localstorage when
+  logged in and setting up null when logged out */
   this.afAuth.authState.subscribe((user) => {
     if (user) {
       this.userData = user;
@@ -35,13 +36,6 @@ export class AuthService {
       JSON.parse(localStorage.getItem('user'));
     }
   });
-    // H9HgbzVQ7gSdme71Bc2KQ1MPaXD2
-    // if(JSON.parse(localStorage.getItem('user'))?.emailVerified){
-    //   this.patientsCollection = afs.collection<Patient>('patients', (ref) =>
-    //     ref.where('doctor_uid', '==', JSON.parse(localStorage.getItem('user'))?.uid) //|| 'H9HgbzVQ7gSdme71Bc2KQ1MPaXD2')
-    //   )
-    //   this.patients = this.patientsCollection.valueChanges()
-    // }
   }
 
   get getUserData(): firebase.User {

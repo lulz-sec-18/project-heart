@@ -11,21 +11,28 @@ import { User } from '../../../models/user.model';
   templateUrl: './edit-patient.component.html',
 })
 export class EditPatientComponent implements OnInit {
-  editablePatientId:String;
-  patientForm:FormGroup;
-  patient:Patient;
-  loading:Boolean = true;
-  patientAttributes:PatientAttributes;
-  newPatient: Patient;
-  currentUser: User;
-  constructor(private route:ActivatedRoute,public authService:AuthService,private fb: FormBuilder) { }
+  editablePatientId!: string;
+  patientForm!: FormGroup;
+  patient!: Patient;
+  loading: boolean = true;
+  patientAttributes!: PatientAttributes;
+  newPatient!: Patient;
+  currentUser!: User;
+
+  constructor(
+    private route:ActivatedRoute,
+    public authService:AuthService,
+    private fb: FormBuilder
+  ) { }
 
   getMedicine(form:FormGroup){
     return form.get('medicine') as FormArray
   }
+
   get medicine(){
     return this.patientForm.get('medicine') as FormArray;
   }
+
   patientFormValueToString(controlName: string | (string | number)[],form:FormGroup) {
     return form.get(controlName).value !== null ? this.patientForm.get(controlName).value.toString():null;
   }
@@ -84,9 +91,8 @@ export class EditPatientComponent implements OnInit {
            })
          )
     })
-
-
   }
+
   onSubmit(form:FormGroup){
     this.patientAttributes={
       age: this.patientFormValueToInt('age',form),
@@ -118,6 +124,4 @@ export class EditPatientComponent implements OnInit {
       attributesArray:Object.values(this.patientAttributes),
     }
   }
-
 }
-

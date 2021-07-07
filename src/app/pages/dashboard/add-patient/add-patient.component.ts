@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from "src/app/services/auth.service";
 import { Patient } from "../../../models/patient.model";
 import { User } from "../../../models/user.model";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientAttributes } from '../../../models/patient-attributes.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-patient',
@@ -15,24 +16,15 @@ export class AddPatientComponent implements OnInit {
   newPatient: Patient;
   currentUser: User;
 
-  constructor(public authService: AuthService, private fb: FormBuilder) {
+  constructor(
+    public authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router) {
   }
 
   getMedicine(form:FormGroup) {
     return form.get('medicine') as FormArray
   }
-  // get patientName() {
-  //   return this.patientForm.get('patientName');
-  // }
-
-  // addMedicine() {
-  //   this.medicine.push(
-  //     this.fb.group({
-  //       medicineName: ['',],
-  //       dose: ['', [Validators.min(1), Validators.max(10)]],
-  //       remarks: ['']
-  //     }))
-  // }
 
   patientFormValueToString(controlName: string | (string | number)[],form:FormGroup) {
     return form.get(controlName).value !== null ? this.patientForm.get(controlName).value.toString():null;
@@ -62,8 +54,8 @@ export class AddPatientComponent implements OnInit {
       majorVessels: new FormControl(null),
       thalassemia: new FormControl(null),
       confirm: new FormControl(false),
-      medicine: this.fb.array([
-        this.fb.group({
+      medicine: this.formBuilder.array([
+        this.formBuilder.group({
           medicineName: [''],
           dose: ['', [Validators.min(1), Validators.max(10)]],
           remarks: ['']
@@ -104,6 +96,7 @@ export class AddPatientComponent implements OnInit {
       attributesArray:Object.values(this.patientAttributes),
     }
     console.log(this.newPatient)
-    this.authService.createPatient(this.newPatient).then((err)=>console.log(err))
+    this.authService.createPatient(this.newPatient).then((err)=>console.log(err));
+    this.router.navigate(['/patient-list']);
   }
 }

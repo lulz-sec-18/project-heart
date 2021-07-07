@@ -1,6 +1,5 @@
 import { Medicine } from "./medicines.model";
-import {PatientAttributes} from "./patient-attributes.model";
-
+import { PatientAttributes } from "./patient-attributes.model";
 
 export interface Patient {
   doctor_uid: string;
