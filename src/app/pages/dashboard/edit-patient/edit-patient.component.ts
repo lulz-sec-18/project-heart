@@ -9,7 +9,6 @@ import { User } from '../../../models/user.model';
 @Component({
   selector: 'app-edit-patient',
   templateUrl: './edit-patient.component.html',
-  styleUrls: ['./edit-patient.component.css']
 })
 export class EditPatientComponent implements OnInit {
   editablePatientId:String;

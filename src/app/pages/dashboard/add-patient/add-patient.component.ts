@@ -8,7 +8,6 @@ import { PatientAttributes } from '../../../models/patient-attributes.model';
 @Component({
   selector: 'app-add-patient',
   templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
 })
 export class AddPatientComponent implements OnInit {
   patientForm: FormGroup;

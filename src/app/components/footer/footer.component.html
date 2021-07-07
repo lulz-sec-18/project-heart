@@ -1,26 +1,21 @@
 <footer>
-  <mat-grid-list cols="2" rowHeight="80px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <div class="footer-text">
-        <p>Made with 💗 by Ajay & Mridul</p>
-        <p></p>
-      </div>
-    </mat-grid-tile>
+  <mat-grid-list cols="2" rows="1" rowHeight="150px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="social-icons">
-        <a href="#">
+        <a href="https://github.com/lulz-sec-18/project-heart">
           <ion-icon name="logo-github"></ion-icon>
         </a>
-        <a href="#">
+        <a href="https://github.com/lulz-sec-18/project-heart">
           <ion-icon name="logo-instagram"></ion-icon>
         </a>
-        <a href="#">
+        <a href="https://github.com/lulz-sec-18/project-heart">
           <ion-icon name="logo-linkedin"></ion-icon>
         </a>
       </div>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="2" [rowspan]="1">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
       <div class="copyright">
+        <p class="py-2 mb-0">Made with ❤️ by Ajay & Mridul</p>
         <p class="py-2 mb-0">© Wellheart All rights reserved.</p>
       </div>
     </mat-grid-tile>
@@ -29,32 +24,35 @@
 
 <style>
   footer {
-  background-color: black;
-}
-.social-icons {
-  position: absolute;
-  display: flex;
-  right: 5%;
-}
-.social-icons a ion-icon {
-  font-size: 40px;
-  color: #f55c44;
-  padding: 20px;
-}
-.social-icons a ion-icon:hover {
-  animation: pulse;
-  animation-duration: 0.8s;
-  color: #f7a38e;
-}
-.copyright p {
-  color: rgb(187, 185, 185);
-  font-size: 18px;
-}
-.footer-text p {
-  font-size: 20px;
-  color: rgb(187, 185, 185);
-  position: relative;
-  left: 80%;
-}
+    background-color: black;
+  }
+
+  .social-icons {
+    position: absolute;
+    display: flex;
+    right: 5%;
+  }
+
+  .social-icons a ion-icon {
+    font-size: 40px;
+    color: #f55c44;
+    padding: 20px;
+  }
+
+  .social-icons a ion-icon:hover {
+    animation: pulse;
+    animation-duration: 0.8s;
+    color: #f7a38e;
+  }
+
+  .copyright p {
+    color: white;
+    font-size: 18px;
+  }
+
+  .footer-text p {
+    color: white;
+    font-size: 18px;
+  }
 
 </style>

@@ -8,6 +8,7 @@ import { AuthService } from './services/auth.service';
 import { PredictionService } from 'src/app/services/prediction.service';
 import { SharedComponentsModule } from './components/shared.component.module';
 import { IonicModule } from '@ionic/angular';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,10 @@ import { IonicModule } from '@ionic/angular';
     SharedComponentsModule,
     IonicModule.forRoot()
   ],
-  providers: [AuthService, PredictionService],
+  providers: [
+    AuthService,
+    PredictionService,
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

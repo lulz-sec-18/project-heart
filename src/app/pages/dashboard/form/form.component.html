@@ -2,52 +2,72 @@
     <div class="form-items">
       <h3>Add Patient</h3>
       <p>Fill in the data below.</p>
-      <form class="needs-validation" [ngClass]="patientForm.valid ? 'was-validated' : ''" novalidate [formGroup]="patientForm" (ngSubmit)="onSubmit()">
-
+      <form class="needs-validation"
+            [ngClass]="patientForm.valid ? 'was-validated' : ''"
+            novalidate
+            [formGroup]="patientForm"
+            (ngSubmit)="onSubmit()">
         <div class="col-md-12">
           <label for="name" class="form-label">Full Name</label>
-          <input class="form-control" id="name" type="text" name="patientName" placeholder="Full Name" required formControlName="patientName" >
-          <!--              <div class="invalid my-1 mx-2" *ngIf="patientName.invalid && patientName.touched">-->
-          <!--                Please enter valid name-->
-          <!--              </div>-->
+          <input class="form-control"
+                 id="name"
+                 type="text"
+                 name="patientName"
+                 placeholder="Full Name"
+                 required
+                 formControlName="patientName">
           <div class="invalid-feedback">
             Looks good!
           </div>
         </div>
-
         <div class="col-md-12 mt-3">
           <label class="form-label">Gender</label>
-          <select class="form-control" name="gender" required formControlName="gender" >
+          <select class="form-control"
+                  name="gender"
+                  required
+                  formControlName="gender" >
             <option value="1">Male</option>
             <option value="0">Female</option>
           </select>
         </div>
-
         <div class="col-md-12 mt-3">
           <label class="form-label">Disease</label>
-          <input class="form-control" type="text" name="disease" placeholder="If any other disease"  formControlName="disease" >
+          <input class="form-control"
+                 type="text"
+                 name="disease"
+                 placeholder="If any other disease"
+                 formControlName="disease" >
           <small class="form-text text-muted">Optional</small>
         </div>
-
         <div class="col-md-12 mt-3">
           <label class="form-label">Symptoms</label>
-          <input class="form-control" type="text" name="symptoms" placeholder="symptoms"  formControlName="symptoms" >
+          <input class="form-control"
+                 type="text"
+                 name="symptoms"
+                 placeholder="symptoms"
+                 formControlName="symptoms" >
           <small class="form-text text-muted">Optional</small>
         </div>
-
-
         <div class="row">
           <div class="col-md-4">
             <div class="col-md-12 mt-3">
               <label class="form-label">Age</label>
-              <input  class="form-control my-2" type="number" name="age" min="1" max="120" placeholder="Age" required formControlName="age" >
+              <input  class="form-control my-2"
+                      type="number"
+                      name="age"
+                      min="1"
+                      max="120"
+                      placeholder="Age"
+                      required
+                      formControlName="age">
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-4">
               <div class="form-group">
                 <label class="form-label">Chest Pain Type</label>
-                <select class="form-control"  formControlName="chestPainType">
+                <select class="form-control"
+                        formControlName="chestPainType">
                   <option value="1">Typical Angina</option>
                   <option value="2">Atypical Angina</option>
                   <option value="3">Non-Anginal Pain</option>
@@ -60,21 +80,32 @@
           <div class="col-md-4">
             <div class="col-md-12 mt-4">
               <label class="form-label">Resting Blood Pressure</label>
-              <input class="form-control" type="number" name="resting-bp" placeholder="Resting blood pressure in mmhg"  formControlName="restingBp" >
+              <input class="form-control"
+                     type="number"
+                     name="resting-bp"
+                     placeholder="Resting blood pressure in mmhg"
+                     formControlName="restingBp">
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Cholestrol</label>
-              <input class="form-control" type="number" name="cholesterol" placeholder="Cholesterol in mg/dl "   formControlName="cholesterol">
+              <input class="form-control"
+                     type="number"
+                     name="cholesterol"
+                     placeholder="Cholesterol in mg/dl"
+                     formControlName="cholesterol">
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Fasting Blood Suger</label>
-              <input class="form-control" type="number"  placeholder="Fasting blood Suger in mg/dl"  formControlName="fastingBp" >
+              <input class="form-control"
+                     type="number"
+                     placeholder="Fasting blood Suger in mg/dl"
+                     formControlName="fastingBp" >
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
@@ -92,14 +123,21 @@
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Maximum Heart Rate</label>
-              <input class="form-control" type="number" name="name" placeholder="Max heart rate"  formControlName="maxHeartRate" >
+              <input class="form-control"
+                     type="number"
+                     name="name"
+                     placeholder="Max heart rate"
+                     formControlName="maxHeartRate" >
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Exercise Induced Angina</label>
-              <select name="" id="" class="form-control" formControlName="exerciseInducedAngina">
+              <select name=""
+                      id=""
+                      class="form-control"
+                      formControlName="exerciseInducedAngina">
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
@@ -109,14 +147,19 @@
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">ST Ddepression(Old Peak)</label>
-              <input class="form-control" type="text" name="st-depression" placeholder="Depression during exercise relative to rest"   formControlName="exerciseInducedDepression">
+              <input class="form-control"
+                     type="text"
+                     name="st-depression"
+                     placeholder="Depression during exercise relative to rest"
+                     formControlName="exerciseInducedDepression">
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">ST Slope</label>
-              <select name="st-slope" class="form-control" formControlName="slopeOfStSegment">
+              <select name="st-slope" class="form-control"
+                      formControlName="slopeOfStSegment">
                 <option value="1">Up Sloping</option>
                 <option value="2">Flat</option>
                 <option value="3">Down Sloping</option>
@@ -127,52 +170,187 @@
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Major Vessels</label>
-              <input class="form-control" type="number" name="major-vessels" placeholder="Number of major vessels"  formControlName="majorVessels">
+              <input class="form-control"
+                     type="number"
+                     name="major-vessels"
+                     placeholder="Number of major vessels"
+                     formControlName="majorVessels">
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="col-md-4">
             <div class="col-md-12 mt-2">
               <label class="form-label">Thalassemia</label>
-              <input class="form-control" type="number" name="thalassemia" min="1" max="7" placeholder="Thalassemia number"  formControlName="thalassemia" >
+              <input class="form-control"
+                     type="number"
+                     name="thalassemia"
+                     min="1"
+                     max="7"
+                     placeholder="Thalassemia number"
+                     formControlName="thalassemia" >
               <small class="form-text text-muted">Optional</small>
             </div>
           </div>
           <div class="row">
             <div class="col-md-3 offset-md-5  my-2">
-              <button class="btn btn-primary" (click)="addMedicine()">Add Medicine</button>
+              <button class="btn btn-primary"
+                      (click)="addMedicine()">Add medicine
+              </button>
             </div>
           </div>
 
-          <div class="col-md-12" *ngFor="let med of medicine.controls; let i=index">
-            <div [formGroup]="med" class="medicine-form" >
+          <div class="col-md-12"
+               *ngFor="let med of medicine.controls; let i=index">
+            <div [formGroup]="med"
+                 class="medicine-form" >
               <div class="col-md-4 mx-1 mt-3">
                 <label class="form-label">{{"Medicine "+(i+1)+" Name"}}</label>
-                <input type="text" class="form-control" name="" formControlName="medicineName">
+                <input type="text"
+                       class="form-control"
+                       name=""
+                       formControlName="medicineName">
                 <small class="form-text text-muted">Optional</small>
               </div>
               <div class="col-md-4 mx-1 mt-3">
                 <label class="form-label">Dose</label>
-                <input class="form-control" type="number" name="" formControlName="dose">
+                <input class="form-control"
+                       type="number"
+                       name=""
+                       formControlName="dose">
                 <small class="form-text text-muted">Optional</small>
               </div>
               <div class="col-md-4 mx-3 mt-3">
                 <label class="form-label">Remarks(if any)</label>
-                <input class="form-control" type="text" name="" formControlName="remarks">
+                <input class="form-control"
+                       type="text"
+                       name=""
+                       formControlName="remarks">
                 <small class="form-text text-muted">Optional</small>
               </div>
             </div>
           </div>
 
           <div class="form-check mt-3">
-            <input class="form-check-input" type="checkbox"  id="invalidCheck" required formControlName="confirm">
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="invalidCheck"
+                   required
+                   formControlName="confirm">
             <label class="form-check-label">I confirm that all data are correct</label>
             <div class="invalid-feedback">Please confirm that the entered data are all correct!</div>
           </div>
         </div>
         <div class="form-button mt-3">
-          <button [disabled]="!patientForm.valid" id="submit" type="submit" class="btn btn-primary">Add</button>
+          <button [disabled]="!patientForm.valid"
+                  id="submit"
+                  type="submit"
+                  class="btn btn-primary">
+                  Add
+          </button>
         </div>
       </form>
     </div>
   </div>
+
+<style>
+
+  .form-content{
+    background-color: black;
+    height:91vh;
+    overflow-y: auto;
+  }
+
+  .form-label{
+    color: white !important;
+  }
+
+  .form-content .form-items {
+    border: 3px solid #fff;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+
+  .form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-family: Nunito;
+  }
+
+  .form-content h3.form-title {
+    margin-bottom: 30px;
+  }
+
+  .form-content p {
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+  }
+
+  .form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: #fff;
+  }
+
+  .btn-primary{
+    background-color: #6C757D;
+    outline: none;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #495056;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+  }
+
+  .btn-outline-secondary{
+    color: #f55c44 !important;
+    border: #f55c44 !important;
+  }
+  .btn-outline-secondary:active{
+    background-color: #f55c44 !important ;
+  }
+  .medicine-form{
+    display: flex;
+    align-items: center;
+  }
+  .valid{
+    color:greenyellow;
+  }
+  .invalid{
+    color:red;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+</style>

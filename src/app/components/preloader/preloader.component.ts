@@ -5,8 +5,8 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
   templateUrl: './preloader.component.html',
 })
 export class PreloaderComponent {
-  preloaderFadeOutTime: number;
-  @ViewChild('spinner-wrapper') spinner: ElementRef;
+  preloaderFadeOutTime!: number;
+  @ViewChild('spinner-wrapper') spinner!: ElementRef;
 
   constructor() {}
 

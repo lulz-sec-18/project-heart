@@ -6,6 +6,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
 
 const materialModules = [
   MatIconModule,
@@ -14,6 +15,7 @@ const materialModules = [
   MatDividerModule,
   MatTableModule,
   MatSnackBarModule,
+  MatMenuModule
 ];
 
 @NgModule({

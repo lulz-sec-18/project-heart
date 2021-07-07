@@ -2,65 +2,56 @@
   <div class="nav-left-sidebar sidebar-dark">
     <div class="menu-list">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="d-xl-none d-lg-none" href="#">Dashboard</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+        <a class="d-xl-none d-lg-none">Dashboard</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                routerLink="/dashboard/patient-list"
+                routerLinkActive="active">
          <mat-icon>menu</mat-icon>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav flex-column">
             <li class="nav-divider">Menu</li>
             <li class="nav-item">
-              <a
-                class="nav-link active"
-                href="#"
-                data-toggle="collapse"
-                aria-expanded="false"
-                data-target="#submenu-1"
-                aria-controls="submenu-1">
-                <mat-icon class="dashboard-icon">account_circle</mat-icon>Dashboard
-             </a>
+              <a class="nav-link active"
+                 routerLink="/dashboard/patient-list"
+                 routerLinkActive="active"
+                 data-toggle="collapse"
+                 aria-expanded="false"
+                 data-target="#submenu-1"
+                 aria-controls="submenu-1">
+                <mat-icon class="dashboard-icon">account_circle</mat-icon>Dashboard</a>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                href="#"
-                data-toggle="collapse"
-                aria-expanded="false"
-                data-target="#submenu-2"
-                aria-controls="submenu-2">
+              <a mat-button [matMenuTriggerFor]="menu"
+                 class="nav-link"
+                 href="#"
+                 (click)="false"
+                 data-toggle="collapse">
                <mat-icon class="dashboard-icon">favorite</mat-icon>Patients</a>
-              <div id="submenu-2" class="collapse submenu">
-                <ul class="nav flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="">Add patient</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">Add Patient Data</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="">Edit Patient</a>
-                  </li>
-                </ul>
-              </div>
+               <mat-menu #menu="matMenu">
+                 <button mat-menu-item routerLink="/dashboard/add-patient" routerLinkActive="active">
+                  Add Patient
+                 </button>
+                 <button mat-menu-item routerLink="/dashboard/edit-patient" routerLinkActive="active">
+                  Edit Patient
+                 </button>
+               </mat-menu>
             </li>
             <li class="nav-item">
-              <a
-                class="nav-link"
-                href="#"
-                data-toggle="collapse"
-                aria-expanded="false"
-                data-target="#submenu-3"
-                aria-controls="submenu-3">
-               <mat-icon class="dashboard-icon">assessment</mat-icon>
-               Patient data</a>
+              <a class="nav-link"
+                 routerLink="/dashboard/patient-details"
+                 routerLinkActive="active"
+                 data-toggle="collapse"
+                 aria-expanded="false"
+                 data-target="#submenu-3"
+                 aria-controls="submenu-3">
+               <mat-icon class="dashboard-icon">assessment</mat-icon>Patient data</a>
             </li>
           </ul>
         </div>
@@ -68,13 +59,8 @@
     </div>
   </div>
 </div>
+
 <div class="tabs">
-  <div>
-    <button routerLink="/dashboard/add-patient" routerLinkActive="active">Add patient</button>
-    <button routerLink="/dashboard/edit-patient" routerLinkActive="active">Edit Patient</button>
-    <button routerLink="/dashboard/patient-details" routerLinkActive="active">Patient Details</button>
-    <button routerLink="/dashboard/patient-list" routerLinkActive="active">Patient list</button>
-  </div>
   <div class="content">
     <router-outlet></router-outlet>
   </div>
@@ -82,12 +68,10 @@
 
 <style>
   .tabs {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    width: 60%;
-    /*border: 5px solid #FFFF00;*/
-    padding: 10px;
+    margin-top: -45px;
+    width: 100%;
+    padding-left: 265px;
+    overflow-x: auto;
    }
   a {
     margin: 10px;
@@ -96,7 +80,3 @@
     margin-top: 50px;
   }
 </style>
-
-
-
-
