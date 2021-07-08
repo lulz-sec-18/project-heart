@@ -22,7 +22,7 @@
 <!--  Edit Patient Column-->
   <ng-container matColumnDef="edit-patient">
     <th mat-header-cell *matHeaderCellDef> Edit Patient </th>
-    <td mat-cell *matCellDef="let element"><mat-icon (click)="editPatient(element)">edit</mat-icon></td>
+    <td mat-cell *matCellDef="let element"><mat-icon [routerLink]="['/dashboard/edit-patient',element.id]">edit</mat-icon></td>
   </ng-container>
 <!--  Delete Patient Column-->
   <ng-container matColumnDef="delete-patient">
