@@ -17,7 +17,7 @@
 <!--  Prediction Column-->
   <ng-container matColumnDef="prediction">
     <th mat-header-cell *matHeaderCellDef> Prediction </th>
-    <td mat-cell *matCellDef="let element">NA</td>
+    <td mat-cell *matCellDef="let element">{{ element.condition }}</td>
   </ng-container>
 <!--  Edit Patient Column-->
   <ng-container matColumnDef="edit-patient">

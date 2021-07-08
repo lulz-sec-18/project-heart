@@ -5,6 +5,7 @@ import { User } from "../../../models/user.model";
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PatientAttributes } from '../../../models/patient-attributes.model';
 import { Router } from '@angular/router';
+import { PredictionService } from 'src/app/services/prediction.service';
 
 @Component({
   selector: 'app-add-patient',
@@ -15,12 +16,14 @@ export class AddPatientComponent implements OnInit {
   patientAttributes:PatientAttributes;
   newPatient: Patient;
   currentUser: User;
+  predictionResult;
 
   constructor(
     public authService: AuthService,
     private formBuilder: FormBuilder,
-    private router: Router) {
-  }
+    private router: Router,
+    private predictionService: PredictionService
+  ) {}
 
   getMedicine(form:FormGroup) {
     return form.get('medicine') as FormArray
@@ -66,6 +69,14 @@ export class AddPatientComponent implements OnInit {
     })
   }
 
+  async calculateResult(patientDetails: PatientAttributes) {
+    await this.predictionService.predictResult(
+      Object.values(patientDetails)).then((value) => {
+        this.predictionResult = value[0];
+        console.log(value[0]);
+      });
+  }
+
   onSubmit(form:FormGroup) {
     this.patientAttributes = {
       age: this.patientFormValueToInt('age',form),
@@ -83,6 +94,8 @@ export class AddPatientComponent implements OnInit {
       thalassemia: this.patientFormValueToInt('thalassemia',form)
     }
 
+    this.calculateResult(this.patientAttributes);
+
     this.newPatient = this.currentUser == null ? null : {
       doctor_uid: this.currentUser.uid,
       admission_time: Date.now(),
@@ -93,8 +106,10 @@ export class AddPatientComponent implements OnInit {
       symptoms: this.patientFormValueToString('symptoms',form),
       prescribedDose: this.getMedicine(form).value,
       attributes: this.patientAttributes,
-      attributesArray:Object.values(this.patientAttributes),
+      attributesArray: Object.values(this.patientAttributes),
+      condition: this.predictionResult
     }
+    console.log(this.newPatient);
     this.authService.createPatient(this.newPatient).then((err)=>console.log(err));
     this.router.navigate(['/dashboard/patient-list']);
   }

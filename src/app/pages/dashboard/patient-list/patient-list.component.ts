@@ -44,6 +44,6 @@ export class PatientListComponent implements OnInit {
   }
 
   openDetails(patient: Patient): void {
-    console.log('fuck off');
+    console.log(this.dataSource);
   }
 }
