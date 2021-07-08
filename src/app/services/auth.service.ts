@@ -135,14 +135,19 @@ export class AuthService {
 
   // Creates a new Patient
   async createPatient(patient: Patient) {
-    const id = this.afs.createId()
-    const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
+    try {
+      const id = this.afs.createId()
+      const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
       `patients/${id}`
     );
     patient = {...patient,id:id}
     return userRef.set(patient, {
       merge: true,
     });
+    } catch (error) {
+      return error;
+    }
+    
   }
 
   // Update Patient in firestore

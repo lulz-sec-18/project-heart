@@ -1,5 +1,7 @@
+import { PatientAttributes } from './../models/patient-attributes.model';
 import { Injectable } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -9,16 +11,16 @@ export class PredictionService {
   dataLength = 13;
   constructor() {}
 
-  async predictResult(data: number[]) {
+  async predictResult(patientData:PatientAttributes,callBack) {
     this.model = await tf.loadLayersModel('../assets/web/trial-models/model.json');
+    let data = Object.values(patientData);
     const dataTensor = tf.tensor2d(data, [1, data.length])
-    if (data.length === this.dataLength) {
+    if (data.length === this.dataLength && !data.some(el=>el == null)){
       const prediction = this.model.predict(dataTensor);
       const values = prediction.dataSync();
-      console.log(this.model);
-      return Array.from(values);
+      callBack(Array.from(values));
     } else {
-      return -1;
+      callBack(-1)
     }
   }
 }
