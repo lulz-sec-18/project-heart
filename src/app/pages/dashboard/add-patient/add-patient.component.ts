@@ -105,13 +105,7 @@ export class AddPatientComponent implements OnInit {
       ]),
     });
   }
-  // async calculateResult(patientDetails: PatientAttributes) {
-  //   await this.predictionService.predictResult(
-  //     Object.values(patientDetails)).then((value) => {
-  //       this.predictionResult = value[0];
-  //       console.log(value[0]);
-  //     });
-  // }
+  
 
   async onSubmit(form: FormGroup) {
     this.patientAttributes = {

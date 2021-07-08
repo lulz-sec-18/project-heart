@@ -152,8 +152,13 @@ export class AuthService {
 
   // Update Patient in firestore
   async updatePatient(patient: Patient) {
-    const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
-    await patientDoc.update(patient);
+    try {
+     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
+     await patientDoc.update(patient);
+    } catch (error) {
+      return error;
+    }
+    
   }
 
   // Delete patient from firestore
