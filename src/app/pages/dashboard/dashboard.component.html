@@ -18,7 +18,7 @@
           <ul class="navbar-nav flex-column">
             <li class="nav-divider">Menu</li>
             <li class="nav-item">
-              <a class="nav-link active"
+              <a class="nav-link"
                  routerLink="/dashboard/patient-list"
                  routerLinkActive="active"
                  data-toggle="collapse"
@@ -28,23 +28,16 @@
                 <mat-icon class="dashboard-icon">account_circle</mat-icon>Dashboard</a>
             </li>
             <li class="nav-item">
-              <a mat-button [matMenuTriggerFor]="menu"
-                 class="nav-link"
-                 href="#"
-                 (click)="false"
-                 data-toggle="collapse">
-               <mat-icon class="dashboard-icon">favorite</mat-icon>Patients</a>
-               <mat-menu #menu="matMenu">
-                 <button mat-menu-item routerLink="/dashboard/add-patient" routerLinkActive="active">
-                  Add Patient
-                 </button>
-                 <button mat-menu-item routerLink="/dashboard/edit-patient/
-2iDbgk6WnRm7rkaVGSPp
-" routerLinkActive="active">
-                  Edit Patient
-                 </button>
-               </mat-menu>
+              <a class="nav-link"
+                 routerLink="/dashboard/add-patient"
+                 routerLinkActive="active"
+                 data-toggle="collapse"
+                 aria-expanded="false"
+                 data-target="#submenu-1"
+                 aria-controls="submenu-1">
+                <mat-icon class="dashboard-icon">person_add</mat-icon>Add Patient</a>
             </li>
+          
             <li class="nav-item">
               <a class="nav-link"
                  routerLink="/dashboard/patient-details"

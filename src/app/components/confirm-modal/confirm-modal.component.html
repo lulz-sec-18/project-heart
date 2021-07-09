@@ -1,0 +1,32 @@
+<div class="modal__wrapper">
+  <div class="modal-header">
+  <button
+    type="button"
+    class="close"
+    aria-label="Close"
+    (click)="ngbActiveModal.dismiss('cancel')"
+  >
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <h4 class="modal-title">Do you really want to delete this patient?</h4>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-danger"
+    (click)="ngbActiveModal.close('delete')"
+  >
+    Delete
+  </button>
+</div>
+</div>
+
+<style>
+  .modal__wrapper{
+    background-color: #FFF;
+  }
+</style>
+
+

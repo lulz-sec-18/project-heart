@@ -23,7 +23,8 @@ export class AddPatientComponent implements OnInit {
   patientAttributes: PatientAttributes;
   newPatient: Patient;
   currentUser: User;
-  predictionResult;
+  predictionResult:number;
+  loading:boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -108,6 +109,7 @@ export class AddPatientComponent implements OnInit {
   
 
   async onSubmit(form: FormGroup) {
+    this.loading = true;
     this.patientAttributes = {
       age: this.patientFormValueToInt('age', form),
       gender: this.patientFormValueToInt('gender', form),
@@ -162,6 +164,7 @@ export class AddPatientComponent implements OnInit {
         this._snackBar.open('Patient Added Successfully', 'Success', {
           duration: 2000,
         });
+        this.loading = false;
         this.router.navigate(['/dashboard/patient-list']);
       }
     });
