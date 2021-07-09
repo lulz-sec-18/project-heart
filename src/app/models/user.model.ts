@@ -1,5 +1,3 @@
-// import {patient} from './patient'
-
 export interface User {
   uid: string;
   email: string;
