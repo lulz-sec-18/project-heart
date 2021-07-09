@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class FormComponent implements OnInit {
   @Input() patientForm!: FormGroup;
+  @Input() loading!: boolean;
   @Output() onFormSubmit = new EventEmitter<FormGroup>();
+  childPatientForm!: FormGroup;
   routeAddPatient: boolean = false;
   routeEditPatient: boolean = false;
 
@@ -29,8 +31,9 @@ export class FormComponent implements OnInit {
       }))
   }
 
-  onSubmit(){
-    this.onFormSubmit.emit(this.patientForm);
+  onSubmit() {
+    this.childPatientForm = this.patientForm
+    this.onFormSubmit.emit(this.childPatientForm);
   }
 
   ngOnInit(): void {

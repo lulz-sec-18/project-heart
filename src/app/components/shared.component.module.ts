@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component'
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
     IonicModule.forRoot()
   ],
   declarations: [
+    ConfirmModalComponent,
     FooterComponent,
     TopNavigationBarComponent,
     PreloaderComponent,

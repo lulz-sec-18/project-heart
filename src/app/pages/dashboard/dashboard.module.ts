@@ -9,6 +9,7 @@ import { PatientDetailsComponent } from './patient-details/patient-details.compo
 import { PatientListComponent } from './patient-list/patient-list.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { FormComponent } from './form/form.component';
     AddPatientComponent,
     PatientDetailsComponent,
     EditPatientComponent,
-    FormComponent
+    FormComponent,
+    SpinnerComponent,
   ],
   entryComponents: [
     DashboardComponent,

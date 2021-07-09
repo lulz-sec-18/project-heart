@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 import { Patient } from '../../../models/patient.model';
+import { ConfirmModalComponent } from '../../../components/confirm-modal/confirm-modal.component';
 
 @Component({
   selector: 'app-patient-list',
@@ -21,7 +22,7 @@ export class PatientListComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    private router: Router) {}
+    public ngbModal:NgbModal) {}
 
   ngOnInit(): void {
     this.authService.patients.subscribe((patients) => {
@@ -29,18 +30,17 @@ export class PatientListComponent implements OnInit {
         let date = new Date(patient.admission_time).toDateString();
         return { ...patient, admission_time: date };
       });
-      // this.patients = patients
       this.dataSource = this.patients;
       console.log(this.patients);
     });
   }
 
   deletePatient(patient: Patient): void {
-    this.authService.deletePatient(patient);
-  }
-
-  editPatient(patient: Patient): void {
-    this.router.navigate(['/dashboard/edit-patient']);
+    this.ngbModal.open(ConfirmModalComponent).result.then((result) => {
+      if (result == 'delete') {
+        this.authService.deletePatient(patient);
+      }
+    })
   }
 
   openDetails(patient: Patient): void {

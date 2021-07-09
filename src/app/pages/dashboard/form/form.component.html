@@ -1,4 +1,5 @@
-  <div class="form-content">
+  <app-spinner *ngIf="loading"></app-spinner>
+  <div class="form-content" *ngIf="!loading">
     <div class="form-items">
       <h3 *ngIf="routeAddPatient">Add Patient</h3>
       <h3 *ngIf="routeEditPatient">Edit Patient</h3>
