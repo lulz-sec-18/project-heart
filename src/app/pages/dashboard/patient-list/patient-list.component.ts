@@ -19,18 +19,21 @@ export class PatientListComponent implements OnInit {
     'delete-patient'
   ];
   dataSource: Patient[];
+  loading: boolean = false;
 
   constructor(
     public authService: AuthService,
     public ngbModal:NgbModal) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.authService.patients.subscribe((patients) => {
       this.patients = patients.map((patient: Patient) => {
         let date = new Date(patient.admission_time).toDateString();
         return { ...patient, admission_time: date };
       });
       this.dataSource = this.patients;
+      this.loading = false;
       console.log(this.patients);
     });
   }

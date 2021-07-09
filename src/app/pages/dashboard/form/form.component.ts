@@ -34,6 +34,7 @@ export class FormComponent implements OnInit {
   onSubmit() {
     this.childPatientForm = this.patientForm
     this.onFormSubmit.emit(this.childPatientForm);
+    console.log(this.childPatientForm);
   }
 
   ngOnInit(): void {
