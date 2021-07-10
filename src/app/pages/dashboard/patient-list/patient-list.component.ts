@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ThemePalette } from '@angular/material/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Patient } from '../../../models/patient.model';
 import { ConfirmModalComponent } from '../../../components/confirm-modal/confirm-modal.component';
@@ -21,9 +22,7 @@ export class PatientListComponent implements OnInit {
   dataSource: Patient[];
   loading: boolean = false;
 
-  constructor(
-    public authService: AuthService,
-    public ngbModal:NgbModal) {}
+  constructor(public authService: AuthService, public ngbModal: NgbModal) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -43,10 +42,14 @@ export class PatientListComponent implements OnInit {
       if (result == 'delete') {
         this.authService.deletePatient(patient);
       }
-    })
+    });
   }
 
   openDetails(patient: Patient): void {
     console.log(this.dataSource);
+  }
+
+  convertToPercent(value: number): string {
+    return (value * 100).toFixed(0) + '%';
   }
 }
