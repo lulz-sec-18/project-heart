@@ -18,9 +18,9 @@ export class PredictionService {
     if (data.length === this.dataLength && !data.some(el=>el == null)){
       const prediction = this.model.predict(dataTensor);
       const values = prediction.dataSync();
-      callBack(Array.from(values));
+      callBack(Array.from(values)[0]);
     } else {
-      callBack(-1)
+      callBack(999);
     }
   }
 }

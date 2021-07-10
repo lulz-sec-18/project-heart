@@ -50,6 +50,7 @@ export class PatientListComponent implements OnInit {
   }
 
   convertToPercent(value: number): string {
+    if(value > 1) return 'N/A'
     return (value * 100).toFixed(0) + '%';
   }
 }

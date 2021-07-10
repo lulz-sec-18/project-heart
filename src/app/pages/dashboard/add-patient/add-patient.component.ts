@@ -23,8 +23,8 @@ export class AddPatientComponent implements OnInit {
   patientAttributes: PatientAttributes;
   newPatient: Patient;
   currentUser: User;
-  predictionResult:number;
-  loading:boolean = false;
+  predictionResult: number;
+  loading: boolean = false;
 
   constructor(
     public authService: AuthService,
@@ -106,7 +106,6 @@ export class AddPatientComponent implements OnInit {
       ]),
     });
   }
-  
 
   async onSubmit(form: FormGroup) {
     this.loading = true;
@@ -134,7 +133,7 @@ export class AddPatientComponent implements OnInit {
 
     await this.predictionService.predictResult(
       this.patientAttributes,
-      (result) => (this.predictionResult = result[0])
+      (result) => { this.predictionResult = result }
     );
 
     this.newPatient =

@@ -21,7 +21,7 @@
   <ng-container matColumnDef="prediction">
     <th mat-header-cell *matHeaderCellDef> Prediction </th>
     <!-- <td mat-cell *matCellDef="let element">{{ element.condition }}</td> -->
-    <td mat-cell *matCellDef="let element">{{convertToPercent(element.condition)}}<mat-progress-bar [color]="element.condition > 0.5 ? 'warn':'accent'"  class="progress-bar" mode="determinate" value="40"></mat-progress-bar></td>
+    <td mat-cell *matCellDef="let element">{{convertToPercent(element.condition)}}<mat-progress-bar *ngIf="element.condition <= 1" [color]="element.condition > 0.5 ? 'warn':'accent'"  class="progress-bar" mode="determinate" value="40"></mat-progress-bar></td>
   </ng-container>
 <!--  Edit Patient Column-->
   <ng-container matColumnDef="edit-patient">

@@ -157,7 +157,7 @@ export class EditPatientComponent implements OnInit {
 
     await this.predictionService.predictResult(
       this.patientAttributes,
-      (result) => (this.predictionResult = result[0])
+      (result) => (this.predictionResult = result)
     );
 
     console.log(this.getMedicine(form).value);
