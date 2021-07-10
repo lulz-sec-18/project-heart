@@ -10,6 +10,7 @@ import { PatientListComponent } from './patient-list/patient-list.component';
 import { ReactiveFormsModule} from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { NullListErrorComponent } from './null-list-error/null-list-error.component';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     EditPatientComponent,
     FormComponent,
     SpinnerComponent,
+    NullListErrorComponent,
   ],
   entryComponents: [
     DashboardComponent,

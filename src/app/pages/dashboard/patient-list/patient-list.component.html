@@ -1,6 +1,7 @@
 <app-spinner *ngIf="loading"></app-spinner>
+<app-null-list-error *ngIf="patients?.length == 0"></app-null-list-error>
 
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!loading">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="!loading && patients.length != 0">
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef> No. </th>

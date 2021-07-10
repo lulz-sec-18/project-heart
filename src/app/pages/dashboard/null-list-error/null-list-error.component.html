@@ -1,0 +1,54 @@
+<div class="empty_state">
+  <!-- <i class="ion-sad-outline"></i> -->
+  <img src="../../../../assets/images/empty-box.png" alt="">
+  <h3 class="">No patients</h3>
+  <p>There have been no patients in the list</p>
+  <button  routerLink="/dashboard/add-patient">Add Patient</button>
+</div>
+<style>
+  
+  
+   .empty_state {
+  position: relative;
+  margin-top: 20%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+  .empty_state img{
+    height:100px;
+    width:100px;
+    margin: auto;
+    margin-bottom: 0px;
+    opacity:0.3;
+  }
+.empty_state i {
+ 
+}
+.empty_state h3 {
+  margin: 8px 0px;
+  text-align: center;
+  font-weight: normal;
+}
+.empty_state p {
+  font-size: 14px;
+  margin: 0px;
+  color: #999;
+  text-align: center;
+}
+.empty_state button {
+  outline: none;
+  border: none;
+  border-radius: 3px;
+  padding: 8px 8px;
+  margin: 20px auto auto auto;
+  width: 50%;
+  max-width: 200px;
+  background: #F55c44;
+  color: white;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+</style>
