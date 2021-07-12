@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ThemePalette } from '@angular/material/core';
@@ -22,7 +23,7 @@ export class PatientListComponent implements OnInit {
   dataSource: Patient[];
   loading: boolean = false;
 
-  constructor(public authService: AuthService, public ngbModal: NgbModal) {}
+  constructor(public authService: AuthService, public ngbModal: NgbModal,private router:Router) {}
 
   ngOnInit(): void {
     this.loading = true;
@@ -46,7 +47,7 @@ export class PatientListComponent implements OnInit {
   }
 
   openDetails(patient: Patient): void {
-    console.log(this.dataSource);
+    this.router.navigate(['dashboard/patient-details', patient.id]);
   }
 
   convertToPercent(value: number): string {

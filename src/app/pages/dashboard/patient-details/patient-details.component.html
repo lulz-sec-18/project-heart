@@ -1,3 +1,192 @@
-<section>
-  <p>patient-details works!</p>
-</section>
+<app-spinner *ngIf="loading"></app-spinner>
+
+<div class="sp-wrapper" *ngIf="!loading">
+  <div class="sp-card">
+    <main class="sp-card__content flex">
+      <section class="sp-card__tier flex flex--center-all">
+        <header class="sp-tier__indicator tier--0 flex flex--center-all">
+          <h4 class="sp-tier__desc">
+            <img src='../../../../../../assets/images/dummy-user.png' alt="patient.name" />
+          </h4>
+        </header>
+      </section>
+      <section class="sp-card__alert">
+        <header class="sp-alert__header">
+          <section class="sp-header__meta">
+            <h1>Patient Data</h1>
+          </section>
+        </header>
+        <main class="sp-alert__patient">
+          <section class="sp-patient__details">
+            <div class="sp-detail">
+              <label for="patient-name" class="sp-detail__label">Name</label>
+              <h5 class="sp-detail__elem" [innerText]="patient.name"></h5>
+            </div>
+            <div class="sp-detail">
+              <label for="patient-age" class="sp-detail__label">Age</label>
+              <h5 class="sp-detail__elem" [innerText]="patient.attributes.age"></h5>
+            </div>
+            <div class="sp-detail">
+              <label for="patient-gender"  class="sp-detail__label"
+                >Gender</label
+              >
+              <h5 class="sp-detail__elem" [innerText]="patient.gender"></h5>
+            </div>
+            <div class="sp-detail">
+              <label for="patient-accid" class="sp-detail__label">Date of Admission</label>
+              <h5 class="sp-detail__elem" [innerText]="dateToString(patient.admission_time)"></h5>
+            </div>
+            <div class="sp-detail">
+              <label for="patient-reason-for-visit" class="sp-detail__label"
+                >Symptoms</label
+              >
+              <h5 class="sp-detail__elem" [innerText]="(patient.symptoms == '' || null) ? 'NA':patient.symptoms"></h5>
+            </div>
+            <div class="sp-detail">
+              <label for="patient-location" class="sp-detail__label"
+                >Condition</label
+              >
+              <h5 class="sp-detail__elem" [innerText]="patient.condition"></h5>
+            </div>
+          </section>
+        </main>
+      </section>
+    </main>
+    <footer class="sp-card__actions">
+      <section class="sp-actions__container flex">
+        <button mat-button class="sp-btn sp-btn--ack" (click)="onEdit()">Edit</button>
+        <button mat-button class="sp-btn sp-btn--on-list danger" (click)="onDelete()" >Delete</button>
+      </section>
+    </footer>
+    <div class="sp-vitals__container sp-vitals__container--closed">
+      <button mat-button class="sp-btn sp-btn--full sp-btn--toggle-vitals" (click)="onBackToList()">
+        
+        Back to List
+      </button>
+    </div>
+  </div>
+</div>
+<style>
+  .sp-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  .flex {
+    display: flex;
+  }
+  .flex--center-all {
+    align-items: center;
+    justify-content: center;
+  }
+  .sp-card {
+    position: relative;
+    display: block;
+    padding: 14px;
+    background: #fff;
+    margin-bottom: 70px;
+    box-shadow: 0 10px 40px -20px rgba(42, 46, 64, 0.8);
+  }
+  .sp-card__alert,
+  .sp-card__tier {
+    padding: 14px;
+  }
+  .sp-card__actions {
+    width: 100%;
+    border-top: 3px solid #f3f7fb;
+  }
+  .sp-card .sp-header {
+    text-align: center;
+    padding: 14px 0;
+  }
+  .sp-card .sp-header__reason {
+    color: #fff;
+    padding: 0 0 14px 0;
+    display: inline;
+  }
+  .sp-card .sp-header__reason::after {
+    content: " : ";
+  }
+  .sp-btn {
+    background: #f3f7fb;
+    border: 0;
+    padding: 8px;
+    transition: background 0.2s ease;
+    border-radius: 10px;
+   
+    
+  }
+  .danger:hover{
+    background: #f32013 !important;
+  }
+  .sp-btn--full {
+    width: 100%;
+  }
+  .sp-btn:hover {
+    background: #ebf2f8;
+    cursor: pointer;
+  }
+  .sp-tier__desc {
+    font-size: 20px;
+  }
+  .sp-tier__indicator {
+    width: 200px;
+    height: 200px;
+    border: 13px solid #f3f7fb;
+    border-radius: 50em;
+    flex-direction: column;
+  }
+  .sp-card__alert {
+    width: 100%;
+  }
+  .sp-alert__header {
+    background: #f88b7a;
+    width: 100%;
+    padding: 14px;
+    font-size: 21px;
+    box-shadow:0 10px 40px -20px rgba(42, 46, 64, 0.8);
+    border-radius: 10px;
+  }
+  .sp-alert__patient {
+    padding: 14px;
+  }
+  .sp-patient__details {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .sp-detail {
+    padding: 14px 0;
+  }
+  .sp-detail__label {
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 7px;
+    opacity: 0.5;
+    transition: all 0.1s ease-in-out;
+  }
+  .sp-detail__elem {
+    font-size: 14px;
+  }
+  .sp-detail:hover .sp-detail__label {
+    opacity: 0.9;
+    font-size: 14px;
+  }
+  .sp-actions__container {
+    width: 100%;
+    padding: 14px 0;
+  }
+  .sp-actions__container .sp-btn {
+    flex: 1;
+  }
+  .tier--1 {
+    border-color: #27f7a0;
+    box-shadow: 0 5px 10px rgba(39, 247, 160, 0.5);
+  }
+  .tier--2 {
+    border-color: #6a2e91;
+    box-shadow: 0 5px 10px rgba(106, 46, 145, 0.5);
+  }
+  .tier--3 {
+    border-color: #ff779d;
+    box-shadow: 0 5px 10px rgba(255, 119, 157, 0.5);
+  }
+</style>

@@ -56,6 +56,15 @@ export class AddPatientComponent implements OnInit {
       : null;
   }
 
+//   getBase64(file) {
+//   return new Promise((resolve, reject) => {
+//     const reader = new FileReader();
+//     reader.readAsDataURL(file);
+//     reader.onload = () => resolve(reader.result);
+//     reader.onerror = error => reject(error);
+//   });
+// }
+
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.patientForm = new FormGroup({
