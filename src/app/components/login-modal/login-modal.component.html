@@ -29,7 +29,7 @@
       </div>
       <p class="google-text">Or Login using</p>
       <div class="google-icon">
-        <button  type="button" (click)="googleAuth()" >
+        <button class="google-button" type="button" (click)="googleAuth()" >
           <ion-icon name="logo-google"></ion-icon>
         </button>
       </div>
@@ -94,6 +94,11 @@
   .form-modal .modal-content {
     background-color: transparent;
   }
+
+  .google-button {
+      background-color: transparent;
+  }
+
   .container {
     position: relative;
     max-width: 460px;
@@ -183,6 +188,7 @@
     color: #f55c44;
     font-size: 32px;
     font-weight: 600;
+    font-family: 'Nunito';
     text-transform: uppercase;
   }
   .card .input-container {
@@ -200,6 +206,7 @@
     color: #212121;
     font-size: 24px;
     font-weight: 400;
+    font-family: 'Nunito';
   }
   .card .input-container input:focus ~ label {
     color: #9d9d9d;
@@ -220,6 +227,8 @@
     color: #757575;
     font-size: 24px;
     font-weight: 300;
+    font-family: 'Nunito';
+    margin-top: -10px;
     line-height: 60px;
     transition: 0.2s ease;
   }
@@ -261,6 +270,7 @@
     padding: 20px 0;
     font-size: 24px;
     font-weight: 600;
+    font-family: 'Nunito';
     line-height: 1;
     text-transform: uppercase;
     overflow: hidden;
@@ -311,6 +321,7 @@
     color: #d3d3d3;
     font-size: 24px;
     font-weight: 300;
+    font-family: 'Nunito';
     text-align: center;
   }
   .card .footer a {
@@ -344,6 +355,7 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     color: #ffffff;
     font-size: 58px;
+    font-family: 'Nunito';
     line-height: 140px;
     text-align: center;
     cursor: pointer;
@@ -444,6 +456,7 @@
   }
   .google-icon button ion-icon {
     font-size: 30px;
+    font-family: 'Nunito';
     color: #f55c44;
     padding: 2px;
     border: 3px #f55c44 solid;
@@ -458,6 +471,7 @@
     left: 40%;
     right: 30%;
     top: 58%;
+    font-family: 'Nunito';
   }
   .modal-dialog {
     padding: 0px;
