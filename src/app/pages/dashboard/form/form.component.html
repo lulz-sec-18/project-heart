@@ -4,55 +4,69 @@
       <h3 *ngIf="routeAddPatient">Add Patient</h3>
       <h3 *ngIf="routeEditPatient">Edit Patient</h3>
       <p>Fill in the data below.</p>
-      <form class="needs-validation"
-            [ngClass]="patientForm.valid ? 'was-validated' : ''"
-            novalidate
+      <form class=""
             [formGroup]="patientForm"
             (ngSubmit)="onSubmit()">
         <div class="col-md-12">
           <label for="name" class="form-label">Full Name*</label>
           <input class="form-control"
+                 [ngClass]="(patientForm.controls.patientName.valid  || !patientForm.controls.patientName.touched) ? 'is-valid' : 'is-invalid'"
                  id="name"
                  type="text"
                  name="patientName"
                  placeholder="Full Name"
                  required
                  formControlName="patientName">
-          <!-- <div class="invalid-feedback">
-            please enter a full name
-          </div> -->
+          <div class="invalid-feedback">
+            Please enter a full name
+          </div>
+          
         </div>
         <div class="mt-3 col-md-12">
           <label class="form-label">Gender*</label>
           <select class="form-control"
                   name="gender"
+                  [ngClass]="(patientForm.controls.gender.valid  || !patientForm.controls.gender.touched) ? 'is-valid' : 'is-invalid'"
                   required
                   formControlName="gender" >
             <option value="1">Male</option>
             <option value="0">Female</option>
           </select>
+          <div class="invalid-feedback">
+            Please select a gender
+          </div>
         </div>
         <div class="mt-3 col-md-12">
           <label class="form-label">Disease</label>
           <input class="form-control"
                  type="text"
                  name="disease"
+                 [ngClass]="(patientForm.controls.disease.valid  || !patientForm.controls.disease.touched) ? 'is-valid' : 'is-invalid'"
                  placeholder="If any other disease"
                  formControlName="disease" >
+            <div class="invalid-feedback">
+            Max length is 40*
+          </div>
         </div>
         <div class="mt-3 col-md-12">
           <label class="form-label">Symptoms</label>
           <input class="form-control"
+                 [ngClass]="(patientForm.controls.symptoms.valid  || !patientForm.controls.symptoms.touched) ? 'is-valid' : 'is-invalid'"
                  type="text"
                  name="symptoms"
                  placeholder="symptoms"
                  formControlName="symptoms" >
+                 <div class="invalid-feedback">
+                  Max length is 40*
+                </div>
+                
         </div>
         <div class="row">
           <div class="col-md-4">
             <div class="mt-3 col-md-12">
               <label class="form-label">Age*</label>
               <input  class="my-2 form-control"
+                      [ngClass]="(patientForm.controls.age.valid  || !patientForm.controls.age.touched) ? 'is-valid' : 'is-invalid'"
                       type="number"
                       name="age"
                       min="1"
@@ -60,6 +74,9 @@
                       placeholder="Age"
                       required
                       formControlName="age">
+                      <div class="invalid-feedback">
+                       Please enter a valid age
+                      </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -81,48 +98,69 @@
               <label class="form-label">Resting Blood Pressure</label>
               <input class="form-control"
                      type="number"
+                     [ngClass]="(patientForm.controls.restingBp.valid  || !patientForm.controls.restingBp.touched) ? 'is-valid' : 'is-invalid'"
                      name="resting-bp"
                      placeholder="Resting blood pressure in mmhg"
                      formControlName="restingBp">
+                     <div class="invalid-feedback">
+                       please enter a valid blood pressure
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">Cholestrol</label>
               <input class="form-control"
+                     [ngClass]="(patientForm.controls.cholesterol.valid  || !patientForm.controls.cholesterol.touched) ? 'is-valid' : 'is-invalid'"
                      type="number"
                      name="cholesterol"
                      placeholder="Cholesterol in mg/dl"
                      formControlName="cholesterol">
+                     <div class="invalid-feedback">
+                       please enter a valid cholestrol
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">Fasting Blood Suger</label>
               <input class="form-control"
+                    [ngClass]="(patientForm.controls.fastingBp.valid  || !patientForm.controls.fastingBp.touched) ? 'is-valid' : 'is-invalid'"
                      type="number"
                      placeholder="Fasting blood Suger in mg/dl"
                      formControlName="fastingBp" >
+                     <div class="invalid-feedback">
+                       please enter a valid fasting blood sugar
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">Resting ECG</label>
-              <select class="form-control" formControlName="restingEcg">
+              <select class="form-control" formControlName="restingEcg"
+                      [ngClass]="(patientForm.controls.restingEcg.valid  || !patientForm.controls.restingEcg.touched) ? 'is-valid' : 'is-invalid'">
+              >
                 <option value="0">Normal</option>
                 <option value="1"> Having ST-T Wave Abnormality</option>
                 <option value="2"> Showing  Left Ventricular Hypertrophy</option>
               </select>
+              <div class="invalid-feedback">
+                       please enter a valid ECG
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">Maximum Heart Rate</label>
               <input class="form-control"
+                     [ngClass]="(patientForm.controls.maxHeartRate.valid  || !patientForm.controls.maxHeartRate.touched) ? 'is-valid' : 'is-invalid'"
                      type="number"
                      name="name"
                      placeholder="Max heart rate"
                      formControlName="maxHeartRate" >
+                     <div class="invalid-feedback">
+                       please enter a valid heart rate
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -131,20 +169,28 @@
               <select name=""
                       id=""
                       class="form-control"
+                      [ngClass]="(patientForm.controls.exerciseInducedAngina.valid  || !patientForm.controls.exerciseInducedAngina.touched) ? 'is-valid' : 'is-invalid'"
                       formControlName="exerciseInducedAngina">
                 <option value="1">Yes</option>
                 <option value="0">No</option>
               </select>
+              <div class="invalid-feedback">
+                       please enter a valid Exercise Induced Angina
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">ST Ddepression(Old Peak)</label>
               <input class="form-control"
+                     [ngClass]="(patientForm.controls.exerciseInducedDepression.valid  || !patientForm.controls.exerciseInducedDepression.touched) ? 'is-valid' : 'is-invalid'"
                      type="text"
                      name="st-depression"
                      placeholder="Depression during exercise relative to rest"
                      formControlName="exerciseInducedDepression">
+                     <div class="invalid-feedback">
+                       please enter a valid Depression during exercise
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
@@ -162,22 +208,30 @@
             <div class="mt-2 col-md-12">
               <label class="form-label">Major Vessels</label>
               <input class="form-control"
+                     [ngClass]="(patientForm.controls.majorVessels.valid  || !patientForm.controls.majorVessels.touched) ? 'is-valid' : 'is-invalid'"
                      type="number"
                      name="major-vessels"
                      placeholder="Number of major vessels"
                      formControlName="majorVessels">
+                     <div class="invalid-feedback">
+                       please enter a valid Major Vessels
+                     </div>
             </div>
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
               <label class="form-label">Thalassemia</label>
               <input class="form-control"
+                     [ngClass]="(patientForm.controls.thalassemia.valid  || !patientForm.controls.thalassemia.touched) ? 'is-valid' : 'is-invalid'"
                      type="number"
                      name="thalassemia"
                      min="1"
                      max="7"
                      placeholder="Thalassemia number"
                      formControlName="thalassemia" >
+                     <div class="invalid-feedback">
+                       please enter a valid Thalassemia
+                     </div>
             </div>
           </div>
           <div class="row">
@@ -204,6 +258,7 @@
                        type="number"
                        name=""
                        formControlName="dose">
+                       
               </div>
               <div class="mx-3 mt-3 col-md-4">
                 <label class="form-label">Remarks(if any)</label>
@@ -217,6 +272,7 @@
 
           <div class="mt-3 form-check">
             <input class="form-check-input"
+                   [ngClass]="(patientForm.controls.confirm.valid  || !patientForm.controls.confirm.touched) ? 'is-valid' : 'is-invalid'"
                    type="checkbox"
                    id="invalidCheck"
                    required
@@ -246,8 +302,9 @@
   </div>
 
 <style>
-  .invalid-feedback {
+  .invalid-feedback, .valid-feedback {
     position: relative;
+    margin: auto;
   }
 
   .form-content{
