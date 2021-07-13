@@ -65,6 +65,8 @@ export class AddPatientComponent implements OnInit {
 //   });
 // }
 
+
+  // pr
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.patientForm = new FormGroup({
