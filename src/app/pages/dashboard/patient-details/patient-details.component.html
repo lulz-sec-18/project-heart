@@ -2,9 +2,9 @@
 
 <div class="sp-wrapper" *ngIf="!loading">
   <div class="sp-card">
-    <main class="sp-card__content flex">
-      <section class="sp-card__tier flex flex--center-all">
-        <header class="sp-tier__indicator tier--0 flex flex--center-all">
+    <main class="flex sp-card__content">
+      <section class="flex sp-card__tier flex--center-all">
+        <header class="flex sp-tier__indicator tier--0 flex--center-all">
           <h4 class="sp-tier__desc">
             <img src='../../../../../../assets/images/dummy-user.png' alt="patient.name" />
           </h4>
@@ -46,14 +46,14 @@
               <label for="patient-location" class="sp-detail__label"
                 >Condition</label
               >
-              <h5 class="sp-detail__elem" [innerText]="patient.condition"></h5>
+              <h5 class="sp-detail__elem" [innerText]="patient.condition > 1 ? 'N/A':(patient.condition*100).toFixed(0) + '%'"></h5>
             </div>
           </section>
         </main>
       </section>
     </main>
     <footer class="sp-card__actions">
-      <section class="sp-actions__container flex">
+      <section class="flex sp-actions__container">
         <button mat-button class="sp-btn sp-btn--ack" (click)="onEdit()">Edit</button>
         <button mat-button class="sp-btn sp-btn--on-list danger" (click)="onDelete()" >Delete</button>
       </section>
