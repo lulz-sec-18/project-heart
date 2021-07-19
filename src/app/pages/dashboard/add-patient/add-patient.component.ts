@@ -124,7 +124,7 @@ export class AddPatientComponent implements OnInit {
       chestPainType: this.patientFormValueToInt('chestPainType', form),
       restingBp: this.patientFormValueToInt('restingBp', form),
       cholesterol: this.patientFormValueToInt('cholesterol', form),
-      fastingBp: this.patientFormValueToInt('fastingBp', form),
+      fastingBp: this.patientFormValueToInt('fastingBp', form) > 120 ? 1 : 0,
       restingEcg: this.patientFormValueToInt('restingEcg', form),
       maxHeartRate: this.patientFormValueToInt('maxHeartRate', form),
       exerciseInducedAngina: this.patientFormValueToInt(
