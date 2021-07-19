@@ -65,6 +65,8 @@ export class AddPatientComponent implements OnInit {
 //   });
 // }
 
+
+  // pr
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('user'));
     this.patientForm = new FormGroup({
@@ -72,18 +74,24 @@ export class AddPatientComponent implements OnInit {
         null,
         Validators.pattern(/^[a-z,',-]+(\s)[a-z,',-]+$/i)
       ),
-      age: new FormControl(null, [Validators.min(0), Validators.max(120)]),
+      age: new FormControl(null, [Validators.min(1), Validators.max(120)]),
       gender: new FormControl(1),
-      symptoms: new FormControl(null),
-      disease: new FormControl(null),
+      symptoms: new FormControl(null, [
+        Validators.minLength(0),
+        Validators.max(40),
+      ]),
+      disease: new FormControl(null, [
+        Validators.minLength(0),
+        Validators.maxLength(40),
+      ]),
       chestPainType: new FormControl(1),
       restingBp: new FormControl(null, [
         Validators.min(0),
-        Validators.max(500),
+        Validators.max(300),
       ]),
       cholesterol: new FormControl(null, [
         Validators.min(0),
-        Validators.max(1000),
+        Validators.max(500),
       ]),
       fastingBp: new FormControl(null, [
         Validators.min(0),
@@ -92,15 +100,18 @@ export class AddPatientComponent implements OnInit {
       restingEcg: new FormControl(0),
       maxHeartRate: new FormControl(null, [
         Validators.min(0),
-        Validators.max(500),
+        Validators.max(300),
       ]),
       exerciseInducedAngina: new FormControl(0),
       exerciseInducedDepression: new FormControl(null, [
         Validators.min(0),
-        Validators.max(500),
+        Validators.max(10),
       ]),
       slopeOfStSegment: new FormControl(2),
-      majorVessels: new FormControl(null),
+      majorVessels: new FormControl(null, [
+        Validators.min(0),
+        Validators.max(5),
+      ]),
       thalassemia: new FormControl(null, [
         Validators.min(0),
         Validators.max(10),
@@ -114,6 +125,11 @@ export class AddPatientComponent implements OnInit {
         }),
       ]),
     });
+
+    this.patientForm.valueChanges.subscribe(data => {
+      console.log(data);
+      console.log(this.patientForm);
+    })
   }
 
   async onSubmit(form: FormGroup) {

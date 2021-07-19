@@ -16,7 +16,7 @@
       <button mat-button color="warn" routerLink="dashboard/patient-list">Dashboard</button>
     </li>
     <li class="item" routerLinkActive="selected">
-      <button mat-button color="warn" routerLink="train-online">Train_Online</button>
+      <button mat-button color="warn" routerLink="train-online">Train-Online</button>
     </li>
     <li class="item button"
         [ngClass]="isLoggedIn() ? 'hidden' : ''">
@@ -44,6 +44,10 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+
+  span.mat-button-wrapper {
+    font-size: large;
   }
   nav {
     background: black;
@@ -116,8 +120,19 @@
     left: 5px;
   }
 
+  .mat-button {
+    font-size: large;
+    font-family: 'Nunito';
+  }
+
+  .mat-raised-button {
+    font-size: large;
+    font-family: 'Nunito';
+  }
+
   .mat-icon-button {
     color: #f55c44;
+    font-size: large;
   }
   /* Tablet menu */
   @media all and (min-width: 700px) {
