@@ -1,7 +1,11 @@
 import { Injectable, NgZone } from '@angular/core';
 import { User } from '../models/user.model';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument,
+} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient.model';
@@ -11,10 +15,10 @@ import firebase from 'firebase';
   providedIn: 'root',
 })
 export class AuthService {
-  private patientsCollection:AngularFirestoreCollection<Patient>;
+  private patientsCollection: AngularFirestoreCollection<Patient>;
   userData: firebase.User;
   userId: string;
-  patients: Observable<Patient[]>
+  patients: Observable<Patient[]>;
 
   constructor(
     public afs: AngularFirestore,
@@ -22,75 +26,84 @@ export class AuthService {
     public ngZone: NgZone,
     public router: Router
   ) {
-  /* Saving user data in localstorage when
+    /* Saving user data in localstorage when
   logged in and setting up null when logged out */
-  this.afAuth.authState.subscribe((user) => {
-    if (user) {
-      this.userData = user;
-      localStorage.setItem('user', JSON.stringify(this.userData));
-      JSON.parse(localStorage.getItem('user'));
-
-    } else {
-      localStorage.setItem('user', null);
-      JSON.parse(localStorage.getItem('user'));
-    }
-  });
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.userData = user;
+        localStorage.setItem('user', JSON.stringify(this.userData));
+      } else {
+        localStorage.setItem('user', null);
+        // JSON.parse(localStorage.getItem('user'));
+      }
+    });
   }
 
-  get getUserData(): firebase.User {
+  get getUserData(): User {
     return this.userData;
   }
 
   firestoreInit(): void {
-    if(this.isLoggedIn()){
-      const user = JSON.parse(localStorage.getItem('user'));
-      this.patientsCollection = this.afs.collection<Patient>('patients', (ref) =>
-        ref.where('doctor_uid', '==', user.uid));
-      this.patients = this.patientsCollection.valueChanges();
+    try {
+      if (this.isLoggedIn()) {
+        const user = JSON.parse(localStorage.getItem('user'));
+        this.patientsCollection = this.afs.collection<Patient>(
+          'patients',
+          (ref) => ref.where('doctor_uid', '==', user.uid)
+        );
+        this.patients = this.patientsCollection.valueChanges();
+      }
+    } catch (error) {
+      throw Error(error);
     }
   }
 
   async signIn(email: string, password: string) {
-    try {
-      const result = await this.afAuth
-        .signInWithEmailAndPassword(email, password);
-      this.ngZone.run(() => {
-        this.router.navigate(['dashboard']);
+    await this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
+        });
+        this.setUserData(user);
+      })
+      .catch((err) => {
+        throw Error(err);
       });
-      this.setUserData(result.user);
-    } catch (error) {
-      window.alert(error.message);
-    }
   }
 
   async authLogin(provider: firebase.auth.AuthProvider) {
-    try {
-      const result = await this.afAuth
-        .signInWithPopup(provider);
-      this.ngZone.run(() => {
-        this.router.navigate(['dashboard']);
+    await this.afAuth
+      .signInWithPopup(provider)
+      .then(({ user }) => {
+        this.ngZone.run(() => {
+          this.router.navigate(['dashboard']);
+        });
+        this.setUserData(user);
+      })
+      .catch((err) => {
+        throw Error(err);
       });
-      this.setUserData(result.user);
-      window.console.log(result.user);
-    } catch (error) {
-      window.alert(error);
-    }
   }
 
   setUserData(user: firebase.User) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
-      `users/${user.uid}`
-    );
-    const userData: User = {
-      uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
-    };
-    return userRef.set(userData, {
-      merge: true,
-    });
+    try {
+      const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+        `users/${user.uid}`
+      );
+      const userData: User = {
+        uid: user.uid,
+        email: user.email,
+        displayName: user.displayName,
+        photoURL: user.photoURL,
+        emailVerified: user.emailVerified,
+      };
+      return userRef.set(userData, {
+        merge: true,
+      });
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   async sendVerificationMail() {
@@ -102,69 +115,81 @@ export class AuthService {
   }
 
   async signUp(email: string, password: string) {
-    try {
-      const result = await this.afAuth
-        .createUserWithEmailAndPassword(email, password);
-      this.sendVerificationMail();
-      this.setUserData(result.user);
-    } catch (error) {
-      window.alert(error.message);
-    }
+    await this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        this.sendVerificationMail();
+        this.setUserData(user);
+      })
+      .catch((err) => {
+        throw Error(err);
+      });
   }
 
   async forgotPassword(passwordResetEmail: string) {
     try {
-      await this.afAuth
-        .sendPasswordResetEmail(passwordResetEmail);
-      window.alert('Password reset email sent, check your inbox.');
+      await this.afAuth.sendPasswordResetEmail(passwordResetEmail);
+      // window.alert('Password reset email sent, check your inbox.');
+      return true;
     } catch (error) {
-      window.alert(error);
+      throw Error(error);
     }
   }
 
   isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified
+    return user !== null && user.emailVerified;
   }
 
   async signOut() {
-    await this.afAuth.signOut();
-    localStorage.removeItem('user');
-    this.router.navigate(['home']);
+    await this.afAuth
+      .signOut()
+      .then(() => {
+        localStorage.removeItem('user');
+        this.router.navigate(['home']);
+      })
+      .catch((error) => {
+        console.log(error);
+        // throw Error(error);
+      });
   }
 
   // Creates a new Patient
   async createPatient(patient: Patient) {
     try {
-      const id = this.afs.createId()
+      const id = this.afs.createId();
       const userRef: AngularFirestoreDocument<Patient> = this.afs.doc(
-      `patients/${id}`
-    );
-    patient = {...patient,id:id}
-    return userRef.set(patient, {
-      merge: true,
-    });
+        `patients/${id}`
+      );
+      patient = { ...patient, id: id };
+      return userRef.set(patient, {
+        merge: true,
+      });
     } catch (error) {
-      return error;
+      throw Error(error);
     }
-    
   }
 
   // Update Patient in firestore
   async updatePatient(patient: Patient) {
     try {
-     const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
-     await patientDoc.update(patient);
+      // const patientDoc: AngularFirestoreDocument<Patient> =
+      await this.afs.doc<Patient>(`patients/${patient.id}`).update(patient);
+      // await patientDoc.update(patient);
     } catch (error) {
-      return error;
+      throw Error(error);
     }
-    
   }
 
   // Delete patient from firestore
   async deletePatient(patient: Patient) {
-    const patientDoc:AngularFirestoreDocument<Patient> = await this.afs.doc<Patient>(`patients/${patient.id}`)
-    await patientDoc.delete()
+    try {
+      const patientDoc: AngularFirestoreDocument<Patient> =
+        await this.afs.doc<Patient>(`patients/${patient.id}`);
+      patientDoc.delete();
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   googleAuth() {

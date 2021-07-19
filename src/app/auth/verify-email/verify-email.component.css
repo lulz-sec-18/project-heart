@@ -2,7 +2,7 @@
    display:flex;
    align-items:center;
    flex-direction:column;
-   height:70vh;
+   height:75vh;
 }
 .form-group{
   padding:10vh;
@@ -24,7 +24,7 @@
   padding-right: 5vh;
 }
 
-.redirectToLogin span.redirect{
+.redirectToLogin button.redirect{
   padding: 6px;
   background-color:#f55c44;
   border-radius:5px;

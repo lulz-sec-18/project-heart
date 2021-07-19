@@ -74,65 +74,64 @@ export class EditPatientComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
-      this.currentUser = JSON.parse(localStorage.getItem('user'));
-      this.route.params.subscribe((params) => {
-        this.editablePatientId = params['id'];
-        console.log(this.editablePatientId);
-        console.log('params Subscribed');
+    this.currentUser = JSON.parse(localStorage.getItem('user'));
+    this.route.params.subscribe((params) => {
+      this.editablePatientId = params['id'];
+      console.log(this.editablePatientId);
+      console.log('params Subscribed');
+    });
+
+    this.authService.patients.subscribe((patients) => {
+      this.patient = patients.find((patient) => {
+        return patient.id == this.editablePatientId;
+      });
+      console.log(this.patient);
+      console.log('patient Subscribed');
+      this.patientForm = new FormGroup({
+        patientName: new FormControl(
+          this.patient.name,
+          Validators.pattern(/^[a-z,',-]+(\s)[a-z,',-]+$/i)
+        ),
+        age: new FormControl(this.patient.attributes.age),
+        gender: new FormControl(this.patient.gender == 'male' ? 1 : 0),
+        symptoms: new FormControl(this.patient.symptoms),
+        disease: new FormControl(this.patient.disease),
+        chestPainType: new FormControl(this.patient.attributes.chestPainType),
+        restingBp: new FormControl(this.patient.attributes.restingBp),
+        cholesterol: new FormControl(this.patient.attributes.cholesterol),
+        fastingBp: new FormControl(this.patient.attributes.fastingBp),
+        restingEcg: new FormControl(this.patient.attributes.restingEcg),
+        maxHeartRate: new FormControl(this.patient.attributes.maxHeartRate),
+        exerciseInducedAngina: new FormControl(
+          this.patient.attributes.exerciseInducedAngina
+        ),
+        exerciseInducedDepression: new FormControl(
+          this.patient.attributes.exerciseInducedDepression
+        ),
+        slopeOfStSegment: new FormControl(
+          this.patient.attributes.slopeOfStSegment
+        ),
+        majorVessels: new FormControl(this.patient.attributes.majorVessels),
+        thalassemia: new FormControl(this.patient.attributes.thalassemia),
+        confirm: new FormControl(false),
+        medicine: this.fb.array([]),
       });
 
-      this.authService.patients.subscribe( (patients) => {
-        this.patient = patients.find((patient) => {
-          return patient.id == this.editablePatientId;
-        });
-        console.log(this.patient);
-        console.log('patient Subscribed');
-        this.patientForm =  new FormGroup({
-          patientName: new FormControl(
-            this.patient.name,
-            Validators.pattern(/^[a-z,',-]+(\s)[a-z,',-]+$/i)
-          ),
-          age: new FormControl(this.patient.attributes.age),
-          gender: new FormControl(this.patient.gender == 'male' ? 1 : 0),
-          symptoms: new FormControl(this.patient.symptoms),
-          disease: new FormControl(this.patient.disease),
-          chestPainType: new FormControl(this.patient.attributes.chestPainType),
-          restingBp: new FormControl(this.patient.attributes.restingBp),
-          cholesterol: new FormControl(this.patient.attributes.cholesterol),
-          fastingBp: new FormControl(this.patient.attributes.fastingBp),
-          restingEcg: new FormControl(this.patient.attributes.restingEcg),
-          maxHeartRate: new FormControl(this.patient.attributes.maxHeartRate),
-          exerciseInducedAngina: new FormControl(
-            this.patient.attributes.exerciseInducedAngina
-          ),
-          exerciseInducedDepression: new FormControl(
-            this.patient.attributes.exerciseInducedDepression
-          ),
-          slopeOfStSegment: new FormControl(
-            this.patient.attributes.slopeOfStSegment
-          ),
-          majorVessels: new FormControl(this.patient.attributes.majorVessels),
-          thalassemia: new FormControl(this.patient.attributes.thalassemia),
-          confirm: new FormControl(false),
-          medicine: this.fb.array([]),
-        });
-
-        this.patient.prescribedDose.forEach((med) => {
-          this.medicine.push(
-            this.fb.group({
-              medicineName: [med.medicineName],
-              dose: [med.dose, [Validators.min(1), Validators.max(10)]],
-              remarks: [med.remarks],
-            })
-          );
-        });
-        console.log(this.patientForm.value);
+      this.patient.prescribedDose.forEach((med) => {
+        this.medicine.push(
+          this.fb.group({
+            medicineName: [med.medicineName],
+            dose: [med.dose, [Validators.min(1), Validators.max(10)]],
+            remarks: [med.remarks],
+          })
+        );
       });
+      console.log(this.patientForm.value);
+    });
   }
 
   async onSubmit(form: FormGroup) {
-    this.loading=true;
+    this.loading = true;
     this.patientAttributes = {
       age: this.patientFormValueToInt('age', form),
       gender: this.patientFormValueToInt('gender', form),
@@ -167,10 +166,7 @@ export class EditPatientComponent implements OnInit {
         : {
             doctor_uid: this.currentUser.uid,
             admission_time: Date.now(),
-            name: this.patientFormValueToString(
-              'patientName',
-              form
-            ),
+            name: this.patientFormValueToString('patientName', form),
             gender:
               this.patientFormValueToInt('gender', form) == 1
                 ? 'male'
@@ -178,24 +174,30 @@ export class EditPatientComponent implements OnInit {
             id: this.patient.id,
             condition: this.predictionResult,
             disease: this.patientFormValueToString('disease', form),
-            symptoms: this.patientFormValueToString(
-              'symptoms',
-              form
-            ), //?.split(",", 2),
+            symptoms: this.patientFormValueToString('symptoms', form), //?.split(",", 2),
             prescribedDose: this.getMedicine(form).value,
             attributes: this.patientAttributes,
             attributesArray: Object.values(this.patientAttributes),
           };
-    this.authService.updatePatient(this.editablePatient).then((err) => {
-      if (err) {
-        console.log(err);
-      } else {
+    this.authService
+      .updatePatient(this.editablePatient)
+      .then(() => {
         this._snackBar.open('Patient Updated Successfully', 'Success', {
           duration: 2000,
         });
         this.loading = false;
         this.router.navigate(['/dashboard/patient-list']);
-      }
-    });
+      })
+      .catch((err) => {
+        this._snackBar.open(err.message, 'Error', {
+          duration: 3000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: ['toast-error'],
+        });
+        console.log(err);
+        this.loading = false;
+        this.router.navigate(['/dashboard/patient-list']);
+      });
   }
 }

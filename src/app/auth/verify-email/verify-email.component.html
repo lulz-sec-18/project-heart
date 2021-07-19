@@ -9,7 +9,7 @@
         <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
       </div>
       <div class="redirectToLogin">
-      <span>Go back to?</span><span class="redirect" routerLink="home"><strong>Sign in</strong></span>
+      <span>Go back to?</span><button class="redirect" (click)='openLoginModal()'><strong>Sign in</strong></button>
     </div>
       <!-- Calling SendVerificationMail() method using authService Api -->
       <div class="form-group">

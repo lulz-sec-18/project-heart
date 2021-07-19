@@ -17,3 +17,6 @@ body {
   background-color: transparent !important;
   box-shadow: none !important;
 }
+.toast-error{
+    background: #f55c44 !important;
+  }

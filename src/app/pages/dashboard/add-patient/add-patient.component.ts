@@ -181,16 +181,24 @@ export class AddPatientComponent implements OnInit {
             condition: this.predictionResult,
           };
     console.log(this.newPatient);
-    this.authService.createPatient(this.newPatient).then((err) => {
-      if (err) {
-        console.log(err);
-      } else {
+    this.authService.createPatient(this.newPatient)
+      .then(() => {
         this._snackBar.open('Patient Added Successfully', 'Success', {
           duration: 2000,
         });
         this.loading = false;
         this.router.navigate(['/dashboard/patient-list']);
-      }
+      })
+      .catch((err) => {
+
+        this._snackBar.open(err.message, 'Error', {
+          duration: 3000,
+          panelClass: ['toast-error'],
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+        });
+        this.loading = false;
+        this.router.navigate(['/dashboard/patient-list']);
     });
   }
 }
