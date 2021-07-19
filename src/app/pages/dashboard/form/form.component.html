@@ -136,16 +136,16 @@
           </div>
           <div class="col-md-4">
             <div class="mt-2 col-md-12">
-              <label class="form-label">Resting ECG</label>
+              <label class="form-label">Resting ECG Results</label>
               <select class="form-control" formControlName="restingEcg"
                       [ngClass]="(patientForm.controls.restingEcg.valid  || !patientForm.controls.restingEcg.touched) ? 'is-valid' : 'is-invalid'">
               >
-                <option value="0">Normal</option>
-                <option value="1"> Having ST-T Wave Abnormality</option>
-                <option value="2"> Showing  Left Ventricular Hypertrophy</option>
+                <option value="1">Positive</option>
+                <option value="0">Negative</option>
+               
               </select>
               <div class="invalid-feedback">
-                       please enter a valid ECG
+                       please enter a valid ECG results
                      </div>
             </div>
           </div>
