@@ -1,6 +1,7 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { PredictionService } from './../../services/prediction.service';
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-prediction',
@@ -9,12 +10,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PredictionComponent {
   constructor(
     public predictionService: PredictionService,
-    private _snackBar: MatSnackBar
+    public authService: AuthService,
   ) {}
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action, {duration: 3000});
-  }
+  
 
   fallbackCopyTextToClipboard(text: string) {
     var textArea = document.createElement('textarea');
@@ -54,7 +53,7 @@ export class PredictionComponent {
 
     });
     this.copyTextToClipboard(code);
-    this.openSnackBar('Copied to clipboard', 'Success!');
+    this.authService.openSnackbar('Copied to clipboard', false);
     console.log(code);
   }
 }

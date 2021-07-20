@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'login-modal',
@@ -17,7 +16,6 @@ export class LoginModalComponent {
     public authService: AuthService,
     private ngbActiveModal: NgbActiveModal,
     public router: Router,
-    public _snackBar: MatSnackBar
   ) {}
 
   toggleVisiblity(el: { type: string }, event: any): void {
@@ -43,20 +41,10 @@ export class LoginModalComponent {
       .signUp(userName, password)
         .then(() => this.ngbActiveModal.close())
         .catch((err) => {
-          this._snackBar.open(err.message, '', {
-            verticalPosition: 'bottom',
-            horizontalPosition: 'left',
-            panelClass: ['snack-bar'],
-            duration: 2000,
-          });
+          this.authService.openSnackbar(err.message);
         });
     } else
-      this._snackBar.open('The password confirmation does not match ', '', {
-        verticalPosition: 'top',
-        horizontalPosition: 'right',
-        panelClass: ['toast-error'],
-        duration: 2000,
-      });
+      this.authService.openSnackbar('The password confirmation does not match');
   }
 
   async signIn(userName: string, password: string) {
@@ -65,7 +53,9 @@ export class LoginModalComponent {
   }
 
   async googleAuth() {
-    await this.authService.googleAuth();
+    await this.authService.googleAuth().catch((err) => {
+      this.authService.openSnackbar(err.message);
+    });
     this.ngbActiveModal.close();
   }
 

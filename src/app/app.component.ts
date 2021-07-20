@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation,ViewChild,OnInit,ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -6,13 +6,23 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  preloading:boolean = true;
   constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    window.addEventListener('load', () => {
+      this.hidePreloader();
+    });
+  }
+  
+  hidePreloader(): void {
+    setTimeout(() => {
+      this.preloading = false;
+    }, 500);
+  }
+
   detectDashboardInUrl(): boolean {
-    if (this.router.url.search('dashboard') > 0)
-      return true;
-    else
-      return false;
+    return this.router.url.search('dashboard') > 0;
   }
 }

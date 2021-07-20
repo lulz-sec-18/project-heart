@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Patient } from '../models/patient.model';
 import firebase from 'firebase';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,8 @@ export class AuthService {
     public afs: AngularFirestore,
     public afAuth: AngularFireAuth,
     public ngZone: NgZone,
-    public router: Router
+    public router: Router,
+    public _snackBar: MatSnackBar
   ) {
     /* Saving user data in localstorage when
   logged in and setting up null when logged out */
@@ -76,10 +78,10 @@ export class AuthService {
     await this.afAuth
       .signInWithPopup(provider)
       .then(({ user }) => {
+        this.setUserData(user);
         this.ngZone.run(() => {
           this.router.navigate(['dashboard']);
         });
-        this.setUserData(user);
       })
       .catch((err) => {
         throw Error(err);
@@ -193,6 +195,20 @@ export class AuthService {
   }
 
   googleAuth() {
-    return this.authLogin(new firebase.auth.GoogleAuthProvider());
+    return this.authLogin(new firebase.auth.GoogleAuthProvider()).catch(
+      (err) => {
+        throw Error(err);
+      }
+    );
+  }
+
+  openSnackbar(message: string, isError: boolean = true) {
+    const action = isError ? 'Error':'Success'
+    this._snackBar.open(message,action , {
+      duration: 3000,
+      verticalPosition: !isError ? 'bottom': 'top',
+      horizontalPosition: !isError ? 'center' : 'right',
+      panelClass:!isError ? '' : 'toast-error',
+    });
   }
 }

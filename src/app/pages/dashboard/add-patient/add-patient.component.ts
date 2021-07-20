@@ -12,7 +12,6 @@ import {
 import { PatientAttributes } from '../../../models/patient-attributes.model';
 import { Router } from '@angular/router';
 import { PredictionService } from 'src/app/services/prediction.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-patient',
@@ -31,7 +30,6 @@ export class AddPatientComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private predictionService: PredictionService,
-    private _snackBar: MatSnackBar
   ) {}
 
   getMedicine(form: FormGroup) {
@@ -183,20 +181,13 @@ export class AddPatientComponent implements OnInit {
     console.log(this.newPatient);
     this.authService.createPatient(this.newPatient)
       .then(() => {
-        this._snackBar.open('Patient Added Successfully', 'Success', {
-          duration: 2000,
-        });
+        this.authService.openSnackbar('Patient Added Successfully',false);
         this.loading = false;
         this.router.navigate(['/dashboard/patient-list']);
       })
       .catch((err) => {
 
-        this._snackBar.open(err.message, 'Error', {
-          duration: 3000,
-          panelClass: ['toast-error'],
-          verticalPosition: 'top',
-          horizontalPosition: 'right',
-        });
+        this.authService.openSnackbar(err.message);
         this.loading = false;
         this.router.navigate(['/dashboard/patient-list']);
     });
