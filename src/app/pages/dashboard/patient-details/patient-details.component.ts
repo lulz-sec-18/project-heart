@@ -1,3 +1,4 @@
+import { Medicine } from './../../../models/medicines.model';
 import { Patient } from './../../../models/patient.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,8 +12,10 @@ import { ConfirmModalComponent } from 'src/app/components/confirm-modal/confirm-
 })
 export class PatientDetailsComponent implements OnInit {
   patient: Patient;
+  dataSource: Medicine[];
   patientId!: string;
   loading: boolean = true;
+  displayedColumns: string[] = ['position', 'medicineName', 'dose', 'remarks'];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +35,11 @@ export class PatientDetailsComponent implements OnInit {
       this.patient = patients.find((patient) => {
         return patient.id == this.patientId;
       });
-      console.log(this.patient);
+      this.dataSource = this.patient.prescribedDose;
+      this.dataSource = this.dataSource.filter((medicine) => {
+        return (medicine.medicineName != "" && medicine.dose != null)
+      })
+      console.log(this.dataSource.length);
       this.loading = false;
     });
   }
@@ -46,15 +53,16 @@ export class PatientDetailsComponent implements OnInit {
         this.router.navigate(['/dashboard/patient-list']);
       }
     });
-    
   }
   onEdit() {
     this.router.navigate(['/dashboard/edit-patient', this.patientId]);
   }
 
-  
   dateToString(timeStamp: number | string): string {
     return new Date(timeStamp).toDateString();
   }
 
+  search(q: string): void {
+    window.open('https://www.google.com/search?q=' + q);
+  }
 }
