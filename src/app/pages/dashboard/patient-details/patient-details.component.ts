@@ -35,10 +35,9 @@ export class PatientDetailsComponent implements OnInit {
       this.patient = patients.find((patient) => {
         return patient.id == this.patientId;
       });
-      this.dataSource = this.patient.prescribedDose;
-      this.dataSource = this.dataSource.filter((medicine) => {
-        return (medicine.medicineName != "" && medicine.dose != null)
-      })
+      this.dataSource = this.patient.prescribedDose.filter((medicine) => {
+        return medicine.medicineName != '' && medicine.dose != null;
+      });
       console.log(this.dataSource.length);
       this.loading = false;
     });
