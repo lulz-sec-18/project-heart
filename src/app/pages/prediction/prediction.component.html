@@ -1,32 +1,29 @@
-<div class="docs__content">
-  <div  class="text__content container-sm">
-    <h1>Motivation Of the Project</h1>
-  <p>
-    Cardiovascular diseases (CVDs) are the number 1 cause of death globally,
-    taking an estimated 17.9 million lives each year.
-    CVDs are a group of disorders of the heart and blood vessels and include
-    coronary heart disease, cerebrovascular disease, rheumatic heart disease
-    and other conditions. Four out of 5CVD deaths are due to heart attacks
-    and strokes, and one third of these deaths occur prematurely in people
-    under 70 years of age.So our heart is one of your body's most important
-    organs. The problem motivates us to build something related to this
-    cause which can help people get aware of themselves up to some level.
-  </p>
-  </div>
-  <div  class="text__content container-sm">
-    <h1>How we made it?</h1>
-  </div>
-  <div  class="text__content container-sm">
-    <h1>Importing Python Libraries</h1>
-    <p>
+<div class=doc__content>
+<section class='articles'>
+   <article>
+      <h2 class='article__title'>Motivation Of the Project</h2>
+     <p class="article__content">
+       Cardiovascular diseases (CVDs) are the number 1 cause of death globally,
+           taking an estimated 17.9 million lives each year.
+           CVDs are a group of disorders of the heart and blood vessels and include
+           coronary heart disease, cerebrovascular disease, rheumatic heart disease
+           and other conditions. Four out of 5CVD deaths are due to heart attacks
+           and strokes, and one third of these deaths occur prematurely in people
+           under 70 years of age.So our heart is one of your body's most important
+           organs. The problem motivates us to build something related to this
+           cause which can help people get aware of themselves up to some level.
+     </p>
+    <h2 class='article__title'>How we made it?</h2>
+    <div class="article__content">
       Working with machine learning in python requires some
       starter libraries such as matplotlib and seaborn are used
         to plot the complex data or its graphical representation
-    </p>
-  </div>
+    </div>
+    <h2 class='sub__title'>Importing Python Libraries</h2>
 
-  <div  class="text__content container-sm">
-     <p><strong>1.NumPy</strong> is the fundamental package for scientific
+    
+    <div class="article__content">
+      <p><strong>1.NumPy</strong> is the fundamental package for scientific
         computing in Python. It is a Python library that provides a
         multidimensional array object, various derived objects
         (such as masked arrays and matrices), and an assortment
@@ -53,17 +50,10 @@
      <p><strong>5.TensorFlowjs</strong> is a library for machine learning
         in JavaScript. Develop ML models in JavaScript, and use ML directly
         in the browser or in Node.</p>
-  </div>
-
-  <div class="container-sm code__container">
-    <div class="code__area">
-      <div class="python__code">
-        <a class="icon">
-          <ion-icon  (click)="copyCode(copyText1)" name="copy-outline"></ion-icon>
-        </a>
-        <pre>
-        <code #copyText1>
-          <span class="bl"><span class="bl gr">import</span> matplotlib  <span class="bl gr">as</span> plt</span>
+    </div>
+     <pre class='highlight'>
+<code>
+  <span class="bl"><span class="bl gr">import</span> matplotlib  <span class="bl gr">as</span> plt</span>
           <span class="bl"><span class=" bl gr">import</span> seaborn  <span class="bl gr">as</span> sns</span>
           <span class="bl"><span class="bl gr">import</span> numpy  <span class="bl gr">as</span> np</span>
           <span class="bl"><span class="bl gr">import</span> pandas  <span class="bl gr">as</span> pd</span>
@@ -72,52 +62,36 @@
           <span class="bl"><span class="bl gr">from</span> matplotlib <span class="bl gr">import</span> pyplot  <span class="bl gr">as</span> plt</span>
           <span class="bl"><span class="bl gr">from</span> keras.models <span class="bl gr">import</span> Sequential</span>
           <span class="bl"><span class="bl gr">from</span> keras.layers <span class="bl gr">import</span> Dense</span>
-        </code>
-       </pre>
-      </div>
-    </div>
-  </div>
-
-   <div  class="text__content container-sm">
-    <h1>
-   Prepare data for training
-    </h1>
-  </div>
-
-  <div class="container-sm code__container">
-    <div class="code__area">
-      <div class="python__code">
-        <a class="icon">
-          <ion-icon  (click)="copyCode(copyText2)" name="copy-outline"></ion-icon>
-        </a>
-     <pre>
-      <code #copyText2>
-            <span class="bl gc">#Storing data from 'heart.csv' file</span>
+</code></pre>
+   </article>
+</section>
+<section class='articles'>
+   <article>
+    
+    <h2 class='sub__title'>Importing Python Libraries</h2>
+    
+     <pre class='highlight'>
+<code>
+   <span class="bl gc">#Storing data from 'heart.csv' file</span>
             <span class="bl">data = pd.read_csv(<span class="bl rd">'heart.csv'</span>)</span>
             <span class="bl gc">#Selecting the columns to use for prediction in the neural network</span>
             <span class="bl">X= data.drop(<span class="rd">'target'</span>,axis=1)</span>
             <span class="bl">Y=data[<span class="rd">'target'</span>]</span>
             <span class="bl gc"># split data into train, test</span>
             <span class="bl">X_train,X_test,y_train,y_test = train_test_split(X,Y,test_size=0.3,random_state=39, shuffle=<span class="gr">True</span>)</span>
-      </code>
-     </pre>
+</code></pre>
+   </article>
+</section>
+<section class='articles'>
+   <article>
+    
+    <h2 class='sub__title'>Define & train Model</h2>
+    <div class="article__content">
+      We create instance of keras model and feed data to train the model
     </div>
-  </div>
-  </div>
-  <div  class="text__content container-sm">
-    <h1>Define & train Model</h1>
-  <p>We create instance of keras model and feed data to train the model</p>
-  </div>
-
-  <div class="container-sm code__container">
-    <div class="code__area">
-      <div class="python__code">
-        <a class="icon">
-          <ion-icon  (click)="copyCode(copyText3)" name="copy-outline"></ion-icon>
-        </a>
-     <pre>
-      <code #copyText3>
-              <span class="bl gc">#create model with fully connected layers with dropout regulation</span>
+     <pre class='highlight'>
+<code>
+    <span class="bl gc">#create model with fully connected layers with dropout regulation</span>
               <span class="bl">model = Sequential()</span>
               <span class="bl">model.add(Dense(12, input_dim=13, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'relu'</span>))</span>
               <span class="bl">model.add(Dropout(0.2))</span>
@@ -126,64 +100,50 @@
               <span class="bl">model.add(Dense(1, kernel_initializer=<span class="bl rd">'uniform'</span>, activation=<span class="bl rd">'sigmoid'</span>))</span>
               <span class="bl">model.compile(loss=<span class="bl rd">'binary_crossentropy'</span>, optimizer=<span class="bl rd">"Adamax"</span>, metrics=[<span class="bl rd">'accuracy'</span>])</span>
               <span class="bl">model.fit(X_train, y_train, validation_split=0.33, epochs=100, batch_size=6,verbose=0)</span>
-      </code>
-     </pre>
-    </div>
-   </div>
-  </div>
+</code></pre>
+   </article>
+</section>
+<section class='articles'>
+   <article>
+    
+    <h2 class='sub__title'>Converting keras model to TensorFlowjs  model</h2>
+     <pre class='highlight'>
+<code>
+    <span class="bl">tfjs.converters.save_keras_model(model,<span class="bl rd">'_dir_path'</span> );</span>
+</code></pre>
+   </article>
+</section>
 
-  <div class="text__content container-sm">
-    <h1>Converting keras model to TensorFlowjs  model</h1>
-  </div>
-
-  <div class="container-sm code__container">
-    <div class="code__area">
-      <div class="python__code">
-        <a class="icon">
-          <ion-icon  (click)="copyCode(copyText4)" name="copy-outline"></ion-icon>
-        </a>
-        <pre>
-          <code #copyText4>
-              <span class="bl">tfjs.converters.save_keras_model(model,<span class="bl rd">'_dir_path'</span> );</span>
-          </code>
-        </pre>
-    </div>
-   </div>
-  </div>
 </div>
-
 <style>
-  .text__content h1{
-    font-size:20px;
-    color:#000;
-    padding: 10px;
-    font-family: 'Nunito';
-    font-weight: 900;
-    margin-top: -30px;
-  }
-
-  .docs__content{
-    display: flex;
+  @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400);
+.doc__content {
+  display: flex;
     flex-direction: column;
-    margin:auto;
     height:100%;
+    margin-bottom: 20%;
     padding:10px;
     overflow:scroll;
     font-family: 'Nunito';
     font-size: large;
-  }
+}
 
-  .text__content{
-    display: flex;
-    flex-direction: column;
-    margin:auto;
-    width:70%;
-    margin-top:30px;
-  }
+.article__content{
+  font-size: 15px;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
 
-  .bl{
+.articles {
+  border-left: 10px solid #eee;
+  margin-left: 140px;
+  padding-left: 1em;
+}
+
+.bl{
     color:rgba(0, 0, 0, 0.7);
-    font-family: 'Nunito';
+    font-family: 'Roboto Mono', monospace;
     line-height:1.7;
     font-weight:400;
   }
@@ -201,53 +161,88 @@
     color: green !important;
   }
 
-  .code__container{
-    width:70%;
+article {
+  padding: 0em 1em 4em 1em;
+  position: relative;
+}
+
+.article__title {
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  font-weight: 300;
+  font-size: 2em;
+  position: relative;
+  top: -0.25em;
+  font-family: "Nunito";
+}
+
+.sub__title{
+  margin-top: 8vh;
+  margin-bottom: 8vh;
+  font-weight: 300;
+  font-size: 1.5em;
+  position: relative;
+  top: -0.25em;
+  font-family: "Nunito";
+}
+
+.article__date {
+  position: absolute;
+  font-family: "Nunito";
+  top: 7px;
+  left: -142px;
+  color: #666;
+  transition: all 0.2s ease;
+}
+.article__date:after {
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+  background: #fff;
+  border: 5px solid #eee;
+  position: absolute;
+  border-radius: 100%;
+  right: -40px;
+  top: -10px;
+  transition: all 0.2s ease;
+}
+
+h2:hover + .article__date:after,
+.article__date:hover:after {
+  transform: scale(1.45) translateZ(0);
+  transition: all 0.2s ease;
+}
+
+.highlight {
+  border: 1px solid #ddd;
+  background: #eee;
+  padding: 1em;
+  border-radius: 5px;
+  color: #272727;
+}
+
+@media all and (max-width: 35em) {
+  .articles {
+    margin-left: 0px;
+    border-left: 0px solid #fff;
   }
 
-  .code__area{
-    display: flex;
-    padding:0px;
-    margin:0.4em;
-    background-color:transparent;
-    line-height:1.2em;
-    border:1px solid rgb(194, 190, 190);
+  .article__date {
+    left: 0;
+    position: relative;
+  }
+  .article__date:after {
+    display: none;
   }
 
-  .python__code{
-    background-color: #f7f7f7;
-    width:70%;
+  .article__title {
+    top: 0;
+    margin-bottom: 0;
   }
 
-  .python__code pre code span{
-    font-size: 14px;
-    font-family: Nunito;
-
+  .articles {
+    padding-left: 0;
   }
-
-  .python__code pre {
-    margin: 0px 0px 0px;
-    display:inline-flex;
-  }
-
-  .icon ion-icon[name="copy-outline"]{
-    font-size:20px;
-    padding:10px;
-    color:gray;
-    cursor: pointer;
-  }
-
-  .icon ion-icon[name="copy-outline"]:hover{
-    color: rgb(48, 48, 48);
-    transition: 0.3s ease-in-out;
-  }
-
-  .icon{
-   position:relative;
-   padding: 0;
-  }
-
-  ::selection{
-    background:rgb(141, 141, 231);
-  }
+}
 </style>
