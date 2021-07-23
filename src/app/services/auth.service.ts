@@ -148,11 +148,13 @@ export class AuthService {
       .signOut()
       .then(() => {
         localStorage.removeItem('user');
-        this.router.navigate(['home']);
+        this.ngZone.run(() => {
+          this.router.navigate(['home']);
+        });
       })
+      .then(()=>this.openSnackbar('You have been signed out.',false))
       .catch((error) => {
-        console.log(error);
-        // throw Error(error);
+        this.openSnackbar('Error while logging out');
       });
   }
 

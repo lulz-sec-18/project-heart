@@ -39,7 +39,10 @@ export class LoginModalComponent {
     if (password === repeatPassword) {
       await this.authService
       .signUp(userName, password)
-        .then(() => this.ngbActiveModal.close())
+        .then(() => {
+          this.ngbActiveModal.close();
+          this.authService.openSnackbar('Sign up Successfull',false);
+        })
         .catch((err) => {
           this.authService.openSnackbar(err.message);
         });
@@ -48,19 +51,31 @@ export class LoginModalComponent {
   }
 
   async signIn(userName: string, password: string) {
-    await this.authService.signIn(userName, password);
-    this.ngbActiveModal.close();
+    await this.authService.signIn(userName, password).then(() => {
+      this.ngbActiveModal.close();
+      this.authService.openSnackbar('Sign in Successfull',false);
+    }).catch((err) => {
+      this.authService.openSnackbar(err.message);
+    })
   }
 
   async googleAuth() {
-    await this.authService.googleAuth().catch((err) => {
+    await this.authService.googleAuth().then(() => {
+      this.ngbActiveModal.close();
+      this.authService.openSnackbar('Sign in Successfull',false);
+    })
+      .catch((err) => {
       this.authService.openSnackbar(err.message);
     });
-    this.ngbActiveModal.close();
   }
 
   forgotPassword(userName: string) {
-    this.authService.forgotPassword(userName);
-    this.ngbActiveModal.close();
+    this.authService.forgotPassword(userName).then(() => {
+      this.ngbActiveModal.close();
+      this.authService.openSnackbar('Please check your emails for reset link',false);
+    }).catch((err) => {
+      this.authService.openSnackbar(err.message);
+    });
+    
   }
 }
