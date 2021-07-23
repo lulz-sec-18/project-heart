@@ -11,12 +11,13 @@
           type="text"
           id="userInput"
           required="required"
-          #signInUserName/>
+          #signInUserName
+          autocomplete="on"/>
         <label for="user-name">Email Address</label>
         <div class="bar"></div>
       </div>
       <div class="input-container">
-        <input #signInPassword type="password" required="required" />
+        <input #signInPassword type="password" required="required" autocomplete="on" />
         <button type="button"
                 mat-icon-button
                 class="eyeIcon signin-visiblity-toggle">
