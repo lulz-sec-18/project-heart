@@ -329,11 +329,16 @@
           class="col-md-12"
           *ngFor="let med of medicine.controls; let i = index"
         >
+          
           <div [formGroup]="med" class="medicine-form">
+            <div class="mx-1 mt-5">
+              <ion-icon (click)="removeMedicine(i)" name="close-outline"></ion-icon>
+            </div>
             <div class="mx-1 mt-3 col-md-4">
               <label class="form-label">{{
                 "Medicine " + (i + 1) + " Name"
               }}</label>
+              
               <input
                 type="text"
                 class="form-control"
@@ -341,7 +346,7 @@
                 formControlName="medicineName"
               />
             </div>
-            <div class="mx-1 mt-3 col-md-4">
+            <div class="mx-1 mt-3 col-md-3">
               <label class="form-label">Dose</label>
               <input
                 class="form-control"
@@ -415,6 +420,10 @@
 </div>
 
 <style>
+  ion-icon[name="close-outline"]{
+    font-size: 35px;
+    cursor: pointer;
+  }
   .invalid-feedback,
   .valid-feedback {
     position: relative;

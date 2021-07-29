@@ -58,6 +58,9 @@ export class FormComponent implements OnInit {
       parent.className += ' -chosen';
     }
   }
+  removeMedicine(index: number) {
+    this.medicine.removeAt(index);
+  }
 
   ngOnInit(): void {
     
