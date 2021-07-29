@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     }, 500);
   }
 
-  detectDashboardInUrl(): boolean {
-    return this.router.url.search('dashboard') > 0;
+  detectAboutInUrl(): boolean {
+    return this.router.url.search('about') > 0;
   }
 }

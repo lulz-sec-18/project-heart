@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,12 +11,10 @@ export class FormComponent implements OnInit {
   @Input() loading!: boolean;
   @Output() onFormSubmit = new EventEmitter<FormGroup>();
   childPatientForm!: FormGroup;
-  routeAddPatient: boolean = false;
-  routeEditPatient: boolean = false;
-
+  
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    public router: Router) { }
 
   get medicine(){
     return this.patientForm.get('medicine') as FormArray
@@ -38,13 +36,18 @@ export class FormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (this.router.url.search('add-patient') > 0) {
-      this.routeAddPatient = true;
-      this.routeEditPatient = false;
-    }
-    else if(this.router.url.search('edit-patient') > 0) {
-      this.routeAddPatient = false;
-      this.routeEditPatient = true;
+   
+  }
+  formatFileInput(parent:ElementRef, input:ElementRef,label:ElementRef) {
+    //handle onmouseout event on Input
+    input.nativeElement.onmouseout = () => {
+      if (!input.nativeElement.value) return;
+      console.log(input.nativeElement.value);
+      label.nativeElement.innerText = input.nativeElement.value.replace(
+        /^.*[\\\/]/,
+        ''
+      );
+      parent.nativeElement.innerText += ' -chosen';
     }
   }
 }

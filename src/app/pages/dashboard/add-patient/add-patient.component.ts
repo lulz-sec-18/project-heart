@@ -115,6 +115,7 @@ export class AddPatientComponent implements OnInit {
         Validators.max(10),
       ]),
       confirm: new FormControl(false),
+      profileImage: new FormControl(null),
       medicine: this.formBuilder.array([
         this.formBuilder.group({
           medicineName: [''],
