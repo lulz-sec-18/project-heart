@@ -5,9 +5,9 @@
     <main class="flex sp-card__content">
       <section class="flex sp-card__tier flex--center-all">
         <header class="flex sp-tier__indicator tier--0 flex--center-all">
-          <h4 class="sp-tier__desc">
-            <img src='../../../../../../assets/images/dummy-user.png' alt="patient.name" />
-          </h4>
+          <div class="sp-tier__desc">
+            <img [src]="getProfileImage()" alt="patient.name" />
+          </div>
         </header>
       </section>
       <section class="sp-card__alert">
@@ -95,6 +95,26 @@
   </div>
 </div>
 <style>
+  
+  .sp-tier__desc img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .sp-tier__desc{
+    
+    margin: auto;
+    top: 40px;
+    right: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px #151515, inset 0 0 0 5px #000, inset 0 0 0 5px #000,
+      inset 0 0 0 5px #000, inset 0 0 0 5px #000;
+    background: #fff;
+    overflow: hidden;
+  }
   table{
     width: 100%;
   }
@@ -157,7 +177,8 @@
     cursor: pointer;
   }
   .sp-tier__desc {
-    font-size: 20px;
+    height: 100px;
+    width: 100px;
   }
   .sp-tier__indicator {
     width: 200px;

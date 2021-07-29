@@ -30,24 +30,37 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.childPatientForm = this.patientForm
+    this.childPatientForm = this.patientForm  
     this.onFormSubmit.emit(this.childPatientForm);
     console.log(this.childPatientForm);
   }
 
-  ngOnInit(): void {
-   
-  }
-  formatFileInput(parent:ElementRef, input:ElementRef,label:ElementRef) {
-    //handle onmouseout event on Input
-    input.nativeElement.onmouseout = () => {
-      if (!input.nativeElement.value) return;
-      console.log(input.nativeElement.value);
-      label.nativeElement.innerText = input.nativeElement.value.replace(
+  formatFileInput(parent, input, label) {
+    const reader = new FileReader();
+
+    input.target.onmouseout = () => {
+      if (!input.target.files[0]) return;
+
+      const file = input.target.files[0];
+      label.innerText = input.target.value.replace(
         /^.*[\\\/]/,
         ''
       );
-      parent.nativeElement.innerText += ' -chosen';
+      reader.readAsDataURL(file);
+
+      reader.onload = () => {
+        this.patientForm.patchValue({
+        profileImage: reader.result as string,
+        });
+        console.log(reader.result as string);
+      }
+      
+      parent.className += ' -chosen';
     }
   }
+
+  ngOnInit(): void {
+    
+  }
+  
 }

@@ -10,7 +10,7 @@
       "
     ></h3>
     <p>Fill in the data below.</p>
-    <form class="" [formGroup]="patientForm" (ngSubmit)="onSubmit()">
+    <form class="" [formGroup]="patientForm" (ngSubmit)="onSubmit()" *ngIf="patientForm">
       <div class="col-md-12">
         <label for="name" class="form-label">Full Name*</label>
         <input
@@ -363,9 +363,13 @@
         </div>
         <div class="my-5 col-md-4">
           <label class="form-label" for="avatar">Profile Image</label>
-          <div class="file-input" #parent>
-            
-            <input (onchange)="formatFileInput(parent,input,label)" #input id="avatar" type="file" formControlName="profileImage"/>
+          <div class="file-input" #parentEl>
+            <input
+              (change)="formatFileInput(parentEl, $event, label)"
+              #input
+              id="avatar"
+              type="file"
+            />
             <span class="button">Choose</span>
             <span class="label" data-js-label #label>No file selected</span>
           </div>
@@ -521,47 +525,47 @@
     background: #555;
   }
   .file-input {
-  display: inline-block;
-  text-align: left;
-  background: #fff;
-  width: 100%;
-  position: relative;
-  border-radius: 5px;
-}
+    display: inline-block;
+    text-align: left;
+    background: #fff;
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+  }
 
-.file-input > [type='file'] {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 10;
-  cursor: pointer;
-  border-radius: 5px;
-}
+  .file-input > [type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    cursor: pointer;
+    border-radius: 5px;
+  }
 
-.file-input > .button {
-  display: inline-block;
-  cursor: pointer;
-  background: #eee;
-  padding: 8px 16px;
-  border-radius: 2px;
-  margin-right: 8px;
-}
+  .file-input > .button {
+    display: inline-block;
+    cursor: pointer;
+    background: #eee;
+    padding: 8px 16px;
+    border-radius: 2px;
+    margin-right: 8px;
+  }
 
-.file-input:hover > .button {
-  background: dodgerblue;
-  color: white;
-}
+  .file-input:hover > .button {
+    background: dodgerblue;
+    color: white;
+  }
 
-.file-input > .label {
-  color: #333;
-  white-space: nowrap;
-  opacity: .3;
-}
+  .file-input > .label {
+    color: #333;
+    white-space: nowrap;
+    opacity: 0.3;
+  }
 
-.file-input.-chosen > .label {
-  opacity: 1;
-}
+  .file-input.-chosen > .label {
+    opacity: 1;
+  }
 </style>

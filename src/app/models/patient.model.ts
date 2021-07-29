@@ -5,7 +5,8 @@ export interface Patient {
   doctor_uid: string;
   admission_time: number|string;
   name: string;
-  gender:string;
+  gender: string;
+  profileImage: string;
   id: string;
   disease?: string;
   condition?: number;

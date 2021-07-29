@@ -93,6 +93,7 @@ export class EditPatientComponent implements OnInit {
         ),
         age: new FormControl(this.patient.attributes.age),
         gender: new FormControl(this.patient.gender == 'male' ? 1 : 0),
+        profileImage: new FormControl(this.patient?.profileImage ? this.patient?.profileImage:null),
         symptoms: new FormControl(this.patient.symptoms),
         disease: new FormControl(this.patient.disease),
         chestPainType: new FormControl(this.patient.attributes.chestPainType),
@@ -171,6 +172,7 @@ export class EditPatientComponent implements OnInit {
                 ? 'male'
                 : 'female',
             id: this.patient.id,
+            profileImage: this.patientFormValueToString('profileImage', form),
             condition: this.predictionResult,
             disease: this.patientFormValueToString('disease', form),
             symptoms: this.patientFormValueToString('symptoms', form), //?.split(",", 2),
