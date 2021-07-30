@@ -64,4 +64,12 @@ export class PatientDetailsComponent implements OnInit {
   search(q: string): void {
     window.open('https://www.google.com/search?q=' + q);
   }
+  getProfileImage() {
+    if (this.patient.profileImage == null) {
+      return '../../../../../../assets/images/dummy-user.png';
+    }
+    else{
+      return this.patient.profileImage;
+    }
+  }
 }

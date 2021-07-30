@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './footer/footer.component'
 import { AngularMaterialModule } from '../angular-material.module';
 import { AppRoutingModule } from '../app-routing.module';
-import { IonicModule } from '@ionic/angular';
+// import { IonicModule } from '@ionic/angular';
 import { PreloaderComponent } from './preloader/preloader.component';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
@@ -17,7 +17,7 @@ import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component'
     MatIconModule,
     AngularMaterialModule,
     AppRoutingModule,
-    IonicModule.forRoot()
+    // IonicModule.forRoot()
   ],
   declarations: [
     ConfirmModalComponent,

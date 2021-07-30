@@ -1,4 +1,5 @@
-import {Component, OnInit, Input, Output,EventEmitter} from '@angular/core';
+import { AuthService } from './../../../services/auth.service';
+import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -11,12 +12,11 @@ export class FormComponent implements OnInit {
   @Input() loading!: boolean;
   @Output() onFormSubmit = new EventEmitter<FormGroup>();
   childPatientForm!: FormGroup;
-  routeAddPatient: boolean = false;
-  routeEditPatient: boolean = false;
-
+  
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router) { }
+    public router: Router,
+    public authService:AuthService) { }
 
   get medicine(){
     return this.patientForm.get('medicine') as FormArray
@@ -32,19 +32,48 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.childPatientForm = this.patientForm
+    this.childPatientForm = this.patientForm  
     this.onFormSubmit.emit(this.childPatientForm);
     console.log(this.childPatientForm);
   }
 
-  ngOnInit(): void {
-    if (this.router.url.search('add-patient') > 0) {
-      this.routeAddPatient = true;
-      this.routeEditPatient = false;
-    }
-    else if(this.router.url.search('edit-patient') > 0) {
-      this.routeAddPatient = false;
-      this.routeEditPatient = true;
+  formatFileInput(parent, input, label) {
+    const reader = new FileReader();
+
+    input.target.onmouseout = () => {
+      if (!input.target.files[0] || input.target.files[0].type != "image/jpeg") {
+        if (input.target.files[0]) {
+          input.target.files = null;
+          this.authService.openSnackbar('Invalid file type. Please upload a jpeg file.');
+        }
+        return;
+      };
+
+      const file = input.target.files[0];
+      label.innerText = input.target.value.replace(
+        /^.*[\\\/]/,
+        ''
+      );
+      reader.readAsDataURL(file);
+      console.log(file);
+
+
+      reader.onload = () => {
+        this.patientForm.patchValue({
+        profileImage: reader.result as string,
+        });
+        console.log(reader.result as string);
+      }
+      
+      parent.className += ' -chosen';
     }
   }
+  removeMedicine(index: number) {
+    this.medicine.removeAt(index);
+  }
+
+  ngOnInit(): void {
+    
+  }
+  
 }

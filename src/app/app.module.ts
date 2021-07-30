@@ -7,7 +7,7 @@ import { AppFirebaseModule } from './app-firebase.module';
 import { AuthService } from './services/auth.service';
 import { PredictionService } from 'src/app/services/prediction.service';
 import { SharedComponentsModule } from './components/shared.component.module';
-import { IonicModule } from '@ionic/angular';
+// import { IonicModule } from '@ionic/angular';
 import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
@@ -18,7 +18,7 @@ import { APP_BASE_HREF } from '@angular/common';
     AngularMaterialModule,
     AppFirebaseModule,
     SharedComponentsModule,
-    IonicModule.forRoot()
+    // IonicModule.forRoot()
   ],
   providers: [
     AuthService,

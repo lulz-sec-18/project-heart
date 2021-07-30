@@ -30,7 +30,7 @@ export class AddPatientComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private predictionService: PredictionService,
-  ) {}
+  ) { }
 
   getMedicine(form: FormGroup) {
     return form.get('medicine') as FormArray;
@@ -53,16 +53,6 @@ export class AddPatientComponent implements OnInit {
       ? parseInt(this.patientForm.get(controlName).value)
       : null;
   }
-
-//   getBase64(file) {
-//   return new Promise((resolve, reject) => {
-//     const reader = new FileReader();
-//     reader.readAsDataURL(file);
-//     reader.onload = () => resolve(reader.result);
-//     reader.onerror = error => reject(error);
-//   });
-// }
-
 
   // pr
   ngOnInit(): void {
@@ -115,6 +105,7 @@ export class AddPatientComponent implements OnInit {
         Validators.max(10),
       ]),
       confirm: new FormControl(false),
+      profileImage: new FormControl(null),
       medicine: this.formBuilder.array([
         this.formBuilder.group({
           medicineName: [''],
@@ -158,6 +149,7 @@ export class AddPatientComponent implements OnInit {
       this.patientAttributes,
       (result) => { this.predictionResult = result }
     );
+    
 
     this.newPatient =
       this.currentUser == null
@@ -170,7 +162,8 @@ export class AddPatientComponent implements OnInit {
               this.patientFormValueToInt('gender', form) == 1
                 ? 'male'
                 : 'female',
-            id: null,
+        id: null,
+            profileImage:this.patientFormValueToString('profileImage',form),
             disease: this.patientFormValueToString('disease', form),
             symptoms: this.patientFormValueToString('symptoms', form),
             prescribedDose: this.getMedicine(form).value,
