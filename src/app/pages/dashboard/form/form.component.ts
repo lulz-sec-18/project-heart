@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { Component, OnInit, Input, Output, EventEmitter, ElementRef } from '@angular/core';
 import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,7 +15,8 @@ export class FormComponent implements OnInit {
   
   constructor(
     private formBuilder: FormBuilder,
-    public router: Router) { }
+    public router: Router,
+    public authService:AuthService) { }
 
   get medicine(){
     return this.patientForm.get('medicine') as FormArray
@@ -39,7 +41,13 @@ export class FormComponent implements OnInit {
     const reader = new FileReader();
 
     input.target.onmouseout = () => {
-      if (!input.target.files[0]) return;
+      if (!input.target.files[0] || input.target.files[0].type != "image/jpeg") {
+        if (input.target.files[0]) {
+          input.target.files = null;
+          this.authService.openSnackbar('Invalid file type. Please upload a jpeg file.');
+        }
+        return;
+      };
 
       const file = input.target.files[0];
       label.innerText = input.target.value.replace(
@@ -47,6 +55,8 @@ export class FormComponent implements OnInit {
         ''
       );
       reader.readAsDataURL(file);
+      console.log(file);
+
 
       reader.onload = () => {
         this.patientForm.patchValue({
